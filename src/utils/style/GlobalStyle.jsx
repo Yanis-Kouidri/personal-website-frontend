@@ -2,7 +2,7 @@ import { createGlobalStyle } from "styled-components"
 
 const StyledGlobalStyle = createGlobalStyle`
     * {
-      font-family: 'Trebuchet MS', Helvetica, sans-serif;
+      font-family: 'Poppins', 'Trebuchet MS', Helvetica, sans-serif;
     }
 
     a {
