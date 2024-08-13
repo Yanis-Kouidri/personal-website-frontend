@@ -4,6 +4,7 @@ import Home from "./pages/home"
 import Header from "./components/header"
 import Docs from "./pages/docs"
 import Projects from "./pages/projects"
+import About from "./pages/about"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
@@ -15,6 +16,7 @@ root.render(
         <Route path="/" element={<Home />} />
         <Route path="/docs" element={<Docs />} />
         <Route path="/projects" element={<Projects />} />
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   </React.StrictMode>,
