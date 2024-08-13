@@ -5,6 +5,7 @@ import Header from "./components/header"
 import Docs from "./pages/docs"
 import Projects from "./pages/projects"
 import About from "./pages/about"
+import Error from "./components/error/Error"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
@@ -17,6 +18,7 @@ root.render(
         <Route path="/docs" element={<Docs />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/about" element={<About />} />
+        <Route path="*" element={<Error />} />
       </Routes>
     </Router>
   </React.StrictMode>,
