@@ -1,4 +1,7 @@
 import yanis from "../../assets/pictures/photo_accueil_yanis.jpg"
+import stars from "../../assets/decorations/stars.png"
+import waves from "../../assets/decorations/waves.png"
+import dots from "../../assets/decorations/dots.png"
 import styled from "styled-components"
 import colors from "../../utils/style/colors"
 
@@ -20,24 +23,80 @@ const PresentationPicutre = styled.img`
 
 const StyledTitle = styled.h1`
   line-height: 50px;
-  font-size: 42px;
+  font-size: 52px;
 `
 
 const StyledTextPart = styled.div``
+
+const SecondSection = styled.section`
+  display: flex;
+  text-align: justify;
+`
+const ITDiv = styled.div`
+  padding: 50px 100px 50px 150px;
+`
+const NetworkDiv = styled.div`
+  padding: 80px 150px 100px 50px;
+`
+
+const NetworkTextPart = styled.div`
+  padding-top: 150px;
+`
+const DivTitle = styled.h2`
+  font-size: 42px;
+  color: ${colors.fourth};
+`
+
+const StyledDots = styled.img`
+  height: 60px;
+`
+
+const StyledDotsIT = styled(StyledDots)`
+  padding-top: 20%;
+  padding-left: 30px;
+`
+
+const StyledDotsNetwork = styled(StyledDots)`
+  padding-right: 50px;
+  float: right;
+`
 
 function Home() {
   const shortDescription = "Ingénieur en informatique et réseaux à l'ENSEEIHT."
   const location = "🌆 Toulouse, France."
 
+  const itTitle = "Informatique"
+  const itTextPart =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet erat id augue ultricies, in elementum dui dapibus. Vivamus hendrerit gravida iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus eget enim porta ultrices a a magna. Maecenas et metus a lectus mollis aliquet vitae at mi."
+
+  const networkTitle = "Réseau"
+  const networkTextPart =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet erat id augue ultricies, in elementum dui dapibus. Vivamus hendrerit gravida iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus eget enim porta ultrices a a magna. Maecenas et metus a lectus mollis aliquet vitae at mi."
+
   return (
-    <FirstSection>
-      <StyledTextPart>
-        <StyledTitle>Yanis Kouidri</StyledTitle>
-        <p>{shortDescription}</p>
-        <p>{location}</p>
-      </StyledTextPart>
-      <PresentationPicutre src={yanis} alt="Yanis Kouidri" />
-    </FirstSection>
+    <>
+      <FirstSection>
+        <StyledTextPart>
+          <StyledTitle>Yanis Kouidri</StyledTitle>
+          <p>{shortDescription}</p>
+          <p>{location}</p>
+        </StyledTextPart>
+        <PresentationPicutre src={yanis} alt="Yanis Kouidri" />
+      </FirstSection>
+      <SecondSection>
+        <ITDiv>
+          <DivTitle>{itTitle}</DivTitle>
+          <StyledTextPart>{itTextPart}</StyledTextPart>
+          <StyledDotsIT src={dots} alt="" />
+        </ITDiv>
+        <NetworkDiv>
+          <StyledDotsNetwork src={dots} alt="" />
+          <NetworkTextPart></NetworkTextPart>
+          <DivTitle>{networkTitle}</DivTitle>
+          <StyledTextPart>{networkTextPart}</StyledTextPart>
+        </NetworkDiv>
+      </SecondSection>
+    </>
   )
 }
 
