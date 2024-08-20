@@ -59,7 +59,9 @@ function SecondSection() {
     <SecondSectionWrapper>
       <ITDiv>
         <DivTitle>{itTitle}</DivTitle>
-        <div>{itTextPart}</div>
+        <div>
+          <p>{itTextPart}</p>
+        </div>
         <StyledDotsIT src={dots} alt="" />
         <StyledStarsIT src={stars} alt="" />
       </ITDiv>
@@ -68,7 +70,9 @@ function SecondSection() {
         <StyledDotsNetwork src={dots} alt="" />
         <NetworkTextPart>
           <DivTitle>{networkTitle}</DivTitle>
-          <div>{networkTextPart}</div>
+          <div>
+            <p>{networkTextPart}</p>
+          </div>
         </NetworkTextPart>
       </NetworkDiv>
     </SecondSectionWrapper>
