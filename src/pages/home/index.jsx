@@ -47,18 +47,23 @@ const DivTitle = styled.h2`
   color: ${colors.fourth};
 `
 
-const StyledDots = styled.img`
+const StyledDecoration = styled.img`
   height: 60px;
 `
 
-const StyledDotsIT = styled(StyledDots)`
+const StyledDotsIT = styled(StyledDecoration)`
   padding-top: 20%;
   padding-left: 30px;
 `
 
-const StyledDotsNetwork = styled(StyledDots)`
+const StyledDotsNetwork = styled(StyledDecoration)`
   padding-right: 50px;
   float: right;
+`
+
+const StyledStarsIT = styled(StyledDecoration)`
+  float: right;
+  padding-top: 150px;
 `
 
 function Home() {
@@ -88,12 +93,15 @@ function Home() {
           <DivTitle>{itTitle}</DivTitle>
           <StyledTextPart>{itTextPart}</StyledTextPart>
           <StyledDotsIT src={dots} alt="" />
+          <StyledStarsIT src={stars} alt="" />
         </ITDiv>
         <NetworkDiv>
+          <StyledDecoration src={waves} alt="" />
           <StyledDotsNetwork src={dots} alt="" />
-          <NetworkTextPart></NetworkTextPart>
-          <DivTitle>{networkTitle}</DivTitle>
-          <StyledTextPart>{networkTextPart}</StyledTextPart>
+          <NetworkTextPart>
+            <DivTitle>{networkTitle}</DivTitle>
+            <StyledTextPart>{networkTextPart}</StyledTextPart>
+          </NetworkTextPart>
         </NetworkDiv>
       </SecondSection>
     </>
