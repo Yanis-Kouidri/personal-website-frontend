@@ -1,16 +1,19 @@
 import React, { useState } from "react"
 import styled from "styled-components"
+import SkillCard from "./SkillCard"
+import c from "../../assets/skills/programming/C.png"
+import java from "../../assets/skills/programming/java.png"
 //import colors from "../../utils/style/colors"
 
 const FourthSectionWrapper = styled.section``
 
 const StyledTitle = styled.h2`
-  font-size: 42;
+  font-size: 42px;
 `
 
 const SkillsSetList = styled.div``
 
-const SkillCard = styled.div`
+const SkillSection = styled.div`
   border: 1px solid #ccc;
   padding: 16px;
   margin: 8px;
@@ -22,12 +25,31 @@ const SkillsPart = styled.div`
   display: flex;
 `
 
+const SkillsList = styled.div``
+
 function FourthSection() {
   const title = "Mes compétences"
 
-  const skillPart = ["Programmation", "Système", "Réseau"]
+  const skills = {
+    Programmation: [
+      {
+        link: "https://en.wikipedia.org/wiki/C_(programming_language)",
+        logo: c,
+        name: "C",
+      },
+      {
+        link: "https://fr.wikipedia.org/wiki/Java_(langage)",
+        logo: java,
+        name: "Java",
+      },
+    ],
+    Système: [{}],
+    Réseau: [{}],
+  }
 
-  const [selectedSkillsSet, setSelectedSkillsSet] = useState(skillPart[0])
+  const [selectedSkillsSet, setSelectedSkillsSet] = useState(
+    Object.keys(skills)[0],
+  )
 
   const handleSkillClick = (skill) => {
     setSelectedSkillsSet(skill)
@@ -38,14 +60,28 @@ function FourthSection() {
       <StyledTitle>{title}</StyledTitle>
       <SkillsPart>
         <SkillsSetList>
-          {skillPart.map((skill) => (
-            <SkillCard key={skill} onClick={() => handleSkillClick(skill)}>
-              {skill}
-            </SkillCard>
+          {Object.keys(skills).map((skillPart) => (
+            <SkillSection
+              key={skillPart}
+              onClick={() => handleSkillClick(skillPart)}
+            >
+              {skillPart}
+            </SkillSection>
           ))}
         </SkillsSetList>
-
-        <StyledTitle>Voici mes compétences en {selectedSkillsSet}</StyledTitle>
+        <SkillsList>
+          <StyledTitle>
+            Voici mes compétences en {selectedSkillsSet}
+          </StyledTitle>
+          {skills[selectedSkillsSet].map((skill) => (
+            <SkillCard
+              key={skill.name}
+              name={skill.name}
+              logo={skill.logo}
+              link={skill.link}
+            />
+          ))}
+        </SkillsList>
       </SkillsPart>
     </FourthSectionWrapper>
   )
