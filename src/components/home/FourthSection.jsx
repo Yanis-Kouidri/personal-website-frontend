@@ -25,7 +25,9 @@ const SkillsPart = styled.div`
   display: flex;
 `
 
-const SkillsList = styled.div``
+const SkillsList = styled.div`
+  display: flex;
+`
 
 function FourthSection() {
   const title = "Mes compétences"
@@ -70,9 +72,6 @@ function FourthSection() {
           ))}
         </SkillsSetList>
         <SkillsList>
-          <StyledTitle>
-            Voici mes compétences en {selectedSkillsSet}
-          </StyledTitle>
           {skills[selectedSkillsSet].map((skill) => (
             <SkillCard
               key={skill.name}
