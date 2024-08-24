@@ -27,6 +27,7 @@ const StyledStairs = styled.img`
 
 const StyledRoute = styled.img`
   padding: 0px 50px 0px 50px;
+  max-height: 400px;
 `
 
 function ThirdSection() {
