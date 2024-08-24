@@ -19,6 +19,18 @@ import argoWorkflow from "../../assets/skills/system/argo_workflow.png"
 import luigi from "../../assets/skills/system/luigi.png"
 import linux from "../../assets/skills/system/linux.png"
 
+import switching from "../../assets/skills/networking/switch.png"
+import router from "../../assets/skills/networking/router.png"
+import bgp from "../../assets/skills/networking/bgp.png"
+import ospf from "../../assets/skills/networking/ospf.png"
+import wireshark from "../../assets/skills/networking/wireshark.png"
+import wireguard from "../../assets/skills/networking/wireguard.png"
+import x25 from "../../assets/skills/networking/x25.png"
+import atm from "../../assets/skills/networking/atm.png"
+import frameRelay from "../../assets/skills/networking/framerelay.png"
+import fibreOptic from "../../assets/skills/networking/optical_fiber.png"
+import tcp from "../../assets/skills/networking/tcp.png"
+
 const skills = {
   Programmation: [
     {
@@ -124,7 +136,63 @@ const skills = {
       name: "Linux",
     },
   ],
-  Réseau: [{}],
+  Réseau: [
+    {
+      link: "https://www.docker.com/",
+      logo: switching,
+      name: "Switch",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: router,
+      name: "Router",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: bgp,
+      name: "BGP",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: ospf,
+      name: "OSPF",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: wireshark,
+      name: "Wireshark",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: wireguard,
+      name: "WireGuard",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: x25,
+      name: "X.25",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: atm,
+      name: "ATM",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: frameRelay,
+      name: "Frame Relay",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: fibreOptic,
+      name: "Fibre optique",
+    },
+    {
+      link: "https://www.docker.com/",
+      logo: tcp,
+      name: "TCP",
+    },
+  ],
 }
 
 export default skills
