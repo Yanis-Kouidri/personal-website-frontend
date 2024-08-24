@@ -9,6 +9,16 @@ import react from "../../assets/skills/programming/react.png"
 import html from "../../assets/skills/programming/html.png"
 import css from "../../assets/skills/programming/css.png"
 
+import docker from "../../assets/skills/system/docker.png"
+import kubernetes from "../../assets/skills/system/kubernetes.png"
+import ansible from "../../assets/skills/system/ansible.png"
+import terraform from "../../assets/skills/system/terraform.png"
+import antora from "../../assets/skills/system/antora.png"
+import jenkins from "../../assets/skills/system/jenkins.png"
+import argoWorkflow from "../../assets/skills/system/argo_workflow.png"
+import luigi from "../../assets/skills/system/luigi.png"
+import linux from "../../assets/skills/system/linux.png"
+
 const skills = {
   Programmation: [
     {
@@ -61,8 +71,59 @@ const skills = {
       logo: css,
       name: "CSS",
     },
+    {
+      link: "https://git-scm.com/",
+      logo: css,
+      name: "Git",
+    },
   ],
-  Système: [{}],
+  Système: [
+    {
+      link: "https://www.docker.com/",
+      logo: docker,
+      name: "Docker",
+    },
+    {
+      link: "https://kubernetes.io",
+      logo: kubernetes,
+      name: "Kubernetes",
+    },
+    {
+      link: "https://www.ansible.com/",
+      logo: ansible,
+      name: "Ansible",
+    },
+    {
+      link: "https://www.terraform.io/",
+      logo: terraform,
+      name: "Terraform",
+    },
+    {
+      link: "https://antora.org/",
+      logo: antora,
+      name: "Antora",
+    },
+    {
+      link: "https://www.jenkins.io/",
+      logo: jenkins,
+      name: "Jenkins",
+    },
+    {
+      link: "https://argoproj.github.io/workflows/",
+      logo: argoWorkflow,
+      name: "Argo Workflow",
+    },
+    {
+      link: "https://github.com/spotify/luigi",
+      logo: luigi,
+      name: "Luigi",
+    },
+    {
+      link: "https://www.linux.org",
+      logo: linux,
+      name: "Linux",
+    },
+  ],
   Réseau: [{}],
 }
 
