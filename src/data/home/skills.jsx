@@ -8,6 +8,7 @@ import javascript from "../../assets/skills/programming/javascript.png"
 import react from "../../assets/skills/programming/react.png"
 import html from "../../assets/skills/programming/html.png"
 import css from "../../assets/skills/programming/css.png"
+import git from "../../assets/skills/programming/git.png"
 
 import docker from "../../assets/skills/system/docker.png"
 import kubernetes from "../../assets/skills/system/kubernetes.png"
@@ -85,7 +86,7 @@ const skills = {
     },
     {
       link: "https://git-scm.com/",
-      logo: css,
+      logo: git,
       name: "Git",
     },
   ],
