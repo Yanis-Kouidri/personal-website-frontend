@@ -2,6 +2,7 @@ import React from "react"
 import ReactDOM from "react-dom/client"
 import Home from "./pages/home"
 import Header from "./components/header"
+import Footer from "./components/footer"
 import Docs from "./pages/docs"
 import Projects from "./pages/projects"
 import About from "./pages/about"
@@ -22,6 +23,7 @@ root.render(
         <Route path="/about" element={<About />} />
         <Route path="*" element={<Error />} />
       </Routes>
+      <Footer />
     </Router>
   </React.StrictMode>,
 )
