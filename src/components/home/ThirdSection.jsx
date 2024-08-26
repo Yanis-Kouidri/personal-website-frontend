@@ -32,8 +32,13 @@ const StyledRoute = styled.img`
 
 function ThirdSection() {
   const title = "Mon parcours"
-  const myHistory =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet erat id augue ultricies, in elementum dui dapibus. Vivamus hendrerit gravida iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus eget enim porta ultrices a a magna. Maecenas et metus a lectus mollis aliquet vitae at mi."
+
+  const runningYears = new Date().getFullYear()
+  const myAge =
+    new Date() > new Date(runningYears, 10, 18)
+      ? runningYears - 2002
+      : runningYears - 2002 - 1
+  const myHistory = `Je m'appelle Yanis Kouidri et j'ai ${myAge} ans.`
 
   return (
     <ThirdSectionWrapper>
