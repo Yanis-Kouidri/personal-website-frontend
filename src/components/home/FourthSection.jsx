@@ -42,6 +42,7 @@ const SkillsList = styled.div`
   border-radius: 25px;
   box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.1);
   padding: 30px;
+  margin-bottom: 70px;
 `
 
 function FourthSection() {

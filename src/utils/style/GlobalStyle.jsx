@@ -13,6 +13,8 @@ const StyledGlobalStyle = createGlobalStyle`
     body {
         background-color: ${colors.backgroundColor};
         margin: 0;
+        padding: 0;
+        height: 100%;
     }
 `
 function GlobalStyle() {
