@@ -2,9 +2,8 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import SkillCard from "./SkillCard"
 import skills from "../../data/home/skills"
-//import colors from "../../utils/style/colors";
 
-const FourthSectionWrapper = styled.section``
+const SkillsShowWrapper = styled.section``
 
 const StyledTitle = styled.h2`
   font-size: 42px;
@@ -45,7 +44,7 @@ const SkillsList = styled.div`
   margin-bottom: 70px;
 `
 
-function FourthSection() {
+function SkillsShow() {
   const title = "Mes compétences"
 
   const [selectedSkillsSet, setSelectedSkillsSet] = useState(
@@ -57,7 +56,7 @@ function FourthSection() {
   }
 
   return (
-    <FourthSectionWrapper>
+    <SkillsShowWrapper>
       <StyledTitle>{title}</StyledTitle>
       <SkillsPart>
         <SkillsSetList>
@@ -82,8 +81,8 @@ function FourthSection() {
           ))}
         </SkillsList>
       </SkillsPart>
-    </FourthSectionWrapper>
+    </SkillsShowWrapper>
   )
 }
 
-export default FourthSection
+export default SkillsShow

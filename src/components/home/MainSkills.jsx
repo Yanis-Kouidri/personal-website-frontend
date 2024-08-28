@@ -5,7 +5,7 @@ import dots from "../../assets/decorations/dots.png"
 import stars from "../../assets/decorations/stars.png"
 import waves from "../../assets/decorations/waves.png"
 
-const SecondSectionWrapper = styled.section`
+const MainSkillsWrapper = styled.section`
   display: flex;
   text-align: justify;
 `
@@ -46,7 +46,7 @@ const StyledStarsIT = styled(StyledDecoration)`
   padding-top: 150px;
 `
 
-function SecondSection() {
+function MainSkills() {
   const itTitle = "Informatique"
   const itTextPart =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet erat id augue ultricies, in elementum dui dapibus. Vivamus hendrerit gravida iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus eget enim porta ultrices a a magna. Maecenas et metus a lectus mollis aliquet vitae at mi."
@@ -56,7 +56,7 @@ function SecondSection() {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet erat id augue ultricies, in elementum dui dapibus. Vivamus hendrerit gravida iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus eget enim porta ultrices a a magna. Maecenas et metus a lectus mollis aliquet vitae at mi."
 
   return (
-    <SecondSectionWrapper>
+    <MainSkillsWrapper>
       <ITDiv>
         <DivTitle>{itTitle}</DivTitle>
         <div>
@@ -75,8 +75,8 @@ function SecondSection() {
           </div>
         </NetworkTextPart>
       </NetworkDiv>
-    </SecondSectionWrapper>
+    </MainSkillsWrapper>
   )
 }
 
-export default SecondSection
+export default MainSkills

@@ -4,7 +4,7 @@ import colors from "../../utils/style/colors"
 import route from "../../assets/decorations/route.png"
 import stairs from "../../assets/decorations/stairs.png"
 
-const ThirdSectionWrapper = styled.section`
+const MyHistoryWrapper = styled.section`
   min-height: 300px;
   background-color: ${colors.fourth};
   padding: 150px 150px 50px 150px;
@@ -33,7 +33,7 @@ const StyledRoute = styled.img`
   max-height: 500px;
 `
 
-function ThirdSection() {
+function MyHistory() {
   const title = "Mon parcours"
 
   const runningYears = new Date().getFullYear()
@@ -48,7 +48,7 @@ function ThirdSection() {
   const myHistoryP4 = `Actuellement en dernière année de mon parcours d'ingénieur, je suis en train d'effectuer un semestre d'échange à l'université de Tor Vergata à Rome. C'est 4 dernières années d'étude et d'apprentissage m'ont permises de plus en aprendre sur ce que veux et sur ce que je ne veux pas faire, c'est pourquoi je compte commencer une thèse sur la thématique des réseaux informatique une fois mon diplome obtenu.`
 
   return (
-    <ThirdSectionWrapper>
+    <MyHistoryWrapper>
       <div>
         <StyledTitle>{title}</StyledTitle>
         <StyledParagraph>{myHistoryP1}</StyledParagraph>
@@ -58,8 +58,8 @@ function ThirdSection() {
         <StyledStairs src={stairs} alt="" />
       </div>
       <StyledRoute src={route} alt="" />
-    </ThirdSectionWrapper>
+    </MyHistoryWrapper>
   )
 }
 
-export default ThirdSection
+export default MyHistory

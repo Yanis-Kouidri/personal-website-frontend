@@ -3,7 +3,7 @@ import styled from "styled-components"
 import colors from "../../utils/style/colors"
 import yanis from "../../assets/pictures/photo_accueil_yanis.jpg"
 
-const FirstSectionWrapper = styled.section`
+const BannerWrapper = styled.section`
   display: flex;
   justify-content: center;
   background: linear-gradient(
@@ -26,20 +26,20 @@ const StyledTitle = styled.h1`
 
 const StyledTextPart = styled.div``
 
-function FirstSection() {
+function Banner() {
   const shortDescription = "Ingénieur en informatique et réseaux à l'ENSEEIHT."
   const location = "🌆 Toulouse, France."
 
   return (
-    <FirstSectionWrapper>
+    <BannerWrapper>
       <StyledTextPart>
         <StyledTitle>Yanis Kouidri</StyledTitle>
         <p>{shortDescription}</p>
         <p>{location}</p>
       </StyledTextPart>
       <PresentationPicutre src={yanis} alt="Yanis Kouidri" />
-    </FirstSectionWrapper>
+    </BannerWrapper>
   )
 }
 
-export default FirstSection
+export default Banner
