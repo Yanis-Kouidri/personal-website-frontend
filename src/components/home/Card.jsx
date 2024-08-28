@@ -18,8 +18,8 @@ const LogoContainer = styled.div`
 `
 
 const LogoStyled = styled.img`
-  max-height: 100px;
-  max-width: 100px;
+  max-height: ${(props) => props.size}px;
+  max-width: ${(props) => props.size}px;
   transition: transform 0.5s ease;
 
   &:hover {
@@ -37,12 +37,12 @@ const LinkStyled = styled.a`
   color: inherit;
 `
 
-function ContactCard({ name, logo, link }) {
+function Card({ name, logo, link, size }) {
   return (
     <LinkStyled href={link} target="_blank" rel="noopener noreferrer">
       <SkillCardStyled>
         <LogoContainer>
-          <LogoStyled src={logo} alt="" />
+          <LogoStyled src={logo} alt="" size={size} />
         </LogoContainer>
         <NameStyled>{name}</NameStyled>
       </SkillCardStyled>
@@ -50,10 +50,11 @@ function ContactCard({ name, logo, link }) {
   )
 }
 
-ContactCard.propTypes = {
+Card.propTypes = {
   name: PropTypes.string.isRequired,
   logo: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
+  size: PropTypes.number.isRequired,
 }
 
-export default ContactCard
+export default Card

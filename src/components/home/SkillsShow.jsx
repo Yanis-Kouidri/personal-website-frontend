@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import styled from "styled-components"
-import SkillCard from "./SkillCard"
+import Card from "./Card"
 import skills from "../../data/home/skills"
 
 const SkillsShowWrapper = styled.section``
@@ -55,6 +55,8 @@ function SkillsShow() {
     setSelectedSkillsSet(skill)
   }
 
+  const skillCardSize = 100
+
   return (
     <SkillsShowWrapper>
       <StyledTitle>{title}</StyledTitle>
@@ -72,11 +74,12 @@ function SkillsShow() {
         </SkillsSetList>
         <SkillsList>
           {skills[selectedSkillsSet].map((skill) => (
-            <SkillCard
+            <Card
               key={skill.name}
               name={skill.name}
               logo={skill.logo}
               link={skill.link}
+              size={skillCardSize}
             />
           ))}
         </SkillsList>

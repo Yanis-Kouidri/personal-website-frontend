@@ -5,12 +5,12 @@ import email from "../../assets/contacts/email.svg"
 
 const contacts = [
   {
-    link: "",
+    link: "https://www.linkedin.com/in/yanis-kouidri",
     logo: linkedin,
     name: "Linkedin",
   },
   {
-    link: "",
+    link: "https://github.com/Yanis-Kouidri",
     logo: github,
     name: "Github",
   },
@@ -25,9 +25,9 @@ const contacts = [
     name: "CV - English",
   },
   {
-    link: "",
+    link: "mailto:yanis.kouidri@gmail.com",
     logo: email,
-    name: "Email",
+    name: "E-mail",
   },
 ]
 
