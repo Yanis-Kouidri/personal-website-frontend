@@ -5,22 +5,17 @@ const PublicPgpKeyWrapper = styled.div`
   padding-left: 20px;
 `
 
-const PgpKeyWrapper = styled.div``
-
-const StyledPre = styled.pre`
-  white-space: pre-wrap;
-  word-break: break-all; /* Casse les mots pour éviter les débordements */
-  max-width: 600px;
+const CopyButton = styled.button`
+  margin-top: 10px;
+  padding: 5px 10px;
+  cursor: pointer;
 `
 
+const PgpKeyWrapper = styled.div``
+
 function PublicPgpKey() {
-  return (
-    <PublicPgpKeyWrapper>
-      <h2>Ma Clé Publique PGP</h2>
-      <PgpKeyWrapper>
-        <StyledPre>
+  const pgpKey = `
           -----BEGIN PGP PUBLIC KEY BLOCK-----
-          <br />
           mQINBGbQpjkBEADCWu6taT5VXKz7D57lJT5uztpCQN0app4oS0bITQd1JzaUPhi2
           +nrkPAJMpweRq0KiDxLra2DcASCrFA8YeiPmek4c59rkIgtN9dpVqw3dmT8V4o9y
           uT6o+r7yxCWy4fKI1IBCmcjyQz/7YtYn8mBnPlsGc95UPNMRSd5C2pa4gH6+1rlt
@@ -68,9 +63,26 @@ function PublicPgpKey() {
           62qTMRU1Bj4UZbCUQCJK9TkJbIGB0TSSUp5i36GEZw2W+u27/S1ATw6cu8g3YG3o
           l0GtrhJIdKOG++e58bzkWJQggawOAs+g26j71WAno4RFRlGsRpqznkwDKwUtG1+I
           T+UWQQNHrhMbZmENdt6L7iu2yiGVmlBSTckXPVrE45FX+KnmNs/Qf8+2hqBk+hSF
-          hEgUVykmzKLPKNrx9pra =PVkk <br />
-          -----END PGP PUBLIC KEY BLOCK-----
-        </StyledPre>
+          hEgUVykmzKLPKNrx9pra =PVkk
+          -----END PGP PUBLIC KEY BLOCK-----`
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(pgpKey).then(
+      () => {
+        alert("Clé publique copiée dans le presse-papiers !")
+      },
+      (err) => {
+        console.error("Erreur lors de la copie : ", err)
+      },
+    )
+  }
+
+  return (
+    <PublicPgpKeyWrapper>
+      <h2>Ma Clé Publique PGP</h2>
+      <CopyButton onClick={copyToClipboard}>Copier la clé</CopyButton>
+      <PgpKeyWrapper>
+        <pre>{pgpKey}</pre>
       </PgpKeyWrapper>
     </PublicPgpKeyWrapper>
   )
