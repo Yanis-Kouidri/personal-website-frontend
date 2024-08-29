@@ -49,11 +49,11 @@ const StyledStarsIT = styled(StyledDecoration)`
 function MainSkills() {
   const itTitle = "Informatique"
   const itTextPart =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet erat id augue ultricies, in elementum dui dapibus. Vivamus hendrerit gravida iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus eget enim porta ultrices a a magna. Maecenas et metus a lectus mollis aliquet vitae at mi."
+    "Programmation, administration système, sécurité informatique, développement web, développement mobile, développement logiciel, cryptographie, mes compétences en informatique sont variées et me permettent de concevoir et créer des projets de A à Z dans ces nombreux domaines."
 
   const networkTitle = "Réseau"
   const networkTextPart =
-    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus laoreet erat id augue ultricies, in elementum dui dapibus. Vivamus hendrerit gravida iaculis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ac risus eget enim porta ultrices a a magna. Maecenas et metus a lectus mollis aliquet vitae at mi."
+    "Réseaux locaux (LAN), réseaux étendus (WAN), réseaux sans fil, réseaux mobiles, protocoles de routage, protocoles de transport (TCP), protocoles de niveau application (HTTP, DNS, SMTP), toutes ces compétences me permettent de comprendre comment un si grand ensemble de machines, différentes et communiquant de manière différente, peuvent communiquer entre elles à travers Internet."
 
   return (
     <MainSkillsWrapper>
