@@ -1,6 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 const SkillCardStyled = styled.div`
   padding: 0px 35px 10px 30px;
@@ -32,14 +33,28 @@ const NameStyled = styled.h3`
   font-weight: 300;
 `
 
-const LinkStyled = styled.a`
+const LinkStyled = styled(Link)`
   text-decoration: none;
   color: inherit;
 `
 
-function Card({ name, logo, link, size }) {
-  return (
-    <LinkStyled href={link} target="_blank" rel="noopener noreferrer">
+const ExternalLinkStyled = styled.a`
+  text-decoration: none;
+  color: inherit;
+`
+
+function Card({ name, logo, link, size, isExternal }) {
+  return isExternal ? (
+    <ExternalLinkStyled href={link} target="_blank" rel="noopener noreferrer">
+      <SkillCardStyled>
+        <LogoContainer>
+          <LogoStyled src={logo} alt="" size={size} />
+        </LogoContainer>
+        <NameStyled>{name}</NameStyled>
+      </SkillCardStyled>
+    </ExternalLinkStyled>
+  ) : (
+    <LinkStyled to={link}>
       <SkillCardStyled>
         <LogoContainer>
           <LogoStyled src={logo} alt="" size={size} />
@@ -55,6 +70,11 @@ Card.propTypes = {
   logo: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
+  isExternal: PropTypes.bool,
+}
+
+Card.defaultProps = {
+  isExternal: false,
 }
 
 export default Card

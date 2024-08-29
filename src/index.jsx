@@ -6,6 +6,7 @@ import Footer from "./components/footer"
 import Docs from "./pages/docs"
 import Projects from "./pages/projects"
 import About from "./pages/about"
+import PublicPgpKey from "./components/pgp/PublicPgpKey"
 import Error from "./components/error/Error"
 import GlobalStyle from "./utils/style/GlobalStyle"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
@@ -34,6 +35,7 @@ root.render(
             <Route path="/docs" element={<Docs />} />
             <Route path="/projects" element={<Projects />} />
             <Route path="/about" element={<About />} />
+            <Route path="/pgp" element={<PublicPgpKey />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </Content>
