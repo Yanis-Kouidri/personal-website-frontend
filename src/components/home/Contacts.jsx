@@ -3,10 +3,14 @@ import styled from "styled-components"
 import Card from "./Card"
 import contacts from "../../data/home/contacts"
 
-const ContactWrapper = styled.div``
+const ContactWrapper = styled.div`
+  background-color: #dadada;
+`
 
 const Title = styled.h2`
   text-align: center;
+  font-size: 34px;
+  padding: 50px 0px 20px 0px;
 `
 
 const ContactListWrapper = styled.div`
