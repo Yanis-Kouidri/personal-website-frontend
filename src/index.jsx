@@ -22,10 +22,12 @@ const Content = styled.div`
   flex: 1;
 `
 
+const basename = process.env.REACT_APP_BASENAME || ""
+
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    <Router>
+    <Router basename={basename}>
       <GlobalStyle />
       <Container>
         <Content>
