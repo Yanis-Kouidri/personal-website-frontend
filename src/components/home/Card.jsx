@@ -43,7 +43,7 @@ const ExternalLinkStyled = styled.a`
   color: inherit;
 `
 
-function Card({ name, logo, link, size, isExternal }) {
+function Card({ name, logo, link, size, isExternal = false }) {
   return isExternal ? (
     <ExternalLinkStyled href={link} target="_blank" rel="noopener noreferrer">
       <SkillCardStyled>
@@ -71,10 +71,6 @@ Card.propTypes = {
   link: PropTypes.string.isRequired,
   size: PropTypes.number.isRequired,
   isExternal: PropTypes.bool,
-}
-
-Card.defaultProps = {
-  isExternal: false,
 }
 
 export default Card
