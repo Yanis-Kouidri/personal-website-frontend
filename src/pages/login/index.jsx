@@ -64,6 +64,7 @@ function Login() {
         setErrorMessage(errorData.message)
       } else {
         if (response.status === 200) {
+          setErrorMessage("")
           const authData = await response.json()
           console.log(authData)
           //const token = authData.token
