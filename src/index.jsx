@@ -7,6 +7,7 @@ import Docs from "./pages/docs"
 import Projects from "./pages/projects"
 import About from "./pages/about"
 import Login from "./pages/login"
+import Signup from "./pages/signup"
 import PublicPgpKey from "./components/pgp/PublicPgpKey"
 import Error from "./components/error/Error"
 import GlobalStyle from "./utils/style/GlobalStyle"
@@ -40,6 +41,7 @@ root.render(
             <Route path="/about" element={<About />} />
             <Route path="/pgp" element={<PublicPgpKey />} />
             <Route path="/login" element={<Login />} />
+            <Route path="/sign-up" element={<Signup />} />
             <Route path="*" element={<Error />} />
           </Routes>
         </Content>
