@@ -63,3 +63,15 @@ export const StyledSubmitButton = styled.button`
     background-color: ${colors.primary};
   }
 `
+
+const StyledMessage = styled.p`
+  font-size: 1.1rem;
+`
+
+export const StyledErrorMessage = styled(StyledMessage)`
+  color: #b30808;
+`
+
+export const StyledSuccessMessage = styled(StyledMessage)`
+  color: #0d9e03;
+`

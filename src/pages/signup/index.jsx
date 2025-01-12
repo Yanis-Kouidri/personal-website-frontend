@@ -1,32 +1,67 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import {
   BasicH2Title,
   BasicWrapper,
   StyledForm,
   StyledInput,
   StyledSubmitButton,
+  StyledErrorMessage,
+  StyledSuccessMessage,
 } from "../../utils/style/CommonStyles"
 
 function Signup() {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [signupKey, setSignupKey] = useState("")
+  const [formData, setFormData] = useState({
+    username: "",
+    password: "",
+    signupKey: "",
+  })
   const [errorMessage, setErrorMessage] = useState("")
+  const [infoMessage, setInfoMessage] = useState("")
+
+  const [loading, setLoading] = useState(false)
 
   const backendUrl = process.env.REACT_APP_BACKEND_URL
-  if (!backendUrl) {
-    console.log(
-      "REACT_APP_BACKEND_URL env variable is empty : connection impossible",
-    )
+
+  useEffect(() => {
+    if (!backendUrl) {
+      console.error("REACT_APP_BACKEND_URL env variable is empty: connection impossible");
+    }
+  }, [backendUrl]);
+  
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
   }
 
-  const handleSubmit = async (e) => { // To improve, currently no resistant to errors
+  const validateForm = () => {
+    if (!formData.username || !formData.password || !formData.signupKey) {
+      setErrorMessage("Tous les champs sont requis")
+      return false
+    }
+    if (formData.password.length < 8) {
+      setErrorMessage("Le mot de passe doit contenir au moins 8 caractères")
+      return false
+    }
+    return true
+  }
+
+  const handleSubmit = async (e) => {
     e.preventDefault()
+    setLoading(true)
+    setInfoMessage("")
+    setErrorMessage("")
+    if (!validateForm()) {
+      setLoading(false)
+      return
+    }
 
     const requestBody = {
-      username: username,
-      password: password,
-      signupKey: signupKey,
+      username: formData.username,
+      password: formData.password,
+      signupKey: formData.signupKey,
     }
 
     try {
@@ -38,52 +73,57 @@ function Signup() {
         body: JSON.stringify(requestBody),
       })
 
-      if (response.status === 401) {
+      if (response.status === 400 || response.status === 401) {
         const errorData = await response.json()
         setErrorMessage(errorData.message)
       } else {
-        if (response.status === 200) {
-          setErrorMessage("")
-          const authData = await response.json()
-          console.log(authData)
-          //const token = authData.token
-          //const userId = authData.userId
+        if (response.status === 201) {
+          const successData = await response.json()
+          setInfoMessage(successData.message)
         } else {
           throw new Error("Unexpected response from backend")
         }
       }
     } catch (e) {
+      setErrorMessage("Erreur serveur, veuillez réessayer plus tard.")
       console.error("Server error :" + e)
+    } finally {
+      setLoading(false)
     }
   }
 
   return (
     <BasicWrapper>
       <BasicH2Title>Inscription</BasicH2Title>
-      {errorMessage && <p>{errorMessage}</p>}
+      {errorMessage && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
+      {infoMessage && (
+        <StyledSuccessMessage>{infoMessage}</StyledSuccessMessage>
+      )}
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
           name="username"
           type="text"
           placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
+          value={formData.username}
+          onChange={(e) => handleChange(e)}
         />
         <StyledInput
           name="password"
           type="password"
           placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          value={formData.password}
+          onChange={(e) => handleChange(e)}
         />
         <StyledInput
-          name="signupkey"
+          name="signupKey"
           type="password"
           placeholder="Sign-up key"
-          value={signupKey}
-          onChange={(e) => setSignupKey(e.target.value)}
+          value={formData.signupKey}
+          onChange={(e) => handleChange(e)}
         />
-        <StyledSubmitButton type="submit">S'inscrire</StyledSubmitButton>
+        <StyledSubmitButton type="submit" disabled={loading}>
+          {loading ? "Chargement..." : "S'inscrire"}
+        </StyledSubmitButton>
       </StyledForm>
     </BasicWrapper>
   )
