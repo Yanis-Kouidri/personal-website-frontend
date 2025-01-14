@@ -24,10 +24,11 @@ function Signup() {
 
   useEffect(() => {
     if (!backendUrl) {
-      console.error("REACT_APP_BACKEND_URL env variable is empty: connection impossible");
+      console.error(
+        "REACT_APP_BACKEND_URL env variable is empty: connection impossible",
+      )
     }
-  }, [backendUrl]);
-  
+  }, [backendUrl])
 
   const handleChange = (e) => {
     setFormData({
@@ -73,19 +74,26 @@ function Signup() {
         body: JSON.stringify(requestBody),
       })
 
-      if (response.status === 400 || response.status === 401) {
-        const errorData = await response.json()
-        setErrorMessage(errorData.message)
-      } else {
-        if (response.status === 201) {
+      switch (response.status) {
+        case 201:
           const successData = await response.json()
           setInfoMessage(successData.message)
-        } else {
+          break
+        case 400 || 401:
+          const errorData = await response.json()
+          setErrorMessage(errorData.message)
+          break
+        case 429: 
+          setErrorMessage("Too many failures, prease retry in a while")
+          break
+        case 500:
+          setErrorMessage("Internal server error")
+          break
+        default:
           throw new Error("Unexpected response from backend")
-        }
       }
     } catch (e) {
-      setErrorMessage("Erreur serveur, veuillez réessayer plus tard.")
+      setErrorMessage("Internal server error")
       console.error("Server error :" + e)
     } finally {
       setLoading(false)
