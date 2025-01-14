@@ -30,16 +30,54 @@ const StyledLink = styled(Link)`
 const StyledNav = styled.nav`
   padding: 15px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  min-height: 50px;
+`
+
+const LeftLinks = styled.div`
+  display: flex;
+  gap: 10px;
+  position: absolute; /* Positionnement absolu pour centrer */
+  left: 50%; /* Aligne horizontalement */
+  transform: translateX(-50%); /* Corrige l'alignement central */
+`
+
+const RightButtons = styled.div`
+  display: flex;
+  gap: 10px;
+  position: absolute; /* Positionnement absolu pour centrer */
+  right: 2%; /* Aligne horizontalement */
+`
+
+const Button = styled(Link)`
+  padding: 6px 16px;
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 8px;
+  background-color: ${colors.secondary};
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: ${colors.primary};
+  }
 `
 
 function Header() {
   return (
     <StyledNav>
-      <StyledLink to="/">Accueil</StyledLink>
-      <StyledLink to="/projects">Projets</StyledLink>
-      <StyledLink to="/docs">Documentations</StyledLink>
-      <StyledLink to="/about">À propos</StyledLink>
+      <LeftLinks>
+        <StyledLink to="/">Accueil</StyledLink>
+        <StyledLink to="/projects">Projets</StyledLink>
+        <StyledLink to="/docs">Documentations</StyledLink>
+        <StyledLink to="/about">À propos</StyledLink>
+      </LeftLinks>
+      <RightButtons>
+        <Button to="/login">Login</Button>
+        <Button to="/sign-up">Sign-Up</Button>
+      </RightButtons>
     </StyledNav>
   )
 }
