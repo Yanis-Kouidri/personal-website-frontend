@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom"
+import { useEffect, useState } from "react"
 import styled from "styled-components"
 import colors from "../../utils/style/colors"
 
@@ -36,7 +37,7 @@ const StyledNav = styled.nav`
   min-height: 50px;
 `
 
-const LeftLinks = styled.div`
+const CenterLinks = styled.div`
   display: flex;
   gap: 10px;
   position: absolute; /* Positionnement absolu pour centrer */
@@ -66,17 +67,57 @@ const Button = styled(Link)`
 `
 
 function Header() {
+  const [user, setUser] = useState("")
+
+  const backendUrl = process.env.REACT_APP_BACKEND_URL
+
+  useEffect(() => {
+    if (!backendUrl) {
+      console.error(
+        "REACT_APP_BACKEND_URL env variable is empty: connection impossible",
+      )
+    }
+  }, [backendUrl])
+
+  useEffect(() => {
+    fetch(backendUrl + "/api/auth/me", {
+      credentials: "include",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          setUser("")
+        } else {
+          response
+            .json()
+            .then((data) => {
+              setUser(data.user)
+            })
+            .catch((error) => {
+              console.error(error)
+            })
+        }
+      })
+      .catch((error) => {
+        console.error(error)
+      })
+  }, [backendUrl])
   return (
     <StyledNav>
-      <LeftLinks>
+      <CenterLinks>
         <StyledLink to="/">Accueil</StyledLink>
         <StyledLink to="/projects">Projets</StyledLink>
         <StyledLink to="/docs">Documentations</StyledLink>
         <StyledLink to="/about">À propos</StyledLink>
-      </LeftLinks>
+      </CenterLinks>
       <RightButtons>
-        <Button to="/login">Login</Button>
-        <Button to="/sign-up">Sign-Up</Button>
+        {user ? (
+          <p>Bonjour {user}</p>
+        ) : (
+          <>
+            <Button to="/login">Login</Button>
+            <Button to="/sign-up">Sign-Up</Button>
+          </>
+        )}
       </RightButtons>
     </StyledNav>
   )
