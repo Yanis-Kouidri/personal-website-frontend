@@ -2,6 +2,7 @@ import { Link } from "react-router-dom"
 import { useEffect, useState } from "react"
 import styled from "styled-components"
 import colors from "../../utils/style/colors"
+import config from "../../utils/config"
 
 const StyledLink = styled(Link)`
   padding: 15px;
@@ -69,15 +70,7 @@ const Button = styled(Link)`
 function Header() {
   const [user, setUser] = useState("")
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL
-
-  useEffect(() => {
-    if (!backendUrl) {
-      console.error(
-        "REACT_APP_BACKEND_URL env variable is empty: connection impossible",
-      )
-    }
-  }, [backendUrl])
+  const backendUrl = config.backendUrl
 
   useEffect(() => {
     fetch(backendUrl + "/api/auth/me", {

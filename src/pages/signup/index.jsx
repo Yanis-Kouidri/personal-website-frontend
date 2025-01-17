@@ -8,6 +8,7 @@ import {
   StyledErrorMessage,
   StyledSuccessMessage,
 } from "../../utils/style/CommonStyles"
+import config from "../../utils/config"
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -20,7 +21,7 @@ function Signup() {
 
   const [loading, setLoading] = useState(false)
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL
+  const backendUrl = config.backendUrl
 
   useEffect(() => {
     if (!backendUrl) {
@@ -83,7 +84,7 @@ function Signup() {
           const errorData = await response.json()
           setErrorMessage(errorData.message)
           break
-        case 429: 
+        case 429:
           setErrorMessage("Too many failures, prease retry in a while")
           break
         case 500:
