@@ -57,7 +57,7 @@ function DocsUpload() {
               break
           }
         } else {
-          setErrorMessage("Intenal error: Connection to backend failed")
+          setErrorMessage("Internal error: Connection to backend failed")
         }
       })
   }
