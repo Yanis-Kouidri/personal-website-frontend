@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom"
+import config from "../../utils/config"
 import {
   BasicH2Title,
   BasicWrapper,
@@ -6,8 +8,10 @@ import {
   StyledSubmitButton,
   StyledSuccessMessage,
   StyledErrorMessage,
+  Loader,
 } from "../../utils/style/CommonStyles"
 import { useState } from "react"
+import { useUser } from "../../context/UserProvider"
 
 function Login() {
   const [username, setUsername] = useState("")
@@ -17,12 +21,11 @@ function Login() {
 
   const [loading, setLoading] = useState(false)
 
-  const backendUrl = process.env.REACT_APP_BACKEND_URL
-  if (!backendUrl) {
-    console.log(
-      "REACT_APP_BACKEND_URL env variable is empty : connection impossible",
-    )
-  }
+  const { setUser } = useUser()
+
+  const backendUrl = config.backendUrl
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -49,6 +52,8 @@ function Login() {
         case 200:
           const responseData = await response.json()
           setSuccessMessage(responseData.message)
+          setUser(responseData.username)
+          navigate("/")
           break
         case 401:
           const errorData = await response.json()
@@ -97,6 +102,7 @@ function Login() {
           {loading ? "Chargement..." : "Se connecter"}
         </StyledSubmitButton>
       </StyledForm>
+      {loading && <Loader />}
     </BasicWrapper>
   )
 }

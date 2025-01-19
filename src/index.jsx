@@ -13,6 +13,7 @@ import Error from "./components/error/Error"
 import GlobalStyle from "./utils/style/GlobalStyle"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom"
 import styled from "styled-components"
+import { UserProvider } from "./context/UserProvider"
 
 const Container = styled.div`
   display: flex;
@@ -29,24 +30,26 @@ const basename = process.env.REACT_APP_BASENAME || ""
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <React.StrictMode>
-    <Router basename={basename}>
-      <GlobalStyle />
-      <Container>
-        <Content>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/docs" element={<Docs />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/pgp" element={<PublicPgpKey />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/sign-up" element={<Signup />} />
-            <Route path="*" element={<Error />} />
-          </Routes>
-        </Content>
-        <Footer />
-      </Container>
-    </Router>
+    <UserProvider>
+      <Router basename={basename}>
+        <GlobalStyle />
+        <Container>
+          <Content>
+            <Header />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/docs" element={<Docs />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/pgp" element={<PublicPgpKey />} />
+              <Route path="/login" element={<Login />} />
+              <Route path="/sign-up" element={<Signup />} />
+              <Route path="*" element={<Error />} />
+            </Routes>
+          </Content>
+          <Footer />
+        </Container>
+      </Router>
+    </UserProvider>
   </React.StrictMode>,
 )

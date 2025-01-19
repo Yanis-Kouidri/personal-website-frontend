@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
-import { useEffect, useState } from "react"
 import styled from "styled-components"
 import colors from "../../utils/style/colors"
+import { useUser } from "../../context/UserProvider"
+import axios from "axios"
 import config from "../../utils/config"
 
 const StyledLink = styled(Link)`
@@ -68,32 +69,20 @@ const Button = styled(Link)`
 `
 
 function Header() {
-  const [user, setUser] = useState("")
-
   const backendUrl = config.backendUrl
-
-  useEffect(() => {
-    fetch(backendUrl + "/api/auth/me", {
-      credentials: "include",
-    })
+  const { user, setUser } = useUser()
+  const handleClick = () => {
+    axios
+      .get(backendUrl + "/api/auth/logout", { withCredentials: true })
       .then((response) => {
-        if (!response.ok) {
-          setUser("")
-        } else {
-          response
-            .json()
-            .then((data) => {
-              setUser(data.user)
-            })
-            .catch((error) => {
-              console.error(error)
-            })
-        }
+        console.log("Log-out: " + response.data.message)
+        setUser("")
       })
       .catch((error) => {
-        console.error(error)
+        console.error("Log-out: " + error)
       })
-  }, [backendUrl])
+  }
+
   return (
     <StyledNav>
       <CenterLinks>
@@ -104,7 +93,10 @@ function Header() {
       </CenterLinks>
       <RightButtons>
         {user ? (
-          <p>Bonjour {user}</p>
+          <>
+            <p>Bonjour {user}</p>
+            <button onClick={handleClick}> Deconnexion </button>
+          </>
         ) : (
           <>
             <Button to="/login">Login</Button>
