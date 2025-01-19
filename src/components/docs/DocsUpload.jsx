@@ -69,7 +69,7 @@ function DocsUpload() {
       )}
       <form onSubmit={handleSubmit}>
         <input type="file" onChange={handleFileChange} />
-        <button type="submit">Télécharger</button>
+        <button type="submit">Ajouter</button>
       </form>
     </div>
   )
