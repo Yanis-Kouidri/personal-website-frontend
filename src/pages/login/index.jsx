@@ -12,6 +12,7 @@ import {
 } from "../../utils/style/CommonStyles"
 import { useState } from "react"
 import { useUser } from "../../context/UserProvider"
+import axios from "axios"
 
 function Login() {
   const [username, setUsername] = useState("")
@@ -27,7 +28,7 @@ function Login() {
 
   const navigate = useNavigate()
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault()
     setErrorMessage("")
     setSuccessMessage("")
@@ -38,42 +39,45 @@ function Login() {
       password: password,
     }
 
-    try {
-      const response = await fetch(backendUrl + "/api/auth/login", {
-        method: "POST",
+    axios
+      .post(backendUrl + "/api/auth/login", requestBody, {
         headers: {
-          "content-type": "application/json",
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(requestBody),
-        credentials: "include",
+        withCredentials: true,
       })
-
-      switch (response.status) {
-        case 200:
-          const responseData = await response.json()
-          setSuccessMessage(responseData.message)
-          setUser(responseData.username)
-          navigate("/")
-          break
-        case 401:
-          const errorData = await response.json()
-          setErrorMessage(errorData.message)
-          break
-        case 429:
-          setErrorMessage("Too many failures, plese wait a while")
-          break
-        case 500:
-          setErrorMessage("Internal server error")
-          break
-        default:
-          throw new Error("Unexpected response from backend")
-      }
-    } catch (e) {
-      setErrorMessage("Internal server error")
-      console.error("Server error :" + e)
-    } finally {
-      setLoading(false)
-    }
+      .then((response) => {
+        setSuccessMessage(response.data.message)
+        setUser(response.data.username)
+        navigate("/")
+      })
+      .catch((error) => {
+        if (error.response) {
+          switch (error.response.status) {
+            case 401:
+              setErrorMessage(error.response.data.message)
+              break
+            case 429:
+              setErrorMessage("Too many failures, plese wait a while")
+              break
+            case 500:
+              setErrorMessage("Internal server error")
+              break
+            default:
+              setErrorMessage("Internal server error")
+              console.error(
+                "Unexpected response from backend, status code :" +
+                  error.response.status,
+              )
+          }
+        } else {
+          setErrorMessage("Internal error")
+          console.error("Login error: " + error)
+        }
+      })
+      .finally(() => {
+        setLoading(false)
+      })
   }
 
   return (
