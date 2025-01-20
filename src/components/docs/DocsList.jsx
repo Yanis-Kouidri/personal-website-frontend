@@ -1,47 +1,41 @@
 import React, { useEffect, useState } from "react"
-import { Loader } from "../../utils/style/CommonStyles"
+import { Loader, StyledErrorMessage } from "../../utils/style/CommonStyles"
+import axios from "axios"
+import config from "../../utils/config"
 
-function DocsList() {
+function DocsList( {triggerFetch}) {
   const [docs, setDocs] = useState([])
   const [errorMessage, setErrorMessage] = useState("")
-  const [isFetching, setIsFetching] = useState(true)
-  const standardErrorMessage =
-    "Ooops, il semble qu'il y ait une erreur coté serveur"
-  const backendUrl = process.env.REACT_APP_BACKEND_URL
-  if (!backendUrl) {
-    console.log(
-      "REACT_APP_BACKEND_URL env variable is empty : connection impossible",
-    )
-  }
+  const [isFetching, setIsFetching] = useState(false)
+
+  const backendUrl = config.backendUrl
 
   useEffect(() => {
-    fetch(backendUrl + "/api/docs")
+    setIsFetching(true)
+    axios
+      .get(backendUrl + "/api/docs")
       .then((response) => {
-        if (!response.ok) {
-          throw new Error("Connection impossible")
-        }
-        return response.text()
-      })
-      .then((text) => {
-        try {
-          const data = JSON.parse(text) // Try to parse JSON
-          setDocs(data)
-          setIsFetching(false)
-        } catch (error) {
-          throw new SyntaxError("Error during JSON parsing: " + error.message)
-        }
+        setDocs(response.data)
       })
       .catch((error) => {
-        setErrorMessage(standardErrorMessage)
-        setIsFetching(false)
-        console.error("Error fetching docs:", error)
+        console.error("Error during fetching docs: " + error)
+        if (error.response) {
+          console.error("Unknown error during docs fetching")
+          setErrorMessage("Internal server error")
+        } else {
+          setErrorMessage("Internal error: Connection to backend failed")
+        }
       })
-  }, [backendUrl])
+      .finally(() => {
+        setIsFetching(false)
+      })
+
+  }, [backendUrl, triggerFetch])
 
   return (
     <div>
       <h1>Liste des PDF</h1>
-      {errorMessage && <p>{errorMessage}</p>}
+      {errorMessage && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
       {isFetching ? (
         <Loader />
       ) : (

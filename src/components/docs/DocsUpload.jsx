@@ -6,7 +6,7 @@ import {
   StyledSuccessMessage,
 } from "../../utils/style/CommonStyles"
 
-function DocsUpload() {
+function DocsUpload({ setTriggerFetch }) {
   const [file, setFile] = useState(null)
   const [errorMessage, setErrorMessage] = useState("")
   const [successMessage, setSucessMessage] = useState("")
@@ -36,6 +36,7 @@ function DocsUpload() {
       })
       .then((response) => {
         setSucessMessage(response.data.message)
+        setTriggerFetch((prev) => prev + 1)
       })
       .catch((error) => {
         console.error("Error during upload: " + error)
