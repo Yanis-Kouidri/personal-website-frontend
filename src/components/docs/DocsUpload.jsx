@@ -39,10 +39,11 @@ function DocsUpload({ setTriggerFetch }) {
         setTriggerFetch((prev) => prev + 1)
       })
       .catch((error) => {
-        console.error("Error during upload: " + error)
         if (error.response) {
           switch (error.response.status) {
             case 400:
+              setErrorMessage(error.response.data.message)
+              break
             case 401:
             case 500:
               console.error(
