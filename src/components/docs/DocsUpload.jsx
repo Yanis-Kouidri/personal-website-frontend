@@ -25,7 +25,7 @@ function DocsUpload({ setTriggerFetch }) {
     }
 
     const formData = new FormData()
-    formData.append("file", file)
+    formData.append("file", file, encodeURIComponent(file.name))
 
     axios
       .post(config.backendUrl + "/api/docs", formData, {
