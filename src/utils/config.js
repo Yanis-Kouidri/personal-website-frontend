@@ -1,5 +1,5 @@
 const config = {
-  backendUrl: process.env.REACT_APP_BACKEND_URL,
+  backendUrl: import.meta.env.VITE_BACKEND_URL,
 }
 
 for (const key in config) {

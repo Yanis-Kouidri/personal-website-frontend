@@ -25,7 +25,7 @@ const Content = styled.div`
   flex: 1;
 `
 
-const basename = process.env.REACT_APP_BASENAME || ""
+const basename = import.meta.env.VITE_BASENAME || ""
 
 const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(

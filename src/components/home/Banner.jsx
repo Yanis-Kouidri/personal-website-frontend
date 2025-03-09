@@ -2,6 +2,8 @@ import React from "react"
 import styled from "styled-components"
 import colors from "../../utils/style/colors"
 import yanis from "../../assets/pictures/photo_accueil_yanis.jpg"
+import { prerenderToNodeStream } from "react-dom/static"
+import { renderToReadableStream } from "react-dom/server"
 
 const BannerWrapper = styled.section`
   display: flex;
