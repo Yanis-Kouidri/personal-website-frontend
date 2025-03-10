@@ -36,6 +36,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:baf502564045f71f7f32a086e25d8228a736a488eb2966af68a23be54f9baf578d88abcdcd86af04a3b5af7368f396aedd4cf2da36bddb3e7412c60730ea95ed#npm:5.2.0"],\
           ["eslint-plugin-react-refresh", "virtual:baf502564045f71f7f32a086e25d8228a736a488eb2966af68a23be54f9baf578d88abcdcd86af04a3b5af7368f396aedd4cf2da36bddb3e7412c60730ea95ed#npm:0.4.19"],\
           ["globals", "npm:15.15.0"],\
+          ["prettier", "npm:3.5.3"],\
           ["prop-types", "npm:15.8.1"],\
           ["react", "npm:19.0.0"],\
           ["react-dom", "virtual:baf502564045f71f7f32a086e25d8228a736a488eb2966af68a23be54f9baf578d88abcdcd86af04a3b5af7368f396aedd4cf2da36bddb3e7412c60730ea95ed#npm:19.0.0"],\
@@ -2796,6 +2797,7 @@ const RAW_RUNTIME_STATE =
           ["eslint-plugin-react-hooks", "virtual:baf502564045f71f7f32a086e25d8228a736a488eb2966af68a23be54f9baf578d88abcdcd86af04a3b5af7368f396aedd4cf2da36bddb3e7412c60730ea95ed#npm:5.2.0"],\
           ["eslint-plugin-react-refresh", "virtual:baf502564045f71f7f32a086e25d8228a736a488eb2966af68a23be54f9baf578d88abcdcd86af04a3b5af7368f396aedd4cf2da36bddb3e7412c60730ea95ed#npm:0.4.19"],\
           ["globals", "npm:15.15.0"],\
+          ["prettier", "npm:3.5.3"],\
           ["prop-types", "npm:15.8.1"],\
           ["react", "npm:19.0.0"],\
           ["react-dom", "virtual:baf502564045f71f7f32a086e25d8228a736a488eb2966af68a23be54f9baf578d88abcdcd86af04a3b5af7368f396aedd4cf2da36bddb3e7412c60730ea95ed#npm:19.0.0"],\
@@ -2842,6 +2844,15 @@ const RAW_RUNTIME_STATE =
         "packageLocation": "../../.yarn/berry/cache/prelude-ls-npm-1.2.1-3e4d272a55-10c0.zip/node_modules/prelude-ls/",\
         "packageDependencies": [\
           ["prelude-ls", "npm:1.2.1"]\
+        ],\
+        "linkType": "HARD"\
+      }]\
+    ]],\
+    ["prettier", [\
+      ["npm:3.5.3", {\
+        "packageLocation": "./.yarn/unplugged/prettier-npm-3.5.3-787132ce04/node_modules/prettier/",\
+        "packageDependencies": [\
+          ["prettier", "npm:3.5.3"]\
         ],\
         "linkType": "HARD"\
       }]\
