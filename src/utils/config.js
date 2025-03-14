@@ -3,7 +3,8 @@ const config = {
 }
 
 for (const key in config) {
-  if (!`${config[key]}`) {
+  //console.log(`Vérification de ${key} avec la valeur ${config[key]}`);
+  if (!config[key]) {
     throw new Error(`Field ${key} is empty`)
   }
 }
