@@ -22,6 +22,7 @@ const PresentationPicutre = styled.img`
 const StyledTitle = styled.h1`
   line-height: 50px;
   font-size: 52px;
+  margin: auto;
 `
 
 const StyledTextPart = styled.div``
