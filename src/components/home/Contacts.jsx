@@ -1,7 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import Card from "./Card"
-import contacts from "../../data/home/contacts"
+import React from 'react'
+import styled from 'styled-components'
+import Card from './Card'
+import contacts from '../../data/home/contacts'
 
 const ContactWrapper = styled.div`
   background-color: #dadada;

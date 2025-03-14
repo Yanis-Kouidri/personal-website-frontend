@@ -1,5 +1,5 @@
-import styled, { keyframes } from "styled-components"
-import colors from "./colors"
+import styled, { keyframes } from 'styled-components'
+import colors from './colors'
 
 export const BasicH2Title = styled.h2`
   font-size: 38px;

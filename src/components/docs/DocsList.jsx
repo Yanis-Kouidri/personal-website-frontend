@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react"
-import { Loader, StyledErrorMessage } from "../../utils/style/CommonStyles"
-import axios from "axios"
-import config from "../../utils/config"
+import React, { useEffect, useState } from 'react'
+import { Loader, StyledErrorMessage } from '../../utils/style/CommonStyles'
+import axios from 'axios'
+import config from '../../utils/config'
 
 function DocsList({ triggerFetch }) {
   const [docs, setDocs] = useState([])
-  const [errorMessage, setErrorMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState('')
   const [isFetching, setIsFetching] = useState(false)
 
   const backendUrl = config.backendUrl
@@ -13,17 +13,17 @@ function DocsList({ triggerFetch }) {
   useEffect(() => {
     setIsFetching(true)
     axios
-      .get(backendUrl + "/api/docs")
+      .get(backendUrl + '/api/docs')
       .then((response) => {
         setDocs(response.data)
       })
       .catch((error) => {
-        console.error("Error during fetching docs: " + error)
+        console.error('Error during fetching docs: ' + error)
         if (error.response) {
-          console.error("Unknown error during docs fetching")
-          setErrorMessage("Internal server error")
+          console.error('Unknown error during docs fetching')
+          setErrorMessage('Internal server error')
         } else {
-          setErrorMessage("Internal error: Connection to backend failed")
+          setErrorMessage('Internal error: Connection to backend failed')
         }
       })
       .finally(() => {
@@ -36,7 +36,7 @@ function DocsList({ triggerFetch }) {
       <ul>
         {items.map((item, index) => (
           <li key={index}>
-            {item.type === "directory" ? (
+            {item.type === 'directory' ? (
               <>
                 <strong>{item.name}</strong>
                 {renderTree(item.contents)}

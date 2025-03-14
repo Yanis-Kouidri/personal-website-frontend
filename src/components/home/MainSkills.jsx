@@ -1,9 +1,9 @@
-import React from "react"
-import styled from "styled-components"
-import colors from "../../utils/style/colors"
-import dots from "../../assets/decorations/dots.png"
-import stars from "../../assets/decorations/stars.png"
-import waves from "../../assets/decorations/waves.png"
+import React from 'react'
+import styled from 'styled-components'
+import colors from '../../utils/style/colors'
+import dots from '../../assets/decorations/dots.png'
+import stars from '../../assets/decorations/stars.png'
+import waves from '../../assets/decorations/waves.png'
 
 const MainSkillsWrapper = styled.section`
   display: flex;
@@ -47,13 +47,13 @@ const StyledStarsIT = styled(StyledDecoration)`
 `
 
 function MainSkills() {
-  const itTitle = "Informatique"
+  const itTitle = 'Informatique'
   const itTextPart =
-    "Programmation, administration système, sécurité informatique, développement web, développement mobile, développement logiciel, cryptographie, mes compétences en informatique sont variées et me permettent de concevoir et créer des projets de A à Z dans ces nombreux domaines."
+    'Programmation, administration système, sécurité informatique, développement web, développement mobile, développement logiciel, cryptographie, mes compétences en informatique sont variées et me permettent de concevoir et créer des projets de A à Z dans ces nombreux domaines.'
 
-  const networkTitle = "Réseau"
+  const networkTitle = 'Réseau'
   const networkTextPart =
-    "Réseaux locaux (LAN), réseaux étendus (WAN), réseaux sans fil, réseaux mobiles, protocoles de routage, protocoles de transport (TCP), protocoles de niveau application (HTTP, DNS, SMTP), toutes ces compétences me permettent de comprendre comment un si grand ensemble de machines, différentes et communiquant de manière différente, peuvent communiquer entre elles à travers Internet."
+    'Réseaux locaux (LAN), réseaux étendus (WAN), réseaux sans fil, réseaux mobiles, protocoles de routage, protocoles de transport (TCP), protocoles de niveau application (HTTP, DNS, SMTP), toutes ces compétences me permettent de comprendre comment un si grand ensemble de machines, différentes et communiquant de manière différente, peuvent communiquer entre elles à travers Internet.'
 
   return (
     <MainSkillsWrapper>

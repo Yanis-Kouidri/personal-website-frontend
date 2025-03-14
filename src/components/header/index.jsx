@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom"
-import styled from "styled-components"
-import colors from "../../utils/style/colors"
-import { useUser } from "../../context/UserProvider"
-import axios from "axios"
-import config from "../../utils/config"
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
+import colors from '../../utils/style/colors'
+import { useUser } from '../../context/UserProvider'
+import axios from 'axios'
+import config from '../../utils/config'
 
 const StyledLink = styled(Link)`
   padding: 15px;
@@ -13,7 +13,7 @@ const StyledLink = styled(Link)`
   position: relative;
 
   &::after {
-    content: "";
+    content: '';
     position: absolute;
     width: 0;
     height: 2px;
@@ -73,13 +73,13 @@ function Header() {
   const { user, setUser } = useUser()
   const handleClick = () => {
     axios
-      .get(backendUrl + "/api/auth/logout", { withCredentials: true })
+      .get(backendUrl + '/api/auth/logout', { withCredentials: true })
       .then((response) => {
-        console.log("Log-out: " + response.data.message)
-        setUser("")
+        console.log('Log-out: ' + response.data.message)
+        setUser('')
       })
       .catch((error) => {
-        console.error("Log-out: " + error)
+        console.error('Log-out: ' + error)
       })
   }
 

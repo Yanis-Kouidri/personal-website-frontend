@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect } from 'react'
 import {
   BasicH2Title,
   BasicWrapper,
@@ -7,17 +7,17 @@ import {
   StyledSubmitButton,
   StyledErrorMessage,
   StyledSuccessMessage,
-} from "../../utils/style/CommonStyles"
-import config from "../../utils/config"
+} from '../../utils/style/CommonStyles'
+import config from '../../utils/config'
 
 function Signup() {
   const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-    signupKey: "",
+    username: '',
+    password: '',
+    signupKey: '',
   })
-  const [errorMessage, setErrorMessage] = useState("")
-  const [infoMessage, setInfoMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState('')
+  const [infoMessage, setInfoMessage] = useState('')
 
   const [loading, setLoading] = useState(false)
 
@@ -26,7 +26,7 @@ function Signup() {
   useEffect(() => {
     if (!backendUrl) {
       console.error(
-        "REACT_APP_BACKEND_URL env variable is empty: connection impossible",
+        'REACT_APP_BACKEND_URL env variable is empty: connection impossible',
       )
     }
   }, [backendUrl])
@@ -40,11 +40,11 @@ function Signup() {
 
   const validateForm = () => {
     if (!formData.username || !formData.password || !formData.signupKey) {
-      setErrorMessage("Tous les champs sont requis")
+      setErrorMessage('Tous les champs sont requis')
       return false
     }
     if (formData.password.length < 8) {
-      setErrorMessage("Le mot de passe doit contenir au moins 8 caractères")
+      setErrorMessage('Le mot de passe doit contenir au moins 8 caractères')
       return false
     }
     return true
@@ -53,8 +53,8 @@ function Signup() {
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    setInfoMessage("")
-    setErrorMessage("")
+    setInfoMessage('')
+    setErrorMessage('')
     if (!validateForm()) {
       setLoading(false)
       return
@@ -67,10 +67,10 @@ function Signup() {
     }
 
     try {
-      const response = await fetch(backendUrl + "/api/auth/signup", {
-        method: "POST",
+      const response = await fetch(backendUrl + '/api/auth/signup', {
+        method: 'POST',
         headers: {
-          "content-type": "application/json",
+          'content-type': 'application/json',
         },
         body: JSON.stringify(requestBody),
       })
@@ -85,17 +85,17 @@ function Signup() {
           setErrorMessage(errorData.message)
           break
         case 429:
-          setErrorMessage("Too many failures, prease retry in a while")
+          setErrorMessage('Too many failures, prease retry in a while')
           break
         case 500:
-          setErrorMessage("Internal server error")
+          setErrorMessage('Internal server error')
           break
         default:
-          throw new Error("Unexpected response from backend")
+          throw new Error('Unexpected response from backend')
       }
     } catch (e) {
-      setErrorMessage("Internal server error")
-      console.error("Server error :" + e)
+      setErrorMessage('Internal server error')
+      console.error('Server error :' + e)
     } finally {
       setLoading(false)
     }
@@ -131,7 +131,7 @@ function Signup() {
           onChange={(e) => handleChange(e)}
         />
         <StyledSubmitButton type="submit" disabled={loading}>
-          {loading ? "Chargement..." : "S'inscrire"}
+          {loading ? 'Chargement...' : "S'inscrire"}
         </StyledSubmitButton>
       </StyledForm>
     </BasicWrapper>

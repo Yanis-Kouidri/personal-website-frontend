@@ -1,6 +1,6 @@
-import React from "react"
-import styled from "styled-components"
-import colors from "../../utils/style/colors"
+import React from 'react'
+import styled from 'styled-components'
+import colors from '../../utils/style/colors'
 
 const FooterWrapper = styled.footer`
   background-color: ${colors.secondary};
@@ -19,7 +19,7 @@ function Footer() {
   const currentYear = new Date().getFullYear()
 
   const footerDescription =
-    "Ce site a été entièrement réalisé par Yanis Kouidri en utilisant React et Styled Components."
+    'Ce site a été entièrement réalisé par Yanis Kouidri en utilisant React et Styled Components.'
   const acknowledgments =
     "Merci de m'avoir lu jusqu'ici, j'espère que le site vous plait !"
 

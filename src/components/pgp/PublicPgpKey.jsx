@@ -1,5 +1,5 @@
-import React from "react"
-import styled from "styled-components"
+import React from 'react'
+import styled from 'styled-components'
 
 const PublicPgpKeyWrapper = styled.div`
   padding-left: 20px;
@@ -69,10 +69,10 @@ function PublicPgpKey() {
   const copyToClipboard = () => {
     navigator.clipboard.writeText(pgpKey).then(
       () => {
-        alert("Clé publique copiée dans le presse-papiers !")
+        alert('Clé publique copiée dans le presse-papiers !')
       },
       (err) => {
-        console.error("Erreur lors de la copie : ", err)
+        console.error('Erreur lors de la copie : ', err)
       },
     )
   }

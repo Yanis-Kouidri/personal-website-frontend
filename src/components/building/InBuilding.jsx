@@ -1,10 +1,10 @@
-import React from "react"
+import React from 'react'
 
 import {
   InBuildingImg,
   InBuildingWrapper,
-} from "../../utils/style/CommonStyles"
-import chantier from "../../assets/illustrations/chantier.png"
+} from '../../utils/style/CommonStyles'
+import chantier from '../../assets/illustrations/chantier.png'
 
 function InBuilding() {
   return (

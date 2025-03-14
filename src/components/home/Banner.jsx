@@ -1,9 +1,7 @@
-import React from "react"
-import styled from "styled-components"
-import colors from "../../utils/style/colors"
-import yanis from "../../assets/pictures/photo_accueil_yanis.jpg"
-import { prerenderToNodeStream } from "react-dom/static"
-import { renderToReadableStream } from "react-dom/server"
+import React from 'react'
+import styled from 'styled-components'
+import colors from '../../utils/style/colors'
+import yanis from '../../assets/pictures/photo_accueil_yanis.jpg'
 
 const BannerWrapper = styled.section`
   display: flex;
@@ -30,7 +28,7 @@ const StyledTextPart = styled.div``
 
 function Banner() {
   const shortDescription = "Ingénieur en informatique et réseaux à l'ENSEEIHT."
-  const location = "🌆 Toulouse, France."
+  const location = '🌆 Toulouse, France.'
 
   return (
     <BannerWrapper>

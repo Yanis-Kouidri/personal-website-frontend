@@ -1,7 +1,7 @@
-import React, { useState } from "react"
-import styled from "styled-components"
-import Card from "./Card"
-import skills from "../../data/home/skills"
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import Card from './Card'
+import skills from '../../data/home/skills'
 
 const SkillsShowWrapper = styled.section``
 
@@ -21,9 +21,9 @@ const SkillSection = styled.div`
   border-radius: 8px;
   width: 180px;
   cursor: pointer;
-  background-color: ${(props) => (props.selected ? "white" : "transparent")};
+  background-color: ${(props) => (props.selected ? 'white' : 'transparent')};
   box-shadow: ${(props) =>
-    props.selected ? "0 4px 8px rgba(0, 0, 0, 0.1)" : "none"};
+    props.selected ? '0 4px 8px rgba(0, 0, 0, 0.1)' : 'none'};
 `
 
 const SkillsPart = styled.div`
@@ -45,7 +45,7 @@ const SkillsList = styled.div`
 `
 
 function SkillsShow() {
-  const title = "Mes compétences"
+  const title = 'Mes compétences'
 
   const [selectedSkillsSet, setSelectedSkillsSet] = useState(
     Object.keys(skills)[0],

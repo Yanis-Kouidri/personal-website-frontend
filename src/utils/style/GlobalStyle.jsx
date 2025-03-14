@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components"
-import colors from "./colors"
+import { createGlobalStyle } from 'styled-components'
+import colors from './colors'
 
 const StyledGlobalStyle = createGlobalStyle`
     * {

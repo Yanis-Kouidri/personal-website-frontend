@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from "react"
-import config from "../utils/config.js"
+import React, { createContext, useContext, useState, useEffect } from 'react'
+import config from '../utils/config.js'
 
 const UserContext = createContext()
 
@@ -8,16 +8,16 @@ export const useUser = () => {
 }
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState("")
+  const [user, setUser] = useState('')
   const backendUrl = config.backendUrl
 
   useEffect(() => {
-    fetch(backendUrl + "/api/auth/me", {
-      credentials: "include",
+    fetch(backendUrl + '/api/auth/me', {
+      credentials: 'include',
     })
       .then((response) => {
         if (!response.ok) {
-          setUser("")
+          setUser('')
         } else {
           response
             .json()

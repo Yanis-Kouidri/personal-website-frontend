@@ -1,9 +1,9 @@
-import React from "react"
-import Banner from "../../components/home/Banner"
-import MainSkills from "../../components/home/MainSkills"
-import MyHistory from "../../components/home/MyHistory"
-import SkillsShow from "../../components/home/SkillsShow"
-import Contacts from "../../components/home/Contacts"
+import React from 'react'
+import Banner from '../../components/home/Banner'
+import MainSkills from '../../components/home/MainSkills'
+import MyHistory from '../../components/home/MyHistory'
+import SkillsShow from '../../components/home/SkillsShow'
+import Contacts from '../../components/home/Contacts'
 
 function Home() {
   return (

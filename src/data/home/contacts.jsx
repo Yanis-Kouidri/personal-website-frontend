@@ -1,39 +1,39 @@
-import linkedin from "../../assets/contacts/linkedin.svg"
-import github from "../../assets/contacts/github.svg"
-import cv from "../../assets/contacts/cv.svg"
-import email from "../../assets/contacts/email.svg"
-import key from "../../assets/contacts/key.svg"
+import linkedin from '../../assets/contacts/linkedin.svg'
+import github from '../../assets/contacts/github.svg'
+import cv from '../../assets/contacts/cv.svg'
+import email from '../../assets/contacts/email.svg'
+import key from '../../assets/contacts/key.svg'
 
 const contacts = [
   {
-    link: "https://www.linkedin.com/in/yanis-kouidri",
+    link: 'https://www.linkedin.com/in/yanis-kouidri',
     logo: linkedin,
-    name: "Linkedin",
+    name: 'Linkedin',
   },
   {
-    link: "https://github.com/Yanis-Kouidri",
+    link: 'https://github.com/Yanis-Kouidri',
     logo: github,
-    name: "Github",
+    name: 'Github',
   },
   {
-    link: "",
+    link: '',
     logo: cv,
-    name: "CV - Français",
+    name: 'CV - Français',
   },
   {
-    link: "",
+    link: '',
     logo: cv,
-    name: "CV - English",
+    name: 'CV - English',
   },
   {
-    link: "mailto:yanis.kouidri@gmail.com",
+    link: 'mailto:yanis.kouidri@gmail.com',
     logo: email,
-    name: "E-mail",
+    name: 'E-mail',
   },
   {
-    link: "/pgp",
+    link: '/pgp',
     logo: key,
-    name: "PGP Key",
+    name: 'PGP Key',
     isExternal: false,
   },
 ]

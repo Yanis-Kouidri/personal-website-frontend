@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom"
-import config from "../../utils/config"
+import { useNavigate } from 'react-router-dom'
+import config from '../../utils/config'
 import {
   BasicH2Title,
   BasicWrapper,
@@ -9,16 +9,16 @@ import {
   StyledSuccessMessage,
   StyledErrorMessage,
   Loader,
-} from "../../utils/style/CommonStyles"
-import { useState } from "react"
-import { useUser } from "../../context/UserProvider"
-import axios from "axios"
+} from '../../utils/style/CommonStyles'
+import { useState } from 'react'
+import { useUser } from '../../context/UserProvider'
+import axios from 'axios'
 
 function Login() {
-  const [username, setUsername] = useState("")
-  const [password, setPassword] = useState("")
-  const [errorMessage, setErrorMessage] = useState("")
-  const [successMessage, setSuccessMessage] = useState("")
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+  const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   const [loading, setLoading] = useState(false)
 
@@ -30,8 +30,8 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setErrorMessage("")
-    setSuccessMessage("")
+    setErrorMessage('')
+    setSuccessMessage('')
     setLoading(true)
 
     const requestBody = {
@@ -40,16 +40,16 @@ function Login() {
     }
 
     axios
-      .post(backendUrl + "/api/auth/login", requestBody, {
+      .post(backendUrl + '/api/auth/login', requestBody, {
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         withCredentials: true,
       })
       .then((response) => {
         setSuccessMessage(response.data.message)
         setUser(response.data.username)
-        navigate("/")
+        navigate('/')
       })
       .catch((error) => {
         if (error.response) {
@@ -58,21 +58,21 @@ function Login() {
               setErrorMessage(error.response.data.message)
               break
             case 429:
-              setErrorMessage("Too many failures, plese wait a while")
+              setErrorMessage('Too many failures, plese wait a while')
               break
             case 500:
-              setErrorMessage("Internal server error")
+              setErrorMessage('Internal server error')
               break
             default:
-              setErrorMessage("Internal server error")
+              setErrorMessage('Internal server error')
               console.error(
-                "Unexpected response from backend, status code :" +
+                'Unexpected response from backend, status code :' +
                   error.response.status,
               )
           }
         } else {
-          setErrorMessage("Internal error")
-          console.error("Login error: " + error)
+          setErrorMessage('Internal error')
+          console.error('Login error: ' + error)
         }
       })
       .finally(() => {
@@ -103,7 +103,7 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <StyledSubmitButton type="submit" disabled={loading}>
-          {loading ? "Chargement..." : "Se connecter"}
+          {loading ? 'Chargement...' : 'Se connecter'}
         </StyledSubmitButton>
       </StyledForm>
       {loading && <Loader />}

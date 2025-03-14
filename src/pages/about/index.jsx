@@ -1,5 +1,5 @@
-import InBuilding from "../../components/building/InBuilding"
-import { BasicH2Title, BasicWrapper } from "../../utils/style/CommonStyles"
+import InBuilding from '../../components/building/InBuilding'
+import { BasicH2Title, BasicWrapper } from '../../utils/style/CommonStyles'
 
 function About() {
   return (

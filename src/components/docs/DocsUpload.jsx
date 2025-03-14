@@ -1,15 +1,15 @@
-import React, { useState } from "react"
-import config from "../../utils/config"
-import axios from "axios"
+import React, { useState } from 'react'
+import config from '../../utils/config'
+import axios from 'axios'
 import {
   StyledErrorMessage,
   StyledSuccessMessage,
-} from "../../utils/style/CommonStyles"
+} from '../../utils/style/CommonStyles'
 
 function DocsUpload({ setTriggerFetch }) {
   const [file, setFile] = useState(null)
-  const [errorMessage, setErrorMessage] = useState("")
-  const [successMessage, setSucessMessage] = useState("")
+  const [errorMessage, setErrorMessage] = useState('')
+  const [successMessage, setSucessMessage] = useState('')
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0])
@@ -17,20 +17,20 @@ function DocsUpload({ setTriggerFetch }) {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    setErrorMessage("")
-    setSucessMessage("")
+    setErrorMessage('')
+    setSucessMessage('')
     if (!file) {
-      setErrorMessage("Veuillez sélectioner un fichier")
+      setErrorMessage('Veuillez sélectioner un fichier')
       return
     }
 
     const formData = new FormData()
-    formData.append("file", file, encodeURIComponent(file.name))
+    formData.append('file', file, encodeURIComponent(file.name))
 
     axios
-      .post(config.backendUrl + "/api/docs", formData, {
+      .post(config.backendUrl + '/api/docs', formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
+          'Content-Type': 'multipart/form-data',
         },
         withCredentials: true,
       })
@@ -48,18 +48,18 @@ function DocsUpload({ setTriggerFetch }) {
             case 500:
               console.error(
                 error.response.status +
-                  " error : " +
+                  ' error : ' +
                   error.response.data.message,
               )
               setErrorMessage(error.response.data.message)
               break
             default:
-              console.error("Unknown error during file upload")
-              setErrorMessage("Internal server error")
+              console.error('Unknown error during file upload')
+              setErrorMessage('Internal server error')
               break
           }
         } else {
-          setErrorMessage("Internal error: Connection to backend failed")
+          setErrorMessage('Internal error: Connection to backend failed')
         }
       })
   }

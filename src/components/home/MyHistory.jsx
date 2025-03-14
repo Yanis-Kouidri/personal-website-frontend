@@ -1,8 +1,8 @@
-import React from "react"
-import styled from "styled-components"
-import colors from "../../utils/style/colors"
-import route from "../../assets/decorations/route.png"
-import stairs from "../../assets/decorations/stairs.png"
+import React from 'react'
+import styled from 'styled-components'
+import colors from '../../utils/style/colors'
+import route from '../../assets/decorations/route.png'
+import stairs from '../../assets/decorations/stairs.png'
 
 const MyHistoryWrapper = styled.section`
   min-height: 300px;
@@ -34,7 +34,7 @@ const StyledRoute = styled.img`
 `
 
 function MyHistory() {
-  const title = "Mon parcours"
+  const title = 'Mon parcours'
 
   const runningYears = new Date().getFullYear()
   const myAge =

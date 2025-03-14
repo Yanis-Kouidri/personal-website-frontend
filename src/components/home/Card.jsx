@@ -1,7 +1,7 @@
-import React from "react"
-import PropTypes from "prop-types"
-import styled from "styled-components"
-import { Link } from "react-router-dom"
+import React from 'react'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const SkillCardStyled = styled.div`
   padding: 0px 35px 10px 30px;
