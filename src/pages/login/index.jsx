@@ -11,7 +11,7 @@ import {
   Loader,
 } from '../../utils/style/CommonStyles'
 import { useState } from 'react'
-import { useUser } from '../../context/UserProvider'
+import { useUser } from '../../context/contexts'
 import axios from 'axios'
 
 function Login() {

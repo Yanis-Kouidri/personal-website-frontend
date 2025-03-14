@@ -1,7 +1,7 @@
 import { BasicH2Title, BasicWrapper } from '../../utils/style/CommonStyles'
 import DocsList from '../../components/docs/DocsList'
 import DocsUpload from '../../components/docs/DocsUpload'
-import { useUser } from '../../context/UserProvider'
+import { useUser } from '../../context/contexts'
 import { useState } from 'react'
 
 function Docs() {

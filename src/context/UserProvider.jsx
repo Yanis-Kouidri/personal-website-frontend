@@ -1,11 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import config from '../utils/config.js'
-
-const UserContext = createContext()
-
-export const useUser = () => {
-  return useContext(UserContext)
-}
+import { UserContext } from './contexts.js'
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState('')

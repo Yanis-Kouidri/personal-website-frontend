@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-import { useUser } from '../../context/UserProvider'
+import { useUser } from '../../context/contexts'
 import axios from 'axios'
 import config from '../../utils/config'
 
