@@ -3,6 +3,7 @@ import DocsList from '../../components/docs/DocsList'
 import DocsUpload from '../../components/docs/DocsUpload'
 import { useUser } from '../../context/contexts'
 import { useState } from 'react'
+import AddFolders from '../../components/docs/AddFolders'
 
 function Docs() {
   const { user } = useUser()
@@ -12,6 +13,8 @@ function Docs() {
     <BasicWrapper>
       <BasicH2Title>Mes documentations</BasicH2Title>
       {user && <DocsUpload setTriggerFetch={setTriggerFetch} />}
+      <br />
+      {user && <AddFolders setTriggerFetch={setTriggerFetch} />}
       <DocsList triggerFetch={triggerFetch} />
     </BasicWrapper>
   )
