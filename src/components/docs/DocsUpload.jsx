@@ -1,15 +1,14 @@
 import React, { useState } from 'react'
-import config from '../../utils/config'
-import axios from 'axios'
 import {
   StyledErrorMessage,
   StyledSuccessMessage,
 } from '../../utils/style/CommonStyles'
+import { handleApiRequest } from '../../hooks/useApiRequest'
 
 function DocsUpload({ setTriggerFetch }) {
   const [file, setFile] = useState(null)
   const [errorMessage, setErrorMessage] = useState('')
-  const [successMessage, setSucessMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
   const handleFileChange = (event) => {
     setFile(event.target.files[0])
@@ -18,7 +17,7 @@ function DocsUpload({ setTriggerFetch }) {
   const handleSubmit = (event) => {
     event.preventDefault()
     setErrorMessage('')
-    setSucessMessage('')
+    setSuccessMessage('')
     if (!file) {
       setErrorMessage('Veuillez sélectioner un fichier')
       return
@@ -27,41 +26,17 @@ function DocsUpload({ setTriggerFetch }) {
     const formData = new FormData()
     formData.append('file', file, encodeURIComponent(file.name))
 
-    axios
-      .post(config.backendUrl + '/api/docs', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        setSucessMessage(response.data.message)
-        setTriggerFetch((prev) => prev + 1)
-      })
-      .catch((error) => {
-        if (error.response) {
-          switch (error.response.status) {
-            case 400:
-              setErrorMessage(error.response.data.message)
-              break
-            case 401:
-            case 500:
-              console.error(
-                error.response.status +
-                  ' error : ' +
-                  error.response.data.message,
-              )
-              setErrorMessage(error.response.data.message)
-              break
-            default:
-              console.error('Unknown error during file upload')
-              setErrorMessage('Internal server error')
-              break
-          }
-        } else {
-          setErrorMessage('Internal error: Connection to backend failed')
-        }
-      })
+    const headers = { 'content-Type': 'multipart/form-data' }
+
+    handleApiRequest({
+      apiEndPoint: '/api/docs',
+      data: formData,
+      headers,
+      credentials: true,
+      setErrorMessage,
+      setSuccessMessage,
+      setTriggerFetch,
+    })
   }
   return (
     <div>
