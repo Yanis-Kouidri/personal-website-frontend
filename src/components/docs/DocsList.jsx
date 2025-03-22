@@ -69,7 +69,7 @@ function DocsList({ triggerFetch, setTriggerFetch }) {
               </>
             ) : (
               <a
-                href={`${backendUrl}/data/docs/${item.path}`}
+                href={`${backendUrl}/data/docs/${item.path}`} //FIXME: must not fetch from backendUrl
                 target="_blank"
                 rel="noopener noreferrer"
               >
