@@ -15,7 +15,7 @@ function Docs() {
       {user && <DocsUpload setTriggerFetch={setTriggerFetch} />}
       <br />
       {user && <AddFolders setTriggerFetch={setTriggerFetch} />}
-      <DocsList triggerFetch={triggerFetch} />
+      <DocsList triggerFetch={triggerFetch} setTriggerFetch={setTriggerFetch} />
     </BasicWrapper>
   )
 }

@@ -9,6 +9,7 @@ function AddFolders({ setTriggerFetch }) {
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const [folderName, setFolderName] = useState('')
+  const folderPath = '/'
 
   const handleCreateFolder = (event) => {
     event.preventDefault()
@@ -17,7 +18,7 @@ function AddFolders({ setTriggerFetch }) {
 
     handleApiRequest({
       apiEndPoint: '/api/docs/newfolder',
-      data: { folderName },
+      data: { folderName, folderPath },
       credentials: true,
       setErrorMessage,
       setSuccessMessage,

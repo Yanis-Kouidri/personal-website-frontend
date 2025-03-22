@@ -10,6 +10,8 @@ export function handleApiRequest({
   setSuccessMessage,
   setErrorMessage,
   setTriggerFetch,
+  setIsFetching,
+  setData,
 }) {
   const allowedMethods = [
     'GET',
@@ -31,8 +33,15 @@ export function handleApiRequest({
 
   axios({ url, method, data, headers, withCredentials: credentials })
     .then((response) => {
-      setSuccessMessage(response.data.message)
-      setTriggerFetch((prev) => prev + 1)
+      if (setSuccessMessage) {
+        setSuccessMessage(response.data.message)
+      }
+      if (setTriggerFetch) {
+        setTriggerFetch((prev) => prev + 1)
+      }
+      if (setData) {
+        setData(response.data)
+      }
     })
     .catch((error) => {
       if (error.response) {
@@ -54,6 +63,12 @@ export function handleApiRequest({
         }
       } else {
         setErrorMessage('Internal error: Connection to backend failed')
+        console.error('Error during fetching docs: ' + error)
+      }
+    })
+    .finally(() => {
+      if (setIsFetching) {
+        setIsFetching(false)
       }
     })
 }
