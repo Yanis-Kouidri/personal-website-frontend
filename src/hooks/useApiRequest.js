@@ -11,6 +11,22 @@ export function handleApiRequest({
   setErrorMessage,
   setTriggerFetch,
 }) {
+  const allowedMethods = [
+    'GET',
+    'POST',
+    'PUT',
+    'DELETE',
+    'PATCH',
+    'OPTIONS',
+    'HEAD',
+  ]
+
+  if (!allowedMethods.includes(method.toUpperCase())) {
+    console.err(`Invalid HTTP method: ${method}`)
+    setErrorMessage('Internal error')
+    return
+  }
+
   const url = config.backendUrl + apiEndPoint
 
   axios({ url, method, data, headers, withCredentials: credentials })
