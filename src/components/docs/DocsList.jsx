@@ -36,48 +36,55 @@ function DocsList({ triggerFetch, setTriggerFetch }) {
       }))
     }
 
+    // FIXME: Make it better
     return (
       <ul>
-        {items.map((item, index) => (
-          <li key={index}>
-            {item.type === 'directory' ? (
-              <>
-                <button onClick={() => toggleDirectory(item.path)}>
-                  {expandedDirs[item.path] ? '-' : '+'}
-                </button>
-                <strong>{item.name}</strong>
-                {
-                  <button
-                    onClick={() => {
-                      const folderName = prompt('Enter new folder name:')
-                      if (folderName) {
-                        handleApiRequest({
-                          apiEndPoint: '/api/docs/newfolder',
-                          data: { folderPath: item.path, folderName },
-                          credentials: true,
-                          setErrorMessage,
-                          setSuccessMessage,
-                          setTriggerFetch,
-                        })
-                      }
-                    }}
+        <li>
+          {' '}
+          /
+          <ul>
+            {items.map((item, index) => (
+              <li key={index}>
+                {item.type === 'directory' ? (
+                  <>
+                    <button onClick={() => toggleDirectory(item.path)}>
+                      {expandedDirs[item.path] ? '-' : '+'}
+                    </button>
+                    <strong>{item.name}</strong>
+                    {
+                      <button
+                        onClick={() => {
+                          const folderName = prompt('Enter new folder name:')
+                          if (folderName) {
+                            handleApiRequest({
+                              apiEndPoint: '/api/docs/newfolder',
+                              data: { folderPath: item.path, folderName },
+                              credentials: true,
+                              setErrorMessage,
+                              setSuccessMessage,
+                              setTriggerFetch,
+                            })
+                          }
+                        }}
+                      >
+                        New
+                      </button>
+                    }
+                    {expandedDirs[item.path] && renderTree(item.contents)}
+                  </>
+                ) : (
+                  <a
+                    href={`${backendUrl}/data/docs/${item.path}`} //FIXME: must not fetch from backendUrl
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    New
-                  </button>
-                }
-                {expandedDirs[item.path] && renderTree(item.contents)}
-              </>
-            ) : (
-              <a
-                href={`${backendUrl}/data/docs/${item.path}`} //FIXME: must not fetch from backendUrl
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {item.name}
-              </a>
-            )}
-          </li>
-        ))}
+                    {item.name}
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </li>
       </ul>
     )
   }
