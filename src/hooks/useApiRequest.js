@@ -31,6 +31,7 @@ export function handleApiRequest({
 
   const url = config.backendUrl + apiEndPoint
 
+  setIsFetching(true)
   axios({ url, method, data, headers, withCredentials: credentials })
     .then((response) => {
       if (setSuccessMessage) {
