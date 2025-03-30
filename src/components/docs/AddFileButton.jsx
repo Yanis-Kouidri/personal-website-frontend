@@ -1,7 +1,11 @@
 import React, { useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 
-function AddFileButton({ folderPath = '', setErrorMessage }) {
+function AddFileButton({
+  folderPath = '',
+  setErrorMessage,
+  setSuccessMessage,
+}) {
   const [isUploading, setIsUploading] = useState(false)
 
   const handleFileChange = (event) => {
@@ -17,6 +21,7 @@ function AddFileButton({ folderPath = '', setErrorMessage }) {
       data: formData,
       credentials: true,
       setErrorMessage,
+      setSuccessMessage,
       setIsFetching: setIsUploading,
     })
   }

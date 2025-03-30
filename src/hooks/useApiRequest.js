@@ -7,13 +7,14 @@ export function handleApiRequest({
   data = {},
   headers = {},
   credentials = false,
-  setSuccessMessage,
-  setErrorMessage,
-  setTriggerFetch,
-  setIsFetching,
+  setSuccessMessage = () => {},
+  setErrorMessage = () => {},
+  setTriggerFetch = () => {},
+  setIsFetching = () => {},
   setData,
 }) {
   setErrorMessage('')
+  setSuccessMessage('')
   const allowedMethods = [
     'GET',
     'POST',
@@ -35,13 +36,10 @@ export function handleApiRequest({
   setIsFetching(true)
   axios({ url, method, data, headers, withCredentials: credentials })
     .then((response) => {
-      if (setSuccessMessage) {
-        setSuccessMessage(response.data.message)
-      }
-      if (setTriggerFetch) {
-        setTriggerFetch((prev) => prev + 1)
-      }
-      if (setData) {
+      setSuccessMessage(response.data.message)
+      setTriggerFetch((prev) => prev + 1)
+
+      if (typeof setData === 'function') {
         setData(response.data)
       }
     })
@@ -69,8 +67,6 @@ export function handleApiRequest({
       }
     })
     .finally(() => {
-      if (setIsFetching) {
-        setIsFetching(false)
-      }
+      setIsFetching(false)
     })
 }
