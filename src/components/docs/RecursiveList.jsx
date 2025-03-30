@@ -1,4 +1,5 @@
 import React from 'react'
+import config from '../../utils/config'
 
 function RecursiveList({ folderContent = [] }) {
   return (
@@ -6,7 +7,17 @@ function RecursiveList({ folderContent = [] }) {
       {folderContent.map((item, index) => {
         switch (item.type) {
           case 'file':
-            return <li key={index}>{item.name}</li>
+            return (
+              <li key={index}>
+                <a
+                  href={`${config.backendUrl}${config.docsRoute}/${item.path}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {item.name}
+                </a>
+              </li>
+            )
           case 'directory':
             return (
               <li key={index}>
