@@ -1,7 +1,8 @@
 import React from 'react'
 import config from '../../utils/config'
+import AddFileButton from './AddFileButton'
 
-function RecursiveList({ folderContent = [] }) {
+function RecursiveList({ folderContent = [], setErrorMessage }) {
   return (
     <ul>
       {folderContent.map((item, index) => {
@@ -22,6 +23,10 @@ function RecursiveList({ folderContent = [] }) {
             return (
               <li key={index}>
                 {item.name}
+                <AddFileButton
+                  folderPath={item.path}
+                  setErrorMessage={setErrorMessage}
+                />
                 <RecursiveList folderContent={item.contents}></RecursiveList>
               </li>
             )

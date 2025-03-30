@@ -13,6 +13,7 @@ export function handleApiRequest({
   setIsFetching,
   setData,
 }) {
+  setErrorMessage('')
   const allowedMethods = [
     'GET',
     'POST',

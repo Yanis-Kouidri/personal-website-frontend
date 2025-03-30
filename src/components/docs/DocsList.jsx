@@ -25,7 +25,10 @@ function DocsList() {
       {isFetching ? (
         <Loader />
       ) : (
-        <RecursiveList folderContent={listOfDocs}></RecursiveList>
+        <RecursiveList
+          folderContent={listOfDocs}
+          setErrorMessage={setErrorMessage}
+        ></RecursiveList>
       )}
     </div>
   )
