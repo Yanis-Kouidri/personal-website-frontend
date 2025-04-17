@@ -14,7 +14,6 @@ function AddFileButton({
 
     const formData = new FormData()
     formData.append('file', file)
-    console.log('Folder path = ' + folderPath)
 
     handleApiRequest({
       apiEndPoint: `/api/docs?path=${encodeURIComponent(folderPath)}`,
