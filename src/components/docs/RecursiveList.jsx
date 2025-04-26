@@ -1,12 +1,15 @@
 import React from 'react'
 import config from '../../utils/config'
 import AddFileButton from './AddFileButton'
+import { useUser } from '../../context/contexts'
 
 function RecursiveList({
   folderContent = [],
   setErrorMessage,
   setSuccessMessage,
 }) {
+  const { user } = useUser()
+
   return (
     <ul>
       {folderContent.map((item, index) => {
@@ -27,11 +30,13 @@ function RecursiveList({
             return (
               <li key={item.path + item.name + index}>
                 {item.name}
-                <AddFileButton
-                  folderPath={item.path}
-                  setErrorMessage={setErrorMessage}
-                  setSuccessMessage={setSuccessMessage}
-                />
+                {user && (
+                  <AddFileButton
+                    folderPath={item.path}
+                    setErrorMessage={setErrorMessage}
+                    setSuccessMessage={setSuccessMessage}
+                  />
+                )}
                 <RecursiveList
                   folderContent={item.contents}
                   setErrorMessage={setErrorMessage}
