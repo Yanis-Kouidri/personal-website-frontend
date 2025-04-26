@@ -57,7 +57,7 @@ export function handleApiRequest({
             setErrorMessage(error.response.data.message)
             break
           default:
-            console.error('Unknown error during file upload')
+            console.error('Unknown error during api request')
             setErrorMessage('Internal server error')
             break
         }
