@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 
 function AddFileButton({
@@ -7,6 +7,7 @@ function AddFileButton({
   setSuccessMessage,
 }) {
   const [isUploading, setIsUploading] = useState(false)
+  const fileInputRef = useRef(null)
 
   const handleFileChange = (event) => {
     const file = event.target.files[0]
@@ -26,18 +27,21 @@ function AddFileButton({
     })
   }
 
+  const handleButtonClick = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click()
+    }
+  }
+
   return (
     <span>
       <input
         type="file"
+        ref={fileInputRef}
         onChange={handleFileChange}
         style={{ display: 'none' }}
-        id="fileInput"
       />
-      <button
-        onClick={() => document.getElementById('fileInput').click()}
-        disabled={isUploading}
-      >
+      <button onClick={handleButtonClick} disabled={isUploading}>
         {isUploading ? '...' : '+'}
       </button>
     </span>

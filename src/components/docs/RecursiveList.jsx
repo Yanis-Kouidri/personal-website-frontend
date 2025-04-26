@@ -13,7 +13,7 @@ function RecursiveList({
         switch (item.type) {
           case 'file':
             return (
-              <li key={index}>
+              <li key={item.path + item.name + index}>
                 <a
                   href={`${config.backendUrl}${config.docsRoute}/${item.path}`}
                   target="_blank"
@@ -25,14 +25,18 @@ function RecursiveList({
             )
           case 'directory':
             return (
-              <li key={index}>
+              <li key={item.path + item.name + index}>
                 {item.name}
                 <AddFileButton
                   folderPath={item.path}
                   setErrorMessage={setErrorMessage}
                   setSuccessMessage={setSuccessMessage}
                 />
-                <RecursiveList folderContent={item.contents}></RecursiveList>
+                <RecursiveList
+                  folderContent={item.contents}
+                  setErrorMessage={setErrorMessage}
+                  setSuccessMessage={setSuccessMessage}
+                ></RecursiveList>
               </li>
             )
           default:
