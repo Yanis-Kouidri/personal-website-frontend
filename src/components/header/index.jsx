@@ -2,8 +2,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import { useUser } from '../../context/contexts'
-import axios from 'axios'
-import config from '../../utils/config'
+import { handleApiRequest } from '../../hooks/useApiRequest'
 
 const StyledLink = styled(Link)`
   padding: 15px;
@@ -69,18 +68,20 @@ const Button = styled(Link)`
 `
 
 function Header() {
-  const backendUrl = config.backendUrl
   const { user, setUser } = useUser()
-  const handleClick = () => {
-    axios
-      .get(backendUrl + '/api/auth/logout', { withCredentials: true })
-      .then((response) => {
-        console.log('Log-out: ' + response.data.message)
-        setUser('')
-      })
-      .catch((error) => {
-        console.error('Log-out: ' + error)
-      })
+  const handleLogout = () => {
+    handleApiRequest({
+      apiEndPoint: '/api/auth/logout',
+      method: 'GET',
+      credentials: true,
+      setErrorMessage: (errorMessage) => {
+        console.error('Logout error:', errorMessage)
+      },
+      setSuccessMessage: (successMessage) => {
+        console.log('Logout success:', successMessage)
+        setUser('') // Déconnecte l'utilisateur
+      },
+    })
   }
 
   return (
@@ -95,7 +96,7 @@ function Header() {
         {user ? (
           <>
             <p>Bonjour {user}</p>
-            <button onClick={handleClick}> Deconnexion </button>
+            <button onClick={handleLogout}> Deconnexion </button>
           </>
         ) : (
           <>
