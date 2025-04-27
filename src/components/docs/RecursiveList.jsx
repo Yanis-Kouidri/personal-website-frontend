@@ -1,6 +1,7 @@
 import React from 'react'
 import config from '../../utils/config'
 import AddFileButton from './AddFileButton'
+import AddFolderButton from './AddFolderButton'
 import { useUser } from '../../context/contexts'
 import styled from 'styled-components'
 
@@ -72,11 +73,18 @@ function RecursiveList({
                 <DirectoryItem>
                   <span>{item.name}</span>
                   {user && (
-                    <AddFileButton
-                      folderPath={item.path}
-                      setErrorMessage={setErrorMessage}
-                      setSuccessMessage={setSuccessMessage}
-                    />
+                    <>
+                      <AddFileButton
+                        folderPath={item.path}
+                        setErrorMessage={setErrorMessage}
+                        setSuccessMessage={setSuccessMessage}
+                      />
+                      <AddFolderButton
+                        folderPath={item.path}
+                        setErrorMessage={setErrorMessage}
+                        setSuccessMessage={setSuccessMessage}
+                      />
+                    </>
                   )}
                 </DirectoryItem>
                 <RecursiveList
