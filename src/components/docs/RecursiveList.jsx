@@ -4,10 +4,43 @@ import AddFileButton from './AddFileButton'
 import { useUser } from '../../context/contexts'
 import styled from 'styled-components'
 
+const List = styled.ul`
+  list-style: none;
+  padding-left: 0;
+`
+
+const ListItem = styled.li`
+  margin: 0;
+  padding: 4px 8px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+`
+
+const FileLink = styled.a`
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+
+  &:hover {
+    background-color: #f5f5f5;
+    border-radius: 6px;
+  }
+`
+
 const DirectoryItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 1px; /* Space between name and button */
+  gap: 2px;
+  font-weight: 600;
+  padding: 2px 4px;
+  margin: 0;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
 `
 
 function RecursiveList({
@@ -18,26 +51,26 @@ function RecursiveList({
   const { user } = useUser()
 
   return (
-    <ul>
+    <List>
       {folderContent.map((item, index) => {
         switch (item.type) {
           case 'file':
             return (
-              <li key={item.path + item.name + index}>
-                <a
+              <ListItem key={item.path + item.name + index}>
+                <FileLink
                   href={`${config.backendUrl}${config.docsRoute}/${item.path}`}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
                   {item.name}
-                </a>
-              </li>
+                </FileLink>
+              </ListItem>
             )
           case 'directory':
             return (
-              <li key={item.path + item.name + index}>
+              <ListItem key={item.path + item.name + index}>
                 <DirectoryItem>
-                  <span> {item.name} </span>
+                  <span>{item.name}</span>
                   {user && (
                     <AddFileButton
                       folderPath={item.path}
@@ -46,13 +79,12 @@ function RecursiveList({
                     />
                   )}
                 </DirectoryItem>
-
                 <RecursiveList
                   folderContent={item.contents}
                   setErrorMessage={setErrorMessage}
                   setSuccessMessage={setSuccessMessage}
-                ></RecursiveList>
-              </li>
+                />
+              </ListItem>
             )
           default:
             console.error(
@@ -61,7 +93,7 @@ function RecursiveList({
             return null
         }
       })}
-    </ul>
+    </List>
   )
 }
 
