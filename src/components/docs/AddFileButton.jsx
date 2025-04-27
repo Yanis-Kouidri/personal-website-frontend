@@ -1,5 +1,29 @@
 import React, { useRef, useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
+import { FilePlus } from 'lucide-react'
+import styled from 'styled-components'
+
+const FileUploadButton = styled.button`
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #e0e0e0;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+`
 
 function AddFileButton({
   folderPath = '',
@@ -41,9 +65,9 @@ function AddFileButton({
         onChange={handleFileChange}
         style={{ display: 'none' }}
       />
-      <button onClick={handleButtonClick} disabled={isUploading}>
-        {isUploading ? '...' : '+'}
-      </button>
+      <FileUploadButton onClick={handleButtonClick} disabled={isUploading}>
+        {isUploading ? '...' : <FilePlus size={15} />}
+      </FileUploadButton>
     </span>
   )
 }
