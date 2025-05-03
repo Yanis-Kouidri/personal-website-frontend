@@ -18,7 +18,7 @@ const ListItem = styled.li`
 `
 
 const IndentedContainer = styled.div`
-  padding-left: ${(props) => props.depth * 14}px;
+  padding-left: ${({ $depth }) => $depth * 16}px;
   display: flex;
   align-items: center;
 `
@@ -65,7 +65,7 @@ function RecursiveList({
           case 'file':
             return (
               <ListItem key={item.path + item.name + index}>
-                <IndentedContainer depth={depth + 1}>
+                <IndentedContainer $depth={depth + 1}>
                   <FileLink
                     href={`${config.backendUrl}${config.docsRoute}/${item.path}`}
                     target="_blank"
@@ -86,7 +86,7 @@ function RecursiveList({
           case 'directory':
             return (
               <ListItem key={item.path + item.name + index}>
-                <IndentedContainer depth={depth}>
+                <IndentedContainer $depth={depth}>
                   <DirectoryItem>
                     <span>{item.name}</span>
                     {user && (
