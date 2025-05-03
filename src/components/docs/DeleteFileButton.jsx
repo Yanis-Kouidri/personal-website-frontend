@@ -7,6 +7,7 @@ function DeleteFileButton({
   filePath = '',
   setErrorMessage,
   setSuccessMessage,
+  refreshDocs,
 }) {
   const [isDeleting, setIsDeleting] = useState(false)
 
@@ -19,6 +20,10 @@ function DeleteFileButton({
       setErrorMessage,
       setSuccessMessage,
       setIsFetching: setIsDeleting,
+      onSuccess: () => {
+        console.log(refreshDocs)
+        refreshDocs?.()
+      },
     })
   }
   return (

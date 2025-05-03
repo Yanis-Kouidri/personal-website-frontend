@@ -9,9 +9,8 @@ export function handleApiRequest({
   credentials = false,
   setSuccessMessage = () => {},
   setErrorMessage = () => {},
-  setTriggerFetch = () => {},
+  onSuccess = () => {},
   setIsFetching = () => {},
-  setData,
 }) {
   setErrorMessage('')
   setSuccessMessage('')
@@ -26,7 +25,7 @@ export function handleApiRequest({
   ]
 
   if (!allowedMethods.includes(method.toUpperCase())) {
-    console.err(`Invalid HTTP method: ${method}`)
+    console.error(`Invalid HTTP method: ${method}`)
     setErrorMessage('Internal error')
     return
   }
@@ -37,11 +36,7 @@ export function handleApiRequest({
   axios({ url, method, data, headers, withCredentials: credentials })
     .then((response) => {
       setSuccessMessage(response.data.message)
-      setTriggerFetch((prev) => prev + 1)
-
-      if (typeof setData === 'function') {
-        setData(response.data)
-      }
+      onSuccess(response.data)
     })
     .catch((error) => {
       if (error.response) {

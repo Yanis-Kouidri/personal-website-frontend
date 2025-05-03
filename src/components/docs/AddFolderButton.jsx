@@ -7,6 +7,7 @@ function AddFolderButton({
   folderPath = '',
   setErrorMessage,
   setSuccessMessage,
+  refreshDocs,
 }) {
   const [isCreating, setIsCreating] = useState(false)
 
@@ -25,6 +26,9 @@ function AddFolderButton({
       setErrorMessage,
       setSuccessMessage,
       setIsFetching: setIsCreating,
+      onSuccess: () => {
+        refreshDocs?.()
+      },
     })
   }
 

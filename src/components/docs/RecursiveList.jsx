@@ -57,6 +57,7 @@ function RecursiveList({
   setErrorMessage,
   setSuccessMessage,
   depth = 0,
+  refreshDocs,
 }) {
   const { user } = useUser()
 
@@ -80,6 +81,7 @@ function RecursiveList({
                       filePath={item.path}
                       setErrorMessage={setErrorMessage}
                       setSuccessMessage={setSuccessMessage}
+                      refreshDocs={refreshDocs}
                     />
                   )}
                 </IndentedContainer>
@@ -97,11 +99,13 @@ function RecursiveList({
                           folderPath={item.path}
                           setErrorMessage={setErrorMessage}
                           setSuccessMessage={setSuccessMessage}
+                          refreshDocs={refreshDocs}
                         />
                         <AddFolderButton
                           folderPath={item.path}
                           setErrorMessage={setErrorMessage}
                           setSuccessMessage={setSuccessMessage}
+                          refreshDocs={refreshDocs}
                         />
                       </>
                     )}
@@ -111,6 +115,7 @@ function RecursiveList({
                   folderContent={item.contents}
                   setErrorMessage={setErrorMessage}
                   setSuccessMessage={setSuccessMessage}
+                  refreshDocs={refreshDocs}
                   depth={depth + 1}
                 />
               </ListItem>

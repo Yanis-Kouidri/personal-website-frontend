@@ -13,14 +13,19 @@ function DocsList() {
   const [successMessage, setSuccessMessage] = useState('')
   const [isFetching, setIsFetching] = useState(false)
 
-  useEffect(() => {
+  const fetchDocs = () => {
     handleApiRequest({
       apiEndPoint: '/api/docs',
       method: 'GET',
       setErrorMessage,
       setIsFetching,
-      setData: setListOfDocs,
+      onSuccess: (data) => {
+        setListOfDocs(data)
+      },
     })
+  }
+  useEffect(() => {
+    fetchDocs()
   }, [])
 
   return (
@@ -37,6 +42,7 @@ function DocsList() {
           folderContent={listOfDocs}
           setErrorMessage={setErrorMessage}
           setSuccessMessage={setSuccessMessage}
+          refreshDocs={fetchDocs}
         ></RecursiveList>
       )}
     </div>

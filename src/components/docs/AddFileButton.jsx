@@ -7,6 +7,7 @@ function AddFileButton({
   folderPath = '',
   setErrorMessage,
   setSuccessMessage,
+  refreshDocs,
 }) {
   const [isUploading, setIsUploading] = useState(false)
   const fileInputRef = useRef(null)
@@ -26,6 +27,9 @@ function AddFileButton({
       setErrorMessage,
       setSuccessMessage,
       setIsFetching: setIsUploading,
+      onSuccess: () => {
+        refreshDocs?.()
+      },
     })
   }
 
