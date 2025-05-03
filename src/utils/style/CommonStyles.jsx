@@ -75,3 +75,28 @@ export const StyledErrorMessage = styled(StyledMessage)`
 export const StyledSuccessMessage = styled(StyledMessage)`
   color: #0d9e03;
 `
+export const IconActionButton = styled.button`
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+
+  &:hover {
+    background-color: #e0e0e0;
+    color: #000;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+`

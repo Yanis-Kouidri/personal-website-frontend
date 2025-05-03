@@ -1,27 +1,7 @@
 import React, { useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import { FolderPlus } from 'lucide-react'
-import styled from 'styled-components'
-
-const Button = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: #555;
-  padding: 4px;
-  display: flex;
-  align-items: center;
-  transition: color 0.2s;
-
-  &:hover {
-    color: #000;
-  }
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-`
+import { IconActionButton } from '../../utils/style/CommonStyles'
 
 function AddFolderButton({
   folderPath = '',
@@ -49,9 +29,9 @@ function AddFolderButton({
   }
 
   return (
-    <Button onClick={handleClick} disabled={isCreating}>
+    <IconActionButton onClick={handleClick} disabled={isCreating}>
       {isCreating ? '...' : <FolderPlus size={20} />}
-    </Button>
+    </IconActionButton>
   )
 }
 

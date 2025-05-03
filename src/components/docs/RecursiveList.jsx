@@ -8,35 +8,38 @@ import styled from 'styled-components'
 const List = styled.ul`
   list-style: none;
   padding-left: 0;
+  margin: 0;
 `
 
 const ListItem = styled.li`
   margin: 0;
-  padding: 4px 8px;
-  border-radius: 8px;
-  display: flex;
-  flex-direction: column;
+  padding: 0;
+`
+
+const IndentedContainer = styled.div`
+  padding-left: ${(props) => props.depth * 14}px;
 `
 
 const FileLink = styled.a`
   text-decoration: none;
   color: #333;
   font-weight: 500;
+  display: block;
+  padding: 4px 0px;
+  border-radius: 6px;
 
   &:hover {
     background-color: #f5f5f5;
-    border-radius: 6px;
   }
 `
 
 const DirectoryItem = styled.div`
   display: flex;
   align-items: center;
-  gap: 2px;
+  gap: 0px;
   font-weight: 600;
-  padding: 2px 4px;
-  margin: 0;
-  border-radius: 8px;
+  padding: 0px 0px;
+  border-radius: 6px;
   transition: background-color 0.2s;
 
   &:hover {
@@ -48,6 +51,7 @@ function RecursiveList({
   folderContent = [],
   setErrorMessage,
   setSuccessMessage,
+  depth = 0,
 }) {
   const { user } = useUser()
 
@@ -58,39 +62,44 @@ function RecursiveList({
           case 'file':
             return (
               <ListItem key={item.path + item.name + index}>
-                <FileLink
-                  href={`${config.backendUrl}${config.docsRoute}/${item.path}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {item.name}
-                </FileLink>
+                <IndentedContainer depth={depth + 1}>
+                  <FileLink
+                    href={`${config.backendUrl}${config.docsRoute}/${item.path}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {item.name}
+                  </FileLink>
+                </IndentedContainer>
               </ListItem>
             )
           case 'directory':
             return (
               <ListItem key={item.path + item.name + index}>
-                <DirectoryItem>
-                  <span>{item.name}</span>
-                  {user && (
-                    <>
-                      <AddFileButton
-                        folderPath={item.path}
-                        setErrorMessage={setErrorMessage}
-                        setSuccessMessage={setSuccessMessage}
-                      />
-                      <AddFolderButton
-                        folderPath={item.path}
-                        setErrorMessage={setErrorMessage}
-                        setSuccessMessage={setSuccessMessage}
-                      />
-                    </>
-                  )}
-                </DirectoryItem>
+                <IndentedContainer depth={depth}>
+                  <DirectoryItem>
+                    <span>{item.name}</span>
+                    {user && (
+                      <>
+                        <AddFileButton
+                          folderPath={item.path}
+                          setErrorMessage={setErrorMessage}
+                          setSuccessMessage={setSuccessMessage}
+                        />
+                        <AddFolderButton
+                          folderPath={item.path}
+                          setErrorMessage={setErrorMessage}
+                          setSuccessMessage={setSuccessMessage}
+                        />
+                      </>
+                    )}
+                  </DirectoryItem>
+                </IndentedContainer>
                 <RecursiveList
                   folderContent={item.contents}
                   setErrorMessage={setErrorMessage}
                   setSuccessMessage={setSuccessMessage}
+                  depth={depth + 1}
                 />
               </ListItem>
             )
