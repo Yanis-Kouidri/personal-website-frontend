@@ -30,6 +30,7 @@ const FileLink = styled.a`
   display: block;
   padding: 4px 0px;
   border-radius: 6px;
+  min-height: 20px;
 
   &:hover {
     background-color: #f5f5f5;
@@ -44,6 +45,7 @@ const DirectoryItem = styled.div`
   padding: 0px 0px;
   border-radius: 6px;
   transition: background-color 0.2s;
+  min-height: 30px;
 
   &:hover {
     background-color: #f5f5f5;
