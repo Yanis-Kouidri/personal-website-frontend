@@ -17,10 +17,14 @@ function DocsList() {
     handleApiRequest({
       apiEndPoint: '/api/docs',
       method: 'GET',
-      setErrorMessage,
       setIsFetching,
       onSuccess: (data) => {
+        setErrorMessage('')
         setListOfDocs(data)
+      },
+      onError: (errMsg) => {
+        setSuccessMessage('')
+        setErrorMessage(errMsg)
       },
     })
   }

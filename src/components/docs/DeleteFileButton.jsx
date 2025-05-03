@@ -17,12 +17,14 @@ function DeleteFileButton({
       method: 'DELETE',
       data: { filePath },
       credentials: true,
-      setErrorMessage,
-      setSuccessMessage,
       setIsFetching: setIsDeleting,
       onSuccess: () => {
-        console.log(refreshDocs)
         refreshDocs?.()
+        setSuccessMessage('File deleted !')
+      },
+      onError: (errMsg) => {
+        setSuccessMessage('')
+        setErrorMessage(errMsg)
       },
     })
   }

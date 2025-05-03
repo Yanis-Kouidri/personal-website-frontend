@@ -23,11 +23,14 @@ function AddFolderButton({
       method: 'POST',
       data: { folderName, folderPath },
       credentials: true,
-      setErrorMessage,
-      setSuccessMessage,
       setIsFetching: setIsCreating,
       onSuccess: () => {
         refreshDocs?.()
+        setSuccessMessage('Folder created !')
+      },
+      onError: (errMsg) => {
+        setSuccessMessage('')
+        setErrorMessage(errMsg)
       },
     })
   }

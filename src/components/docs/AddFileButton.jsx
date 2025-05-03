@@ -24,11 +24,14 @@ function AddFileButton({
       method: 'POST',
       data: formData,
       credentials: true,
-      setErrorMessage,
-      setSuccessMessage,
+      onError: (errMsg) => {
+        setSuccessMessage('')
+        setErrorMessage(errMsg)
+      },
       setIsFetching: setIsUploading,
       onSuccess: () => {
         refreshDocs?.()
+        setSuccessMessage('File upload !')
       },
     })
   }

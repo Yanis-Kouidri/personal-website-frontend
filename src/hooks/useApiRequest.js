@@ -7,13 +7,10 @@ export function handleApiRequest({
   data = {},
   headers = {},
   credentials = false,
-  setSuccessMessage = () => {},
-  setErrorMessage = () => {},
   onSuccess = () => {},
+  onError = () => {},
   setIsFetching = () => {},
 }) {
-  setErrorMessage('')
-  setSuccessMessage('')
   const allowedMethods = [
     'GET',
     'POST',
@@ -26,40 +23,32 @@ export function handleApiRequest({
 
   if (!allowedMethods.includes(method.toUpperCase())) {
     console.error(`Invalid HTTP method: ${method}`)
-    setErrorMessage('Internal error')
+    onError('Internal error')
     return
   }
 
   const url = config.backendUrl + apiEndPoint
 
   setIsFetching(true)
-  axios({ url, method, data, headers, withCredentials: credentials })
+  axios({
+    url,
+    method,
+    data,
+    headers,
+    params: method === 'GET' ? data : undefined,
+    withCredentials: credentials,
+  })
     .then((response) => {
-      setSuccessMessage(response.data.message)
       onSuccess(response.data)
     })
     .catch((error) => {
-      if (error.response) {
-        switch (error.response.status) {
-          case 400:
-            setErrorMessage(error.response.data.message)
-            break
-          case 401:
-          case 500:
-            console.error(
-              error.response.status + ' error : ' + error.response.data.message,
-            )
-            setErrorMessage(error.response.data.message)
-            break
-          default:
-            console.error('Unknown error during api request')
-            setErrorMessage('Internal server error')
-            break
-        }
-      } else {
-        setErrorMessage('Internal error: Connection to backend failed')
-        console.error('Error during fetching docs: ' + error)
+      let errorMsg = 'Error'
+      if (error.response?.data?.message) {
+        errorMsg = error.response.data.message
+      } else if (error.message) {
+        errorMsg = error.message
       }
+      onError?.(errorMsg)
     })
     .finally(() => {
       setIsFetching(false)
