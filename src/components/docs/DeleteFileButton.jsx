@@ -12,6 +12,10 @@ function DeleteFileButton({
   const [isDeleting, setIsDeleting] = useState(false)
 
   const handleClick = () => {
+    const confirmed = window.confirm(
+      'Are you sure you want to delete this file?\n' + filePath,
+    )
+    if (!confirmed) return
     handleApiRequest({
       apiEndPoint: `/api/docs`,
       method: 'DELETE',
