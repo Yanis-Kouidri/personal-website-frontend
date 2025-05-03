@@ -4,6 +4,7 @@ import AddFileButton from './AddFileButton'
 import AddFolderButton from './AddFolderButton'
 import { useUser } from '../../context/contexts'
 import styled from 'styled-components'
+import DeleteFileButton from './DeleteFileButton'
 
 const List = styled.ul`
   list-style: none;
@@ -18,6 +19,8 @@ const ListItem = styled.li`
 
 const IndentedContainer = styled.div`
   padding-left: ${(props) => props.depth * 14}px;
+  display: flex;
+  align-items: center;
 `
 
 const FileLink = styled.a`
@@ -70,6 +73,13 @@ function RecursiveList({
                   >
                     {item.name}
                   </FileLink>
+                  {user && (
+                    <DeleteFileButton
+                      filePath={item.path}
+                      setErrorMessage={setErrorMessage}
+                      setSuccessMessage={setSuccessMessage}
+                    />
+                  )}
                 </IndentedContainer>
               </ListItem>
             )
