@@ -4,6 +4,7 @@ import AddFileButton from './AddFileButton'
 import AddFolderButton from './AddFolderButton'
 import DeleteFileButton from './DeleteFileButton'
 import DeleteFolderButton from './DeleteFolderButton'
+import RenameButton from './RenameButton'
 import { useUser } from '../../context/contexts'
 import styled from 'styled-components'
 import { Folder, File } from 'lucide-react'
@@ -97,12 +98,20 @@ function RecursiveList({
                       {item.name}
                     </FileLink>
                     {user && (
-                      <DeleteFileButton
-                        filePath={item.path}
-                        setErrorMessage={setErrorMessage}
-                        setSuccessMessage={setSuccessMessage}
-                        refreshDocs={refreshDocs}
-                      />
+                      <>
+                        <RenameButton
+                          itemPath={item.path}
+                          setErrorMessage={setErrorMessage}
+                          setSuccessMessage={setSuccessMessage}
+                          refreshDocs={refreshDocs}
+                        />
+                        <DeleteFileButton
+                          filePath={item.path}
+                          setErrorMessage={setErrorMessage}
+                          setSuccessMessage={setSuccessMessage}
+                          refreshDocs={refreshDocs}
+                        />
+                      </>
                     )}
                   </IndentedContainer>
                 </FileContainer>
@@ -118,6 +127,12 @@ function RecursiveList({
                       <span>{item.name}</span>
                       {user && (
                         <>
+                          <RenameButton
+                            itemPath={item.path}
+                            setErrorMessage={setErrorMessage}
+                            setSuccessMessage={setSuccessMessage}
+                            refreshDocs={refreshDocs}
+                          />
                           <AddFileButton
                             folderPath={item.path}
                             setErrorMessage={setErrorMessage}
