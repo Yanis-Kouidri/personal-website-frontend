@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
-import { FileX } from 'lucide-react'
-import { IconActionButton } from '../../utils/style/CommonStyles'
+import { Trash2 } from 'lucide-react'
+import { DeleteButton } from '../../utils/style/CommonStyles'
 
 function DeleteFileButton({
   filePath = '',
@@ -33,9 +33,9 @@ function DeleteFileButton({
     })
   }
   return (
-    <IconActionButton onClick={handleClick} disabled={isDeleting}>
-      {isDeleting ? '...' : <FileX size={20} />}
-    </IconActionButton>
+    <DeleteButton onClick={handleClick} disabled={isDeleting}>
+      {isDeleting ? '...' : <Trash2 size={16} />}
+    </DeleteButton>
   )
 }
 

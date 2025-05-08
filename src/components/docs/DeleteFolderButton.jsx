@@ -1,22 +1,7 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
+import { DeleteButton } from '../../utils/style/CommonStyles'
 import { Trash2 } from 'lucide-react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
-
-const DeleteButton = styled.button`
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 4px;
-  border-radius: 4px;
-  display: flex;
-  align-items: center;
-  color: #e53e3e;
-
-  &:hover {
-    background-color: #f5f5f5;
-  }
-`
 
 function DeleteFolderButton({
   folderPath,

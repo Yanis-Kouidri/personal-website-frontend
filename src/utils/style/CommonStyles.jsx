@@ -76,11 +76,11 @@ export const StyledSuccessMessage = styled(StyledMessage)`
   color: #0d9e03;
 `
 export const IconActionButton = styled.button`
-  background-color: #f0f0f0;
+  background-color: #fafafa;
   border: none;
   border-radius: 50%;
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,5 +98,13 @@ export const IconActionButton = styled.button`
   &:disabled {
     opacity: 0.5;
     cursor: not-allowed;
+  }
+`
+
+export const DeleteButton = styled(IconActionButton)`
+  color: #e53e3e;
+  &:hover {
+    background-color: #e0e0e0;
+    color: #ff0000;
   }
 `
