@@ -36,9 +36,21 @@ function DocsList() {
       },
     })
   }
+
   useEffect(() => {
     fetchDocs()
   }, [])
+
+  useEffect(() => {
+    let timeout
+    if (errorMessage || successMessage) {
+      timeout = setTimeout(() => {
+        setErrorMessage('')
+        setSuccessMessage('')
+      }, 3000)
+    }
+    return () => clearTimeout(timeout)
+  }, [errorMessage, successMessage])
 
   return (
     <div>
