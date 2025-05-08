@@ -19,7 +19,7 @@ function DeleteFileButton({
     handleApiRequest({
       apiEndPoint: `/api/docs`,
       method: 'DELETE',
-      data: { filePath },
+      data: { path: filePath },
       credentials: true,
       setIsFetching: setIsDeleting,
       onSuccess: () => {

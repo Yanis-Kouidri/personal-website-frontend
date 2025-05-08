@@ -3,6 +3,7 @@ import config from '../../utils/config'
 import AddFileButton from './AddFileButton'
 import AddFolderButton from './AddFolderButton'
 import DeleteFileButton from './DeleteFileButton'
+import DeleteFolderButton from './DeleteFolderButton'
 import { useUser } from '../../context/contexts'
 import styled from 'styled-components'
 import { Folder, File } from 'lucide-react'
@@ -124,6 +125,12 @@ function RecursiveList({
                             refreshDocs={refreshDocs}
                           />
                           <AddFolderButton
+                            folderPath={item.path}
+                            setErrorMessage={setErrorMessage}
+                            setSuccessMessage={setSuccessMessage}
+                            refreshDocs={refreshDocs}
+                          />
+                          <DeleteFolderButton
                             folderPath={item.path}
                             setErrorMessage={setErrorMessage}
                             setSuccessMessage={setSuccessMessage}
