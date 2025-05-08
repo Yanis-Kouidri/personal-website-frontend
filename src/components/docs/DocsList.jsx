@@ -6,6 +6,14 @@ import {
   StyledSuccessMessage,
 } from '../../utils/style/CommonStyles'
 import RecursiveList from './RecursiveList'
+import styled from 'styled-components'
+
+const ListContainer = styled.ul`
+  padding: 4px 8px 8px 16px;
+  margin-bottom: 40px;
+  background-color: #fafafa;
+  border-radius: 12px;
+`
 
 function DocsList() {
   const [listOfDocs, setListOfDocs] = useState([])
@@ -42,12 +50,14 @@ function DocsList() {
       {isFetching ? (
         <Loader />
       ) : (
-        <RecursiveList
-          folderContent={listOfDocs}
-          setErrorMessage={setErrorMessage}
-          setSuccessMessage={setSuccessMessage}
-          refreshDocs={fetchDocs}
-        ></RecursiveList>
+        <ListContainer>
+          <RecursiveList
+            folderContent={listOfDocs}
+            setErrorMessage={setErrorMessage}
+            setSuccessMessage={setSuccessMessage}
+            refreshDocs={fetchDocs}
+          ></RecursiveList>
+        </ListContainer>
       )}
     </div>
   )
