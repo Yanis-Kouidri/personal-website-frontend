@@ -1,0 +1,21 @@
+# Node/Yarn
+node_modules
+.pnp.*
+.yarn/*
+!.yarn/releases
+!.yarn/patches
+!.yarn/plugins
+
+# Development tools
+.vscode
+.prettierrc
+.env
+.env.example
+.git
+.gitignore
+
+# Build output
+dist
+
+# Documentation
+README.md

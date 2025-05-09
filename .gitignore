@@ -55,4 +55,5 @@ sketch
 
 # End of https://www.toptal.com/developers/gitignore/api/react,visualstudiocode,yarn
 
-.env
+.env*
+!.env.example
