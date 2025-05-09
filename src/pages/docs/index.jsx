@@ -7,7 +7,7 @@ function Docs() {
 
   return (
     <BasicWrapper>
-      <BasicH2Title>Mes documentations</BasicH2Title>
+      <BasicH2Title>Mes documents</BasicH2Title>
       <DocsList triggerFetch={triggerFetch} setTriggerFetch={setTriggerFetch} />
     </BasicWrapper>
   )

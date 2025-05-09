@@ -58,7 +58,6 @@ function DocsList() {
       {successMessage && (
         <StyledSuccessMessage>{successMessage}</StyledSuccessMessage>
       )}
-      <h2>Liste des PDF</h2>
       {isFetching ? (
         <Loader />
       ) : (
