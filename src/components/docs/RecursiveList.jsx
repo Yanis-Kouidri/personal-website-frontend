@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import config from '../../utils/config'
 import AddFileButton from './AddFileButton'
 import AddFolderButton from './AddFolderButton'
@@ -7,7 +7,7 @@ import DeleteFolderButton from './DeleteFolderButton'
 import RenameButton from './RenameButton'
 import { useUser } from '../../context/contexts'
 import styled from 'styled-components'
-import { Folder, File } from 'lucide-react'
+import { FolderClosed, FolderOpen, File } from 'lucide-react'
 
 const List = styled.ul`
   list-style: none;
@@ -61,6 +61,7 @@ const DirectoryItem = styled.div`
   border-radius: 6px;
   transition: background-color 0.2s;
   min-height: 30px;
+  cursor: pointer;
 
   &:hover {
     background-color: #f5f5f5;
@@ -79,10 +80,19 @@ function RecursiveList({
   refreshDocs,
 }) {
   const { user } = useUser()
+  const [expandedFolders, setExpandedFolders] = useState({ '': true }) // To automatically unfold the first one
+
+  const toggleCollapse = (path) => {
+    setExpandedFolders((prev) => ({
+      ...prev,
+      [path]: !prev[path], // Toggle true/false
+    }))
+  }
 
   return (
     <List>
       {folderContent.map((item, index) => {
+        const isExpanded = expandedFolders[item.path] // Check if folder is collapsed
         switch (item.type) {
           case 'file':
             return (
@@ -122,8 +132,12 @@ function RecursiveList({
               <ListItem key={item.path + item.name + index}>
                 <DirectoryContainer>
                   <IndentedContainer $depth={depth}>
-                    <DirectoryItem>
-                      <Folder size={20} />
+                    <DirectoryItem onClick={() => toggleCollapse(item.path)}>
+                      {isExpanded ? (
+                        <FolderOpen size={20} />
+                      ) : (
+                        <FolderClosed size={20} />
+                      )}
                       <span>{item.name}</span>
                       {user && (
                         <>
@@ -155,13 +169,16 @@ function RecursiveList({
                       )}
                     </DirectoryItem>
                   </IndentedContainer>
-                  <RecursiveList
-                    folderContent={item.contents}
-                    setErrorMessage={setErrorMessage}
-                    setSuccessMessage={setSuccessMessage}
-                    refreshDocs={refreshDocs}
-                    depth={depth + 1}
-                  />
+
+                  {isExpanded && (
+                    <RecursiveList
+                      folderContent={item.contents}
+                      setErrorMessage={setErrorMessage}
+                      setSuccessMessage={setSuccessMessage}
+                      refreshDocs={refreshDocs}
+                      depth={depth + 1}
+                    />
+                  )}
                 </DirectoryContainer>
               </ListItem>
             )
