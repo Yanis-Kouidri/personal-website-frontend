@@ -9,6 +9,7 @@ import {
   StyledSuccessMessage,
 } from '../../utils/style/CommonStyles'
 import config from '../../utils/config'
+import { handleApiRequest } from '../../hooks/useApiRequest'
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -17,9 +18,9 @@ function Signup() {
     signupKey: '',
   })
   const [errorMessage, setErrorMessage] = useState('')
-  const [infoMessage, setInfoMessage] = useState('')
+  const [successMessage, setSuccessMessage] = useState('')
 
-  const [loading, setLoading] = useState(false)
+  const [isFetching, setIsFetching] = useState(false)
 
   const backendUrl = config.backendUrl
 
@@ -52,11 +53,9 @@ function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setLoading(true)
-    setInfoMessage('')
-    setErrorMessage('')
+
     if (!validateForm()) {
-      setLoading(false)
+      setIsFetching(false)
       return
     }
 
@@ -66,47 +65,28 @@ function Signup() {
       signupKey: formData.signupKey,
     }
 
-    try {
-      const response = await fetch(backendUrl + '/api/auth/signup', {
-        method: 'POST',
-        headers: {
-          'content-type': 'application/json',
-        },
-        body: JSON.stringify(requestBody),
-      })
-
-      switch (response.status) {
-        case 201:
-          const successData = await response.json()
-          setInfoMessage(successData.message)
-          break
-        case 400 || 401:
-          const errorData = await response.json()
-          setErrorMessage(errorData.message)
-          break
-        case 429:
-          setErrorMessage('Too many failures, prease retry in a while')
-          break
-        case 500:
-          setErrorMessage('Internal server error')
-          break
-        default:
-          throw new Error('Unexpected response from backend')
-      }
-    } catch (e) {
-      setErrorMessage('Internal server error')
-      console.error('Server error :' + e)
-    } finally {
-      setLoading(false)
-    }
+    handleApiRequest({
+      apiEndPoint: '/api/auth/signup',
+      method: 'POST',
+      setIsFetching,
+      onSuccess: (data) => {
+        setErrorMessage('')
+        setSuccessMessage(data.message)
+      },
+      onError: (errMsg) => {
+        setSuccessMessage('')
+        setErrorMessage(errMsg)
+      },
+      data: requestBody,
+    })
   }
 
   return (
     <BasicWrapper>
       <BasicH2Title>Inscription</BasicH2Title>
       {errorMessage && <StyledErrorMessage>{errorMessage}</StyledErrorMessage>}
-      {infoMessage && (
-        <StyledSuccessMessage>{infoMessage}</StyledSuccessMessage>
+      {successMessage && (
+        <StyledSuccessMessage>{successMessage}</StyledSuccessMessage>
       )}
       <StyledForm onSubmit={handleSubmit}>
         <StyledInput
@@ -130,8 +110,8 @@ function Signup() {
           value={formData.signupKey}
           onChange={(e) => handleChange(e)}
         />
-        <StyledSubmitButton type="submit" disabled={loading}>
-          {loading ? 'Chargement...' : "S'inscrire"}
+        <StyledSubmitButton type="submit" disabled={isFetching}>
+          {isFetching ? 'Chargement...' : "S'inscrire"}
         </StyledSubmitButton>
       </StyledForm>
     </BasicWrapper>
