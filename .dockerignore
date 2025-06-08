@@ -9,8 +9,8 @@ node_modules
 # Development tools
 .vscode
 .prettierrc
-.env
-.env.example
+.env*
+!.env.production
 .git
 .gitignore
 

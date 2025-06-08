@@ -28,8 +28,16 @@ COPY --from=builder /app/dist /usr/share/nginx/html
 # Copy custom Nginx configuration (optional, see below)
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
+# Copy the runtime injection script into the container
+COPY env.sh /docker-entrypoint.d/env.sh
+RUN dos2unix /docker-entrypoint.d/env.sh
+RUN chmod +x /docker-entrypoint.d/env.sh
+
 # Expose port 80
 EXPOSE 80
+
+# Let Docker run your script before starting Nginx
+ENTRYPOINT ["/docker-entrypoint.sh"]
 
 # Start Nginx
 CMD ["nginx", "-g", "daemon off;"]
