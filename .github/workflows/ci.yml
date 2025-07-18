@@ -23,7 +23,7 @@ jobs:
       - name: Installer Yarn 4.x
         run: |
           corepack enable
-          yarn set version stable
+          yarn set version berry
           yarn --version
 
       - name: Installer les dépendances
