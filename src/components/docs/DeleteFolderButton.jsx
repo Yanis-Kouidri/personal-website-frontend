@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { DeleteButton } from '../../utils/style/CommonStyles'
 import { Trash2 } from 'lucide-react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
+import PropTypes from 'prop-types'
 
 function DeleteFolderButton({
   folderPath,
@@ -43,6 +44,13 @@ function DeleteFolderButton({
       <Trash2 size={16} />
     </DeleteButton>
   )
+}
+
+DeleteFolderButton.propTypes = {
+  folderPath: PropTypes.string.isRequired,
+  setErrorMessage: PropTypes.func.isRequired,
+  setSuccessMessage: PropTypes.func.isRequired,
+  refreshDocs: PropTypes.func,
 }
 
 export default DeleteFolderButton

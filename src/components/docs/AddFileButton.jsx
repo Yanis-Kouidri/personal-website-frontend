@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import { FilePlus } from 'lucide-react'
 import { IconActionButton } from '../../utils/style/CommonStyles'
+import PropTypes from 'prop-types'
 
 function AddFileButton({
   folderPath = '',
@@ -55,6 +56,13 @@ function AddFileButton({
       </IconActionButton>
     </span>
   )
+}
+
+AddFileButton.propTypes = {
+  folderPath: PropTypes.string,
+  setErrorMessage: PropTypes.func.isRequired,
+  setSuccessMessage: PropTypes.func.isRequired,
+  refreshDocs: PropTypes.func,
 }
 
 export default AddFileButton

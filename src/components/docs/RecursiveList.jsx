@@ -8,6 +8,7 @@ import RenameButton from './RenameButton'
 import { useUser } from '../../context/contexts'
 import styled from 'styled-components'
 import { FolderClosed, FolderOpen, File } from 'lucide-react'
+import PropTypes from 'prop-types'
 
 const List = styled.ul`
   list-style: none;
@@ -189,6 +190,14 @@ function RecursiveList({
       })}
     </List>
   )
+}
+
+RecursiveList.propTypes = {
+  folderContent: PropTypes.array,
+  setErrorMessage: PropTypes.func.isRequired,
+  setSuccessMessage: PropTypes.func.isRequired,
+  depth: PropTypes.number,
+  refreshDocs: PropTypes.func,
 }
 
 export default RecursiveList

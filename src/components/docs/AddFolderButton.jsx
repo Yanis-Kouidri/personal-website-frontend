@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import PropTypes from 'prop-types'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import { FolderPlus } from 'lucide-react'
 import { IconActionButton } from '../../utils/style/CommonStyles'
@@ -40,6 +41,13 @@ function AddFolderButton({
       {isCreating ? '...' : <FolderPlus size={20} />}
     </IconActionButton>
   )
+}
+
+AddFolderButton.propTypes = {
+  folderPath: PropTypes.string,
+  setErrorMessage: PropTypes.func.isRequired,
+  setSuccessMessage: PropTypes.func.isRequired,
+  refreshDocs: PropTypes.func,
 }
 
 export default AddFolderButton
