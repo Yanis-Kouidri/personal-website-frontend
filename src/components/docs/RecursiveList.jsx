@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import config from '../../utils/config'
 import AddFileButton from './AddFileButton'
 import AddFolderButton from './AddFolderButton'
