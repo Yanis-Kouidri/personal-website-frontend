@@ -4,6 +4,8 @@ import react from 'eslint-plugin-react'
 import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 import jsxA11y from 'eslint-plugin-jsx-a11y'
+import security from 'eslint-plugin-security'
+import noUnsanitized from 'eslint-plugin-no-unsanitized'
 import { defineConfig, globalIgnores } from 'eslint/config'
 
 export default defineConfig([
@@ -17,6 +19,8 @@ export default defineConfig([
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
       jsxA11y.flatConfigs.recommended,
+      security.configs.recommended,
+      noUnsanitized.configs.recommended,
     ],
     languageOptions: {
       ecmaVersion: 2020,
@@ -32,6 +36,8 @@ export default defineConfig([
       reactHooks,
       reactRefresh,
       jsxA11y,
+      security,
+      noUnsanitized,
     },
     rules: {
       'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }],
