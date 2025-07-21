@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import config from '../../utils/config'
 import {
   BasicH2Title,
   BasicWrapper,
@@ -12,7 +11,7 @@ import {
 } from '../../utils/style/CommonStyles'
 import { useState } from 'react'
 import { useUser } from '../../context/contexts'
-import axios from 'axios'
+import { handleApiRequest } from '../../hooks/useApiRequest'
 
 function Login() {
   const [username, setUsername] = useState('')
@@ -20,11 +19,9 @@ function Login() {
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
 
-  const [loading, setLoading] = useState(false)
+  const [isFetching, setIsFetching] = useState(false)
 
   const { setUser } = useUser()
-
-  const backendUrl = config.backendUrl
 
   const navigate = useNavigate()
 
@@ -32,52 +29,29 @@ function Login() {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
-    setLoading(true)
+    setIsFetching(true)
 
     const requestBody = {
       username: username,
       password: password,
     }
 
-    axios
-      .post(backendUrl + '/api/auth/login', requestBody, {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        withCredentials: true,
-      })
-      .then((response) => {
-        setSuccessMessage(response.data.message)
-        setUser(response.data.username)
+    handleApiRequest({
+      apiEndPoint: '/api/auth/login',
+      method: 'POST',
+      setIsFetching,
+      onSuccess: (data) => {
+        setErrorMessage('')
+        setSuccessMessage(data.message)
+        setUser(data.username)
         navigate('/')
-      })
-      .catch((error) => {
-        if (error.response) {
-          switch (error.response.status) {
-            case 401:
-              setErrorMessage(error.response.data.message)
-              break
-            case 429:
-              setErrorMessage('Too many failures, plese wait a while')
-              break
-            case 500:
-              setErrorMessage('Internal server error')
-              break
-            default:
-              setErrorMessage('Internal server error')
-              console.error(
-                'Unexpected response from backend, status code :' +
-                  error.response.status,
-              )
-          }
-        } else {
-          setErrorMessage('Internal error')
-          console.error('Login error: ' + error)
-        }
-      })
-      .finally(() => {
-        setLoading(false)
-      })
+      },
+      onError: (errMsg) => {
+        setSuccessMessage('')
+        setErrorMessage(errMsg)
+      },
+      data: requestBody,
+    })
   }
 
   return (
@@ -102,11 +76,11 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <StyledSubmitButton type="submit" disabled={loading}>
-          {loading ? 'Chargement...' : 'Se connecter'}
+        <StyledSubmitButton type="submit" disabled={isFetching}>
+          {isFetching ? 'Chargement...' : 'Se connecter'}
         </StyledSubmitButton>
       </StyledForm>
-      {loading && <Loader />}
+      {isFetching && <Loader />}
     </BasicWrapper>
   )
 }
