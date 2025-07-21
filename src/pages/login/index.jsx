@@ -24,11 +24,25 @@ function Login() {
   const { setUser } = useUser()
 
   const navigate = useNavigate()
-
+  const validate = () => {
+    if (!username.trim()) {
+      setErrorMessage("Le nom d'utilisateur est requis.")
+      return false
+    }
+    if (!password) {
+      setErrorMessage('Le mot de passe est requis.')
+      return false
+    }
+    return true
+  }
   const handleSubmit = (e) => {
     e.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
+
+    if (!validate()) {
+      return
+    }
     setIsFetching(true)
 
     const requestBody = {
