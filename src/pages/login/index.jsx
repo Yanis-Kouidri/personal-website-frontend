@@ -53,6 +53,7 @@ function Login() {
     handleApiRequest({
       apiEndPoint: '/api/auth/login',
       method: 'POST',
+      credentials: true,
       setIsFetching,
       onSuccess: (data) => {
         setErrorMessage('')
