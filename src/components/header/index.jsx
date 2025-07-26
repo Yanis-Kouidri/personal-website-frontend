@@ -74,10 +74,10 @@ function Header() {
       apiEndPoint: '/api/auth/logout',
       method: 'GET',
       credentials: true,
-      setErrorMessage: (errorMessage) => {
+      onError: (errorMessage) => {
         console.error('Logout error:', errorMessage)
       },
-      setSuccessMessage: (successMessage) => {
+      onSuccess: (successMessage) => {
         console.log('Logout success:', successMessage)
         setUser('') // Déconnecte l'utilisateur
       },
