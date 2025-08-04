@@ -1,5 +1,8 @@
 #!/bin/sh
 
+# This script aim to calcul SRI (SubRessource Integrity) just before nginx start to unsure correct integrity checksum
+# It cannot be done by Vite during build because some varaible are injected at the last moment thanks to file env.sh
+
 set -e
 
 HTML_FILE="/usr/share/nginx/html/index.html"
