@@ -31,7 +31,7 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY env.sh /docker-entrypoint.d/10-env.sh
 COPY sri.sh /docker-entrypoint.d/20-sri.sh
 
-RUN dos2unix /docker-entrypoint.d/10-env.sh && /docker-entrypoint.d/20-sri.sh \
+RUN dos2unix /docker-entrypoint.d/*.sh /etc/nginx/conf.d/default.conf && \
   chmod +x /docker-entrypoint.d/*.sh && \
   apk add --no-cache openssl 
 
