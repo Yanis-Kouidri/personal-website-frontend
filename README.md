@@ -1,26 +1,29 @@
-# Portfolio frontend
+# Portfolio Frontend
 
-Create with Vite + React.
+Frontend for the personal portfolio, built with Vite and React.
 
-## Development
+## 🚀 Development
 
-Do:
+Switch to the development branch:
 
     git switch dev
 
-then
+Copy the example environment file:
 
     cp .env.example .env
 
-Then setup env variable in `.env`  
-After, do:
+Configure your environment variables in .env.
+
+Install dependencies:
 
     yarn
 
+(Optional) Set up SDKs for VSCode:
+
     yarn dlx @yarnpkg/sdks vscode
 
-then
+Start the development server:
 
     yarn dev
 
-## Production
+## 📦 Production
