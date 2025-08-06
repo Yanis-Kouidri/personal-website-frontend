@@ -17,6 +17,8 @@ After, do:
 
     yarn
 
+    yarn dlx @yarnpkg/sdks vscode
+
 then
 
     yarn dev

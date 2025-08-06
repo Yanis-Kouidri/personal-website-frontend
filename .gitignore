@@ -43,7 +43,8 @@ sketch
 !.yarn/releases
 !.yarn/patches
 !.yarn/plugins
-!.yarn/sdks
+
+.yarn/sdks
 !.yarn/versions
 
 # if you are NOT using Zero-installs, then:
