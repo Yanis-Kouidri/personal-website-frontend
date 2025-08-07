@@ -7,8 +7,7 @@
     "dev": "vite --open",
     "build": "vite build",
     "lint": "xo",
-    "preview": "vite preview",
-    "test": "xo"
+    "preview": "vite preview"
   },
   "dependencies": {
     "axios": "^1.10.0",
