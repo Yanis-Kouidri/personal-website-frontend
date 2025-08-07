@@ -1,3 +1,5 @@
+[![XO code style](https://shields.io/badge/code_style-5ed9c7?logo=xo&labelColor=gray&logoSize=auto)](https://github.com/xojs/xo)
+
 # Portfolio Frontend
 
 Frontend for the personal portfolio, built with Vite and React.
