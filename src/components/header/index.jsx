@@ -96,7 +96,10 @@ function Header() {
         {user ? (
           <>
             <p>Bonjour {user}</p>
-            <button onClick={handleLogout}> Deconnexion </button>
+            <button type="button" onClick={handleLogout}>
+              {' '}
+              Deconnexion{' '}
+            </button>
           </>
         ) : (
           <>

@@ -73,8 +73,10 @@ const StyledFile = styled(File)`
   margin-right: 8px;
 `
 
+const emptyArray = []
+
 function RecursiveList({
-  folderContent = [],
+  folderContent = emptyArray,
   setErrorMessage,
   setSuccessMessage,
   depth = 0,
@@ -92,12 +94,12 @@ function RecursiveList({
 
   return (
     <List>
-      {folderContent.map((item, index) => {
+      {folderContent.map((item) => {
         const isExpanded = expandedFolders[item.path] // Check if folder is collapsed
         switch (item.type) {
           case 'file':
             return (
-              <ListItem key={item.path + item.name + index}>
+              <ListItem key={item.path + item.name}>
                 <FileContainer>
                   <IndentedContainer $depth={depth}>
                     <FileLink
@@ -130,7 +132,7 @@ function RecursiveList({
             )
           case 'directory':
             return (
-              <ListItem key={item.path + item.name + index}>
+              <ListItem key={item.path + item.name}>
                 <DirectoryContainer>
                   <IndentedContainer $depth={depth}>
                     <DirectoryItem onClick={() => toggleCollapse(item.path)}>

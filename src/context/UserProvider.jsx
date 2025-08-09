@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import config from '../utils/config.js'
 import { UserContext } from './contexts.js'
 import PropTypes from 'prop-types'
@@ -30,11 +30,9 @@ export const UserProvider = ({ children }) => {
       })
   }, [backendUrl, user])
 
-  return (
-    <UserContext.Provider value={{ user, setUser }}>
-      {children}
-    </UserContext.Provider>
-  )
+  const value = useMemo(() => ({ user, setUser }), [user])
+
+  return <UserContext value={value}>{children}</UserContext>
 }
 
 UserProvider.propTypes = {

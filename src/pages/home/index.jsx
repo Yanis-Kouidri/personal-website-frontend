@@ -1,4 +1,3 @@
-import React from 'react'
 import Banner from '../../components/home/Banner'
 import MainSkills from '../../components/home/MainSkills'
 import MyHistory from '../../components/home/MyHistory'

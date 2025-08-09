@@ -1,7 +1,7 @@
-import { createContext, useContext } from 'react'
+import { createContext, use } from 'react'
 
 export const UserContext = createContext()
 
 export const useUser = () => {
-  return useContext(UserContext)
+  return use(UserContext)
 }

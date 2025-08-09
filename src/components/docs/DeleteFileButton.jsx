@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import { Trash2 } from 'lucide-react'
 import { DeleteButton } from '../../utils/style/CommonStyles'

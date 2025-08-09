@@ -1,4 +1,3 @@
-import React from 'react'
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import yanis from '../../assets/pictures/photo_accueil_yanis.jpg'

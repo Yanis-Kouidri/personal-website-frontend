@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import PropTypes from 'prop-types'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import { FolderPlus } from 'lucide-react'
