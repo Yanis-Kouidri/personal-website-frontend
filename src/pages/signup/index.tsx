@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   BasicH2Title,
   BasicWrapper,
@@ -10,6 +10,10 @@ import {
 } from '../../utils/style/CommonStyles'
 import config from '../../utils/config'
 import { handleApiRequest } from '../../hooks/useApiRequest'
+
+type SignUpSuccessData = {
+  message: string
+}
 
 function Signup() {
   const [formData, setFormData] = useState({
@@ -32,10 +36,10 @@ function Signup() {
     }
   }, [backendUrl])
 
-  const handleChange = (e) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [event.target.name]: event.target.value,
     })
   }
 
@@ -51,8 +55,8 @@ function Signup() {
     return true
   }
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
 
     if (!validateForm()) {
       setIsFetching(false)
@@ -68,8 +72,9 @@ function Signup() {
     handleApiRequest({
       apiEndPoint: '/api/auth/signup',
       method: 'POST',
+      credentials: false,
       setIsFetching,
-      onSuccess: (data) => {
+      onSuccess: (data: SignUpSuccessData) => {
         setErrorMessage('')
         setSuccessMessage(data.message)
       },

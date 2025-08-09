@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import Card from './Card'
 import skills from '../../data/home/skills'
 
+interface SkillSectionProps {
+  selected: boolean
+}
+
 const SkillsShowWrapper = styled.section``
 
 const StyledTitle = styled.h2`
@@ -14,7 +18,7 @@ const SkillsSetList = styled.div`
   text-align: center;
 `
 
-const SkillSection = styled.div`
+const SkillSection = styled.div<SkillSectionProps>`
   border: 1px solid #ccc;
   padding: 16px;
   margin: 8px;
@@ -51,7 +55,7 @@ function SkillsShow() {
     Object.keys(skills)[0],
   )
 
-  const handleSkillClick = (skill) => {
+  const handleSkillClick = (skill: keyof typeof skills) => {
     setSelectedSkillsSet(skill)
   }
 

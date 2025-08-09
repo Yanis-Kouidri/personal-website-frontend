@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import { TextCursorInput } from 'lucide-react'
 import { IconActionButton } from '../../utils/style/CommonStyles'
-import PropTypes from 'prop-types'
+
+import type { ItemDocsButton } from './RecursiveList'
 
 function RenameButton({
   itemPath = '',
   setErrorMessage,
   setSuccessMessage,
   refreshDocs,
-}) {
+}: ItemDocsButton) {
   const [isRenaming, setIsRenaming] = useState(false)
 
   const handleButtonClick = () => {
@@ -43,13 +44,6 @@ function RenameButton({
       {isRenaming ? '...' : <TextCursorInput size={20} />}
     </IconActionButton>
   )
-}
-
-RenameButton.propTypes = {
-  itemPath: PropTypes.string,
-  setErrorMessage: PropTypes.func.isRequired,
-  setSuccessMessage: PropTypes.func.isRequired,
-  refreshDocs: PropTypes.func,
 }
 
 export default RenameButton

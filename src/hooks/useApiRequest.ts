@@ -1,16 +1,36 @@
 import axios from 'axios'
 import config from '../utils/config'
 
-export function handleApiRequest({
+type HttpMethod =
+  | 'GET'
+  | 'POST'
+  | 'PUT'
+  | 'DELETE'
+  | 'PATCH'
+  | 'OPTIONS'
+  | 'HEAD'
+
+type HandleApiRequestProps<TypeData = unknown, TypeResponse = unknown> = {
+  apiEndPoint: string,
+  method: HttpMethod,
+  data?: TypeData,
+  headers?: object,
+  credentials: boolean,
+  onSuccess?: (response: TypeResponse) => void,
+  onError?: (errorMessage: string) => void,
+  setIsFetching?: (isFetching: boolean) => unknown
+}
+
+export function handleApiRequest<TypeData, TypeResponse>({
   apiEndPoint,
-  method = 'POST',
-  data = {},
+  method,
+  data = {} as TypeData,
   headers = {},
-  credentials = false,
+  credentials,
   onSuccess = () => {},
   onError = () => {},
   setIsFetching = () => {},
-}) {
+}: HandleApiRequestProps<TypeData, TypeResponse>) {
   const allowedMethods = [
     'GET',
     'POST',

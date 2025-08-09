@@ -8,6 +8,8 @@ import {
 import RecursiveList from './RecursiveList'
 import styled from 'styled-components'
 
+import type { FolderContent } from './RecursiveList'
+
 const ListContainer = styled.ul`
   padding: 4px 8px 8px 16px;
   margin-bottom: 40px;
@@ -16,7 +18,7 @@ const ListContainer = styled.ul`
 `
 
 function DocsList() {
-  const [listOfDocs, setListOfDocs] = useState([])
+  const [listOfDocs, setListOfDocs] = useState<FolderContent>([])
   const [errorMessage, setErrorMessage] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
   const [isFetching, setIsFetching] = useState(false)
@@ -25,8 +27,9 @@ function DocsList() {
     handleApiRequest({
       apiEndPoint: '/api/docs',
       method: 'GET',
+      credentials: false,
       setIsFetching,
-      onSuccess: (data) => {
+      onSuccess: (data: FolderContent) => {
         setErrorMessage('')
         setListOfDocs(data)
       },
@@ -42,7 +45,7 @@ function DocsList() {
   }, [])
 
   useEffect(() => {
-    let timeout
+    let timeout: ReturnType<typeof setTimeout>
     if (errorMessage || successMessage) {
       timeout = setTimeout(() => {
         setErrorMessage('')

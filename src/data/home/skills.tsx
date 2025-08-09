@@ -32,7 +32,13 @@ import frameRelay from '../../assets/skills/networking/framerelay.png'
 import fibreOptic from '../../assets/skills/networking/optical_fiber.png'
 import tcp from '../../assets/skills/networking/tcp.png'
 
-const skills = {
+interface Skill {
+  name: string
+  logo: string
+  link: string
+}
+
+const skills: Record<string, Array<Skill>> = {
   Programmation: [
     {
       link: 'https://en.wikipedia.org/wiki/C_(programming_language)',

@@ -9,7 +9,7 @@ import About from './pages/about'
 import Login from './pages/login'
 import Signup from './pages/signup'
 import PublicPgpKey from './components/pgp/PublicPgpKey'
-import Error from './components/error/Error'
+import ErrorPage from './components/error/Error'
 import GlobalStyle from './utils/style/GlobalStyle'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
@@ -27,7 +27,11 @@ const Content = styled.div`
 
 const basename = import.meta.env.VITE_BASENAME || ''
 
-const root = ReactDOM.createRoot(document.getElementById('root'))
+const container = document.getElementById('root')
+if (!container) {
+  throw new Error('Root element not found')
+}
+const root = ReactDOM.createRoot(container)
 root.render(
   <React.StrictMode>
     <UserProvider>
@@ -44,7 +48,7 @@ root.render(
               <Route path="/pgp" element={<PublicPgpKey />} />
               <Route path="/login" element={<Login />} />
               <Route path="/sign-up" element={<Signup />} />
-              <Route path="*" element={<Error />} />
+              <Route path="*" element={<ErrorPage />} />
             </Routes>
           </Content>
           <Footer />

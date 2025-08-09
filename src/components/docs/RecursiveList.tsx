@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, type Dispatch, type SetStateAction } from 'react'
 import config from '../../utils/config'
 import AddFileButton from './AddFileButton'
 import AddFolderButton from './AddFolderButton'
@@ -8,7 +8,6 @@ import RenameButton from './RenameButton'
 import { useUser } from '../../context/contexts'
 import styled from 'styled-components'
 import { FolderClosed, FolderOpen, File } from 'lucide-react'
-import PropTypes from 'prop-types'
 
 const List = styled.ul`
   list-style: none;
@@ -22,7 +21,7 @@ const ListItem = styled.li`
   padding: 0;
 `
 
-const IndentedContainer = styled.div`
+const IndentedContainer = styled.div<IndentedContainerProps>`
   padding-left: ${({ $depth }) => $depth * 24}px;
   display: flex;
   align-items: center;
@@ -73,7 +72,44 @@ const StyledFile = styled(File)`
   margin-right: 8px;
 `
 
-const emptyArray = []
+interface DocsButton {
+  setErrorMessage: (msg: string) => void
+  setSuccessMessage: (msg: string) => void
+  refreshDocs?: () => void
+}
+
+export interface FileDocsButton extends DocsButton {
+  filePath: string
+}
+
+export interface FolderDocsButton extends DocsButton {
+  folderPath: string
+}
+
+export interface ItemDocsButton extends DocsButton {
+  itemPath: string
+}
+
+export type FolderContent = Array<{
+  type: string
+  name: string
+  path: string
+  contents?: FolderContent
+}>
+
+type RecursiveListProps = {
+  folderContent?: FolderContent
+  setErrorMessage: Dispatch<SetStateAction<string>>
+  setSuccessMessage: Dispatch<SetStateAction<string>>
+  depth?: number
+  refreshDocs: () => void
+}
+
+interface IndentedContainerProps {
+  $depth: number
+}
+
+const emptyArray: FolderContent = []
 
 function RecursiveList({
   folderContent = emptyArray,
@@ -81,11 +117,13 @@ function RecursiveList({
   setSuccessMessage,
   depth = 0,
   refreshDocs,
-}) {
+}: RecursiveListProps) {
   const { user } = useUser()
-  const [expandedFolders, setExpandedFolders] = useState({ '': true }) // To automatically unfold the first one
+  const [expandedFolders, setExpandedFolders] = useState<
+    Record<string, boolean>
+  >({ '': true }) // To automatically unfold the first one
 
-  const toggleCollapse = (path) => {
+  const toggleCollapse = (path: string) => {
     setExpandedFolders((prev) => ({
       ...prev,
       [path]: !prev[path], // Toggle true/false
@@ -192,14 +230,6 @@ function RecursiveList({
       })}
     </List>
   )
-}
-
-RecursiveList.propTypes = {
-  folderContent: PropTypes.array,
-  setErrorMessage: PropTypes.func.isRequired,
-  setSuccessMessage: PropTypes.func.isRequired,
-  depth: PropTypes.number,
-  refreshDocs: PropTypes.func,
 }
 
 export default RecursiveList

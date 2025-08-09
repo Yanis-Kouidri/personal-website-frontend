@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 
@@ -17,7 +16,7 @@ const LogoContainer = styled.div`
   align-items: center;
 `
 
-const LogoStyled = styled.img`
+const LogoStyled = styled.img<LogoStyledProps>`
   max-height: ${(props) => props.size}px;
   max-width: ${(props) => props.size}px;
   transition: transform 0.5s ease;
@@ -42,7 +41,19 @@ const ExternalLinkStyled = styled.a`
   color: inherit;
 `
 
-function Card({ name, logo, link, size, isExternal = false }) {
+interface LogoStyledProps {
+  size: number
+}
+
+interface CardProps {
+  name: string
+  logo: string
+  link: string
+  size: number
+  isExternal?: boolean
+}
+
+function Card({ name, logo, link, size, isExternal = false }: CardProps) {
   return isExternal ? (
     <ExternalLinkStyled href={link} target="_blank" rel="noopener noreferrer">
       <SkillCardStyled>
@@ -62,14 +73,6 @@ function Card({ name, logo, link, size, isExternal = false }) {
       </SkillCardStyled>
     </LinkStyled>
   )
-}
-
-Card.propTypes = {
-  name: PropTypes.string.isRequired,
-  logo: PropTypes.string.isRequired,
-  link: PropTypes.string.isRequired,
-  size: PropTypes.number.isRequired,
-  isExternal: PropTypes.bool,
 }
 
 export default Card

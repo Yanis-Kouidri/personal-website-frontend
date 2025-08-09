@@ -9,9 +9,14 @@ import {
   StyledErrorMessage,
   Loader,
 } from '../../utils/style/CommonStyles'
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useUser } from '../../context/contexts'
 import { handleApiRequest } from '../../hooks/useApiRequest'
+
+type SuccessLoginData = {
+  message: string
+  username: string
+}
 
 function Login() {
   const [username, setUsername] = useState('')
@@ -35,8 +40,8 @@ function Login() {
     }
     return true
   }
-  const handleSubmit = (e) => {
-    e.preventDefault()
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
     setErrorMessage('')
     setSuccessMessage('')
 
@@ -55,7 +60,7 @@ function Login() {
       method: 'POST',
       credentials: true,
       setIsFetching,
-      onSuccess: (data) => {
+      onSuccess: (data: SuccessLoginData) => {
         setErrorMessage('')
         setSuccessMessage(data.message)
         setUser(data.username)

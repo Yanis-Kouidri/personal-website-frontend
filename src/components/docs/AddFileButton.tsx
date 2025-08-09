@@ -1,20 +1,21 @@
-import { useRef, useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import { FilePlus } from 'lucide-react'
 import { IconActionButton } from '../../utils/style/CommonStyles'
-import PropTypes from 'prop-types'
+
+import type { FolderDocsButton } from './RecursiveList'
 
 function AddFileButton({
   folderPath = '',
   setErrorMessage,
   setSuccessMessage,
   refreshDocs,
-}) {
+}: FolderDocsButton) {
   const [isUploading, setIsUploading] = useState(false)
-  const fileInputRef = useRef(null)
+  const fileInputRef = useRef<HTMLInputElement | null>(null)
 
-  const handleFileChange = (event) => {
-    const file = event.target.files[0]
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
     if (!file) return
 
     const formData = new FormData()
@@ -38,9 +39,7 @@ function AddFileButton({
   }
 
   const handleButtonClick = () => {
-    if (fileInputRef.current) {
-      fileInputRef.current.click()
-    }
+    fileInputRef.current?.click()
   }
 
   return (
@@ -56,13 +55,6 @@ function AddFileButton({
       </IconActionButton>
     </span>
   )
-}
-
-AddFileButton.propTypes = {
-  folderPath: PropTypes.string,
-  setErrorMessage: PropTypes.func.isRequired,
-  setSuccessMessage: PropTypes.func.isRequired,
-  refreshDocs: PropTypes.func,
 }
 
 export default AddFileButton

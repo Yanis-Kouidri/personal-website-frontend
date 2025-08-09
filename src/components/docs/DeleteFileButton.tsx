@@ -2,14 +2,15 @@ import { useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import { Trash2 } from 'lucide-react'
 import { DeleteButton } from '../../utils/style/CommonStyles'
-import PropTypes from 'prop-types'
+
+import type { FileDocsButton } from './RecursiveList'
 
 function DeleteFileButton({
   filePath = '',
   setErrorMessage,
   setSuccessMessage,
   refreshDocs,
-}) {
+}: FileDocsButton) {
   const [isDeleting, setIsDeleting] = useState(false)
 
   const handleClick = () => {
@@ -38,13 +39,6 @@ function DeleteFileButton({
       {isDeleting ? '...' : <Trash2 size={16} />}
     </DeleteButton>
   )
-}
-
-DeleteFileButton.propTypes = {
-  filePath: PropTypes.string,
-  setErrorMessage: PropTypes.func.isRequired,
-  setSuccessMessage: PropTypes.func.isRequired,
-  refreshDocs: PropTypes.func,
 }
 
 export default DeleteFileButton

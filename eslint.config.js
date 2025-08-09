@@ -1,18 +1,15 @@
+import js from '@eslint/js'
 import globals from 'globals'
-import eslintJs from '@eslint/js'
+import tseslint from 'typescript-eslint'
 import eslintReact from '@eslint-react/eslint-plugin'
+
 import { defineConfig } from 'eslint/config'
 
 export default defineConfig([
   {
-    files: ['**/*.js', '**/*.jsx'],
-
-    // Extend recommended rule sets from:
-    // 1. ESLint JS's recommended rules
-    // 2. ESLint React's recommended rules
-    extends: [eslintJs.configs.recommended, eslintReact.configs.recommended],
-
-    // Configure language/parsing options
+    files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+    plugins: { js },
+    extends: [tseslint.configs.recommended, eslintReact.configs.recommended],
     languageOptions: {
       // Include browser global variables (window, document, etc.)
       globals: {
@@ -24,8 +21,5 @@ export default defineConfig([
         },
       },
     },
-
-    // Custom rule overrides (modify rule levels or disable rules)
-    rules: {},
   },
 ])
