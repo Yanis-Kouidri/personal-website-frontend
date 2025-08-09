@@ -13,7 +13,7 @@ function DeleteFolderButton({
 }: FolderDocsButton) {
   const [isDeleting, setIsDeleting] = useState(false)
 
-  const handleDelete = async () => {
+  const handleDelete = () => {
     if (
       !confirm(`Are you sure you want to delete the folder "${folderPath}"?`)
     ) {

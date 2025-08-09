@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import config from '../utils/config'
 
 type HttpMethod =
@@ -11,13 +11,13 @@ type HttpMethod =
   | 'HEAD'
 
 type HandleApiRequestProps<TypeData = unknown, TypeResponse = unknown> = {
-  apiEndPoint: string,
-  method: HttpMethod,
-  data?: TypeData,
-  headers?: object,
-  credentials: boolean,
-  onSuccess?: (response: TypeResponse) => void,
-  onError?: (errorMessage: string) => void,
+  apiEndPoint: string
+  method: HttpMethod
+  data?: TypeData
+  headers?: object
+  credentials: boolean
+  onSuccess?: (response: TypeResponse) => void
+  onError?: (errorMessage: string) => void
   setIsFetching?: (isFetching: boolean) => unknown
 }
 
@@ -50,7 +50,7 @@ export function handleApiRequest<TypeData, TypeResponse>({
   const url = config.backendUrl + apiEndPoint
 
   setIsFetching(true)
-  axios({
+  axios<TypeResponse>({
     url,
     method,
     data,
@@ -62,13 +62,15 @@ export function handleApiRequest<TypeData, TypeResponse>({
       onSuccess(response.data)
     })
     .catch((error) => {
-      let errorMsg = 'Error'
-      if (error.response?.data?.message) {
-        errorMsg = error.response.data.message
-      } else if (error.message) {
-        errorMsg = error.message
+      const axiosError = error as AxiosError<{ message?: string }>
+      let errorMsg: string = 'Error'
+      if (axiosError.response?.data?.message) {
+        errorMsg = axiosError.response.data.message
+      } else if (axiosError.message) {
+        errorMsg = axiosError.message
       }
-      onError?.(errorMsg)
+
+      onError(errorMsg)
     })
     .finally(() => {
       setIsFetching(false)

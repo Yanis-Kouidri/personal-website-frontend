@@ -25,7 +25,7 @@ const Content = styled.div`
   flex: 1;
 `
 
-const basename = import.meta.env.VITE_BASENAME || ''
+const basename: string = import.meta.env.VITE_BASENAME || ''
 
 const container = document.getElementById('root')
 if (!container) {

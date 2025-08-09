@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   BasicH2Title,
   BasicWrapper,
@@ -8,7 +8,6 @@ import {
   StyledErrorMessage,
   StyledSuccessMessage,
 } from '../../utils/style/CommonStyles'
-import config from '../../utils/config'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 
 type SignUpSuccessData = {
@@ -25,16 +24,6 @@ function Signup() {
   const [successMessage, setSuccessMessage] = useState('')
 
   const [isFetching, setIsFetching] = useState(false)
-
-  const backendUrl = config.backendUrl
-
-  useEffect(() => {
-    if (!backendUrl) {
-      console.error(
-        'REACT_APP_BACKEND_URL env variable is empty: connection impossible',
-      )
-    }
-  }, [backendUrl])
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
@@ -55,7 +44,7 @@ function Signup() {
     return true
   }
 
-  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
     if (!validateForm()) {
