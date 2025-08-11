@@ -6,18 +6,18 @@ WORKDIR /app
 
 # Copy package.json and yarn.lock (if exists)
 COPY package.json ./
-COPY yarn.lock ./
+COPY package-lock.json ./
 
 RUN corepack enable
 
 # Install dependencies using Yarn
-RUN yarn install --immutable
+RUN npm ci
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the app for production
-RUN yarn build
+RUN npm run build
 
 # Stage 2: Serve the app with Nginx
 FROM nginx:alpine
