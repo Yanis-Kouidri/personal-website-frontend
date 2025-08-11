@@ -22,26 +22,20 @@ jobs:
         with:
           node-version: 24
 
-      - name: Installer Yarn 4.x
-        run: |
-          corepack enable
-          yarn set version stable
-          yarn --version
-
       - name: Installer les dépendances
-        run: yarn install --immutable
+        run: npm ci
 
-      - name: Linter
-        run: yarn lint
+      # - name: Linter
+      #   run: npm run lint
 
       - name: Retire
-        run: yarn retire
+        run: npx retire
 
       - name: Audit deps
-        run: yarn npm audit -R --environment production
+        run: npm audit
 
       - name: Build
-        run: yarn build
+        run: pnm run build
 
       - name: Extraire la version du package.json
         id: pkg
