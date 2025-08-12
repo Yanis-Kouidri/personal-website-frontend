@@ -64,7 +64,7 @@ function Login() {
         setErrorMessage('')
         setSuccessMessage(data.message)
         setUser(data.username)
-        navigate('/')
+        void navigate('/')
       },
       onError: (errMsg) => {
         setSuccessMessage('')
