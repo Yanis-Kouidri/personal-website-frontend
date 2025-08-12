@@ -1,39 +1,28 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import config from '../utils/config.js'
 import { UserContext } from './contexts.js'
 import type { User } from './contexts'
+import { handleApiRequest } from '../hooks/useApiRequest.js'
 
 type UserProviderProps = {
   children: React.ReactNode
 }
 
 export const UserProvider = ({ children }: UserProviderProps) => {
-  const [user, setUser] = useState<User>(null)
-  const backendUrl = config.backendUrl
+  const [user, setUser] = useState<User | null>(null)
 
-  //TO DO use generic hook
   useEffect(() => {
-    fetch(backendUrl + '/api/auth/me', {
-      credentials: 'include',
+    handleApiRequest({
+      apiEndPoint: '/api/auth/me',
+      method: 'GET',
+      credentials: true,
+      onSuccess: (data: { message: User }) => {
+        setUser(data.message)
+      },
+      onError: () => {
+        setUser(null)
+      },
     })
-      .then((response) => {
-        if (!response.ok) {
-          setUser('')
-        } else {
-          response
-            .json()
-            .then((data) => {
-              setUser(data.user)
-            })
-            .catch((error) => {
-              console.error(error)
-            })
-        }
-      })
-      .catch((error) => {
-        console.error(error)
-      })
-  }, [backendUrl, user])
+  }, [])
 
   const value = useMemo(() => ({ user, setUser }), [user])
 
