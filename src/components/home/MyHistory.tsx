@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-import route from '../../assets/decorations/route.png'
-import stairs from '../../assets/decorations/stairs.png'
+import route from '../../assets/decorations/route.webp'
+import stairs from '../../assets/decorations/stairs.webp'
 
 const MyHistoryWrapper = styled.section`
   min-height: 300px;

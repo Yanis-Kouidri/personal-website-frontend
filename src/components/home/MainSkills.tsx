@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
-import dots from '../../assets/decorations/dots.png'
-import stars from '../../assets/decorations/stars.png'
-import waves from '../../assets/decorations/waves.png'
+import dots from '../../assets/decorations/dots.webp'
+import stars from '../../assets/decorations/stars.webp'
+import waves from '../../assets/decorations/waves.webp'
 
 const MainSkillsWrapper = styled.section`
   display: flex;
