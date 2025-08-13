@@ -37,7 +37,11 @@ function Banner() {
         <p>{shortDescription}</p>
         <p>{location}</p>
       </StyledTextPart>
-      <PresentationPicutre src={yanis} alt="Yanis Kouidri" />
+      <PresentationPicutre
+        src={yanis}
+        alt="Yanis Kouidri"
+        fetchPriority="high"
+      />
     </BannerWrapper>
   )
 }
