@@ -27,8 +27,9 @@ const StyledTitle = styled.h1`
 const StyledTextPart = styled.div``
 
 function Banner() {
-  const shortDescription = "Ingénieur en informatique et réseaux à l'ENSEEIHT."
-  const location = '🌆 Toulouse, France.'
+  const shortDescription: string =
+    "Ingénieur en informatique et réseaux à l'ENSEEIHT."
+  const location: string = '🌆 Toulouse, France.'
 
   return (
     <BannerWrapper>
