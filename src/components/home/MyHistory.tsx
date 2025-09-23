@@ -12,7 +12,7 @@ const MyHistoryWrapper = styled.section`
 `
 
 const StyledTitle = styled.h2`
-  color: ${colors.fith};
+  color: ${colors.fifth};
   font-size: 42px;
 `
 
