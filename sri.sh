@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# This script aim to calcul SRI (SubRessource Integrity) just before nginx start to unsure correct integrity checksum
-# It cannot be done by Vite during build because some varaible are injected at the last moment thanks to file env.sh
+# This script aims to calculate SRI (SubResource Integrity) just before nginx starts to ensure correct integrity checksum
+# It cannot be done by Vite during build because some variables are injected at the last moment thanks to file env.sh
 
 set -e
 

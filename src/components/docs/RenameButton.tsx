@@ -14,12 +14,12 @@ function RenameButton({
   const [isRenaming, setIsRenaming] = useState(false)
 
   const handleButtonClick = () => {
-    const newName = prompt('Fill new item name: ')
+    let newName = prompt('Fill new item name: ')
     if (!newName) {
       setErrorMessage('You must fill a name')
       return
     } else {
-      newName.trim()
+      newName = newName.trim()
     }
 
     handleApiRequest({

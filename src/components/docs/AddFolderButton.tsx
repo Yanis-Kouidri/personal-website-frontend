@@ -14,13 +14,13 @@ function AddFolderButton({
   const [isCreating, setIsCreating] = useState(false)
 
   const handleClick = () => {
-    const folderName = prompt('Entrez le nom du nouveau dossier :')
+    let folderName = prompt('Entrez le nom du nouveau dossier :')
 
     if (!folderName || !folderName.trim()) {
       return
     }
 
-    folderName.trim()
+    folderName = folderName.trim()
 
     handleApiRequest({
       apiEndPoint: `/api/docs/newFolder`,

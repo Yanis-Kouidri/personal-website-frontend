@@ -145,57 +145,57 @@ const skills: Record<string, Array<Skill>> = {
   ],
   Réseau: [
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/Network_switch',
       logo: switching,
       name: 'Switch',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/Router_(computing)',
       logo: router,
       name: 'Router',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/Border_Gateway_Protocol',
       logo: bgp,
       name: 'BGP',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/Open_Shortest_Path_First',
       logo: ospf,
       name: 'OSPF',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://www.wireshark.org/',
       logo: wireshark,
       name: 'Wireshark',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://www.wireguard.com/',
       logo: wireguard,
       name: 'WireGuard',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/X.25',
       logo: x25,
       name: 'X.25',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/Asynchronous_Transfer_Mode',
       logo: atm,
       name: 'ATM',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/Frame_Relay',
       logo: frameRelay,
       name: 'Frame Relay',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/Optical_fiber',
       logo: fibreOptic,
       name: 'Fibre optique',
     },
     {
-      link: 'https://www.docker.com/',
+      link: 'https://en.wikipedia.org/wiki/Transmission_Control_Protocol',
       logo: tcp,
       name: 'TCP',
     },

@@ -79,7 +79,7 @@ function Header() {
       },
       onSuccess: (successMessage) => {
         console.log('Logout success:', successMessage)
-        setUser('') // Déconnecte l'utilisateur
+        setUser(null) // Logout the user
       },
     })
   }
