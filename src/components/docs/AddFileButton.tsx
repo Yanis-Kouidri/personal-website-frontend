@@ -10,7 +10,7 @@ function AddFileButton({
   setErrorMessage,
   setSuccessMessage,
   refreshDocs,
-}: FolderDocsButton) {
+}: Readonly<FolderDocsButton>) {
   const [isUploading, setIsUploading] = useState(false)
   const fileInputRef = useRef<HTMLInputElement | null>(null)
 

@@ -64,6 +64,7 @@ function Login() {
         setErrorMessage('')
         setSuccessMessage(data.message)
         setUser(data.username)
+        // NOSONAR
         void navigate('/')
       },
       onError: (errMsg) => {

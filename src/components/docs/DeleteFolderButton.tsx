@@ -10,7 +10,7 @@ function DeleteFolderButton({
   setErrorMessage,
   setSuccessMessage,
   refreshDocs,
-}: FolderDocsButton) {
+}: Readonly<FolderDocsButton>) {
   const [isDeleting, setIsDeleting] = useState(false)
 
   const handleDelete = () => {

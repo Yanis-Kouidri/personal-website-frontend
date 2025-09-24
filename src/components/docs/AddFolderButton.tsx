@@ -10,13 +10,13 @@ function AddFolderButton({
   setErrorMessage,
   setSuccessMessage,
   refreshDocs,
-}: FolderDocsButton) {
+}: Readonly<FolderDocsButton>) {
   const [isCreating, setIsCreating] = useState(false)
 
   const handleClick = () => {
     let folderName = prompt('Entrez le nom du nouveau dossier :')
 
-    if (!folderName || !folderName.trim()) {
+    if (!folderName?.trim()) {
       return
     }
 

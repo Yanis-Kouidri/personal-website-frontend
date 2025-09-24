@@ -117,7 +117,7 @@ function RecursiveList({
   setSuccessMessage,
   depth = 0,
   refreshDocs,
-}: RecursiveListProps) {
+}: Readonly<RecursiveListProps>) {
   const { user } = useUser()
   const [expandedFolders, setExpandedFolders] = useState<
     Record<string, boolean>
