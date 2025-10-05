@@ -10,16 +10,16 @@ function RenameButton({
   setErrorMessage,
   setSuccessMessage,
   refreshDocs,
-}: ItemDocsButton) {
+}: Readonly<ItemDocsButton>) {
   const [isRenaming, setIsRenaming] = useState(false)
 
   const handleButtonClick = () => {
     let newName = prompt('Fill new item name: ')
-    if (!newName) {
+    if (newName) {
+      newName = newName.trim()
+    } else {
       setErrorMessage('You must fill a name')
       return
-    } else {
-      newName = newName.trim()
     }
 
     handleApiRequest({

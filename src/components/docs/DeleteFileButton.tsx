@@ -10,11 +10,11 @@ function DeleteFileButton({
   setErrorMessage,
   setSuccessMessage,
   refreshDocs,
-}: FileDocsButton) {
+}: Readonly<FileDocsButton>) {
   const [isDeleting, setIsDeleting] = useState(false)
 
   const handleClick = () => {
-    const confirmed = window.confirm(
+    const confirmed = globalThis.confirm(
       'Are you sure you want to delete this file?\n' + filePath,
     )
     if (!confirmed) return
