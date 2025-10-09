@@ -18,16 +18,16 @@ FROM nginxinc/nginx-unprivileged:1.29.1-alpine3.22-slim
 USER root
 
 
-COPY --from=builder --chown=nginx:nginx /app/dist /usr/share/nginx/html
-COPY --chown=nginx:nginx nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=builder /app/dist /usr/share/nginx/html
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 
 # Copy the runtime injection script into the container
-COPY --chown=nginx:nginx env.sh /docker-entrypoint.d/10-env.sh
-COPY --chown=nginx:nginx sri.sh /docker-entrypoint.d/20-sri.sh
+COPY env.sh /docker-entrypoint.d/10-env.sh
+COPY sri.sh /docker-entrypoint.d/20-sri.sh
 
 RUN apk add --no-cache openssl && \
   chmod +x /docker-entrypoint.d/10-env.sh /docker-entrypoint.d/20-sri.sh && \
-  chown -R nginx:nginx /usr/share/nginx/html
+  chown -R nginx:nginx /usr/share/nginx/html /etc/nginx/conf.d/default.conf /docker-entrypoint.d
 
 EXPOSE 8080
 
