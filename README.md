@@ -18,14 +18,14 @@ Configure your environment variables in .env.
 
 Install dependencies:
 
-    yarn
-
-(Optional) Set up SDKs for VSCode:
-
-    yarn dlx @yarnpkg/sdks vscode
+    npm install
 
 Start the development server:
 
-    yarn dev
+    npm run dev
+
+Check deps upgrade:
+
+    npx npm-check-updates
 
 ## 📦 Production
