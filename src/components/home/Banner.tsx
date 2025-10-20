@@ -26,15 +26,21 @@ const StyledTitle = styled.h1`
 
 const StyledTextPart = styled.div``
 
-function Banner() {
-  const shortDescription: string =
-    "Ingénieur en informatique et réseaux à l'ENSEEIHT."
-  const location: string = '🌆 Toulouse, France.'
+interface BannerProps {
+  title: string
+  shortDescription: string
+  location: string
+}
+
+function Banner({ title, shortDescription, location }: BannerProps) {
+  //const shortDescription: string =
+  //  "Ingénieur en informatique et réseaux à l'ENSEEIHT."
+  //const location: string = '🌆 Toulouse, France.'
 
   return (
     <BannerWrapper>
       <StyledTextPart>
-        <StyledTitle>Yanis Kouidri</StyledTitle>
+        <StyledTitle>{title}</StyledTitle>
         <p>{shortDescription}</p>
         <p>{location}</p>
       </StyledTextPart>
