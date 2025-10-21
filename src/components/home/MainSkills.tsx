@@ -1,50 +1,18 @@
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
+import {
+  MainSkillsWrapper,
+  ITDiv,
+  NetworkDiv,
+  NetworkTextPart,
+  DivTitle,
+  StyledDecoration,
+  StyledDotsIT,
+  StyledDotsNetwork,
+  StyledStarsIT,
+} from './MainSkills.style'
 import dots from '../../assets/decorations/dots.webp'
 import stars from '../../assets/decorations/stars.webp'
 import waves from '../../assets/decorations/waves.webp'
 import type { MainSkillsProps } from '../../pages/home'
-
-const MainSkillsWrapper = styled.section`
-  display: flex;
-  text-align: justify;
-`
-
-const ITDiv = styled.div`
-  padding: 50px 100px 50px 150px;
-`
-
-const NetworkDiv = styled.div`
-  padding: 80px 150px 100px 50px;
-`
-
-const NetworkTextPart = styled.div`
-  padding-top: 150px;
-`
-
-const DivTitle = styled.h2`
-  font-size: 42px;
-  color: ${colors.fourth};
-`
-
-const StyledDecoration = styled.img`
-  height: 60px;
-`
-
-const StyledDotsIT = styled(StyledDecoration)`
-  padding-top: 20%;
-  padding-left: 30px;
-`
-
-const StyledDotsNetwork = styled(StyledDecoration)`
-  padding-right: 50px;
-  float: right;
-`
-
-const StyledStarsIT = styled(StyledDecoration)`
-  float: right;
-  padding-top: 150px;
-`
 
 function MainSkills({
   itTitle,

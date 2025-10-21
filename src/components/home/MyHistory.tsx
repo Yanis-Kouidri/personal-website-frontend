@@ -1,36 +1,12 @@
-import styled from 'styled-components'
-import colors from '../../utils/style/colors'
 import route from '../../assets/decorations/route.webp'
 import stairs from '../../assets/decorations/stairs.webp'
-
-const MyHistoryWrapper = styled.section`
-  min-height: 300px;
-  background-color: ${colors.fourth};
-  padding: 150px 150px 50px 150px;
-  display: flex;
-  justify-content: space-between;
-`
-
-const StyledTitle = styled.h2`
-  color: ${colors.fifth};
-  font-size: 42px;
-`
-
-const StyledParagraph = styled.p`
-  color: white;
-  max-width: 900px;
-`
-
-const StyledStairs = styled.img`
-  height: 80px;
-  padding: 70px 0px 0px 0px;
-  margin: 0px;
-`
-
-const StyledRoute = styled.img`
-  padding: 0px 50px 0px 50px;
-  max-height: 500px;
-`
+import {
+  MyHistoryWrapper,
+  StyledTitle,
+  StyledParagraph,
+  StyledStairs,
+  StyledRoute,
+} from './MyHistory.style'
 
 function MyHistory() {
   const title = 'Mon parcours'
