@@ -7,26 +7,38 @@ import config from '../../utils/config'
 import { useState, useEffect } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 
+interface ApiResponse {
+  data: HomeData
+}
+
+interface HomeData {
+  banner: Banner
+}
+
+interface Banner {
+  title: string
+  shortDescription: string
+  location: string
+}
+
 function Home() {
-  const [isFetching, setIsFetching] = useState(false)
-  const [error, setError] = useState(null)
-  const [homeData, setHomeData] = useState(null)
+  const [isFetching, setIsFetching] = useState<boolean>(false)
+  const [error, setError] = useState<string | null>(null)
+  const [homeData, setHomeData] = useState<HomeData | null>(null)
 
   useEffect(() => {
-    // Fetch restaurant description directly using handleApiRequest
     handleApiRequest({
       baseUrl: config.strapiUrl,
       apiEndPoint: '/api/home-page-content?populate=*',
       method: 'GET',
       credentials: false,
       setIsFetching,
-      onSuccess: (response) => {
+      onSuccess: (response: ApiResponse) => {
         //console.log(response.data)
-        // Extract text from the description field
-        const fetchedHomeData = response.data
+        const fetchedHomeData: HomeData = response.data
         setHomeData(fetchedHomeData)
       },
-      onError: (errorMessage) => {
+      onError: (errorMessage: string) => {
         setError(errorMessage)
       },
     })
