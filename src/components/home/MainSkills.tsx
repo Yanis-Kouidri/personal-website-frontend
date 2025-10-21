@@ -3,6 +3,7 @@ import colors from '../../utils/style/colors'
 import dots from '../../assets/decorations/dots.webp'
 import stars from '../../assets/decorations/stars.webp'
 import waves from '../../assets/decorations/waves.webp'
+import type { MainSkillsProps } from '../../pages/home'
 
 const MainSkillsWrapper = styled.section`
   display: flex;
@@ -45,21 +46,26 @@ const StyledStarsIT = styled(StyledDecoration)`
   padding-top: 150px;
 `
 
-function MainSkills() {
-  const itTitle = 'Informatique'
+function MainSkills({
+  itTitle,
+  itDescription,
+  networkTitle,
+  networkDescription,
+}: MainSkillsProps) {
+  /*const itTitle = 'Informatique'
   const itTextPart =
     'Programmation, administration système, sécurité informatique, développement web, développement mobile, développement logiciel, cryptographie, mes compétences en informatique sont variées et me permettent de concevoir et créer des projets de A à Z dans ces nombreux domaines.'
 
   const networkTitle = 'Réseau'
   const networkTextPart =
     'Réseaux locaux (LAN), réseaux étendus (WAN), réseaux sans fil, réseaux mobiles, protocoles de routage, protocoles de transport (TCP), protocoles de niveau application (HTTP, DNS, SMTP), toutes ces compétences me permettent de comprendre comment un si grand ensemble de machines, différentes et communiquant de manière différente, peuvent communiquer entre elles à travers Internet.'
-
+  */
   return (
     <MainSkillsWrapper>
       <ITDiv>
         <DivTitle>{itTitle}</DivTitle>
         <div>
-          <p>{itTextPart}</p>
+          <p>{itDescription}</p>
         </div>
         <StyledDotsIT src={dots} alt="" />
         <StyledStarsIT src={stars} alt="" />
@@ -70,7 +76,7 @@ function MainSkills() {
         <NetworkTextPart>
           <DivTitle>{networkTitle}</DivTitle>
           <div>
-            <p>{networkTextPart}</p>
+            <p>{networkDescription}</p>
           </div>
         </NetworkTextPart>
       </NetworkDiv>

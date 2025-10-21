@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import colors from '../../utils/style/colors'
 import yanis from '../../assets/pictures/photo_accueil_yanis.webp'
+import type { BannerProps } from '../../pages/home'
 
 const BannerWrapper = styled.section`
   display: flex;
@@ -25,12 +26,6 @@ const StyledTitle = styled.h1`
 `
 
 const StyledTextPart = styled.div``
-
-interface BannerProps {
-  title: string
-  shortDescription: string
-  location: string
-}
 
 function Banner({ title, shortDescription, location }: BannerProps) {
   //const shortDescription: string =

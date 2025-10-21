@@ -1,4 +1,4 @@
-import Banner from '../../components/home/Banner'
+import BannerProps from '../../components/home/Banner'
 import MainSkills from '../../components/home/MainSkills'
 import MyHistory from '../../components/home/MyHistory'
 import SkillsShow from '../../components/home/SkillsShow'
@@ -12,13 +12,21 @@ interface ApiResponse {
 }
 
 interface HomeData {
-  banner: Banner
+  banner: BannerProps
+  mainSkills: MainSkillsProps
 }
 
-interface Banner {
+export interface BannerProps {
   title: string
   shortDescription: string
   location: string
+}
+
+export interface MainSkillsProps {
+  itTitle: string
+  itDescription: string
+  networkTitle: string
+  networkDescription: string
 }
 
 function Home() {
@@ -58,12 +66,17 @@ function Home() {
 
   return (
     <>
-      <Banner
+      <BannerProps
         title={homeData.banner.title}
         shortDescription={homeData.banner.shortDescription}
         location={homeData.banner.location}
       />
-      <MainSkills />
+      <MainSkills
+        itTitle={homeData.mainSkills.itTitle}
+        itDescription={homeData.mainSkills.itDescription}
+        networkTitle={homeData.mainSkills.networkTitle}
+        networkDescription={homeData.mainSkills.networkDescription}
+      />
       <MyHistory />
       <SkillsShow />
       <Contacts />
