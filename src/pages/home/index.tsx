@@ -6,6 +6,7 @@ import Contacts from '../../components/home/Contacts'
 import config from '../../utils/config'
 import { useState, useEffect } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
+import * as qs from 'qs'
 
 interface ApiResponse {
   data: HomeData
@@ -14,6 +15,7 @@ interface ApiResponse {
 interface HomeData {
   banner: BannerProps
   mainSkills: MainSkillsProps
+  myHistory: MyHistoryProps
 }
 
 export interface BannerProps {
@@ -29,15 +31,36 @@ export interface MainSkillsProps {
   networkDescription: string
 }
 
+export interface MyHistoryProps {
+  title: string
+  paragraphs: Paragraph[]
+}
+
+interface Paragraph {
+  id: number
+  content: string
+}
+
 function Home() {
   const [isFetching, setIsFetching] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const [homeData, setHomeData] = useState<HomeData | null>(null)
 
+  const populate: string[] = ['banner', 'mainSkills', 'myHistory.paragraphs']
+
+  const query = qs.stringify(
+    {
+      populate,
+    },
+    { encodeValuesOnly: true, addQueryPrefix: true },
+  )
+
+  const apiEndPoint: string = `/api/home-page-content${query}`
+
   useEffect(() => {
     handleApiRequest({
       baseUrl: config.strapiUrl,
-      apiEndPoint: '/api/home-page-content?populate=*',
+      apiEndPoint,
       method: 'GET',
       credentials: false,
       setIsFetching,
@@ -77,7 +100,10 @@ function Home() {
         networkTitle={homeData.mainSkills.networkTitle}
         networkDescription={homeData.mainSkills.networkDescription}
       />
-      <MyHistory />
+      <MyHistory
+        title={homeData.myHistory.title}
+        paragraphs={homeData.myHistory.paragraphs}
+      />
       <SkillsShow />
       <Contacts />
     </>
