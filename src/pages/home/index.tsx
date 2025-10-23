@@ -16,6 +16,7 @@ interface HomeData {
   banner: BannerProps
   mainSkills: MainSkillsProps
   myHistory: MyHistoryProps
+  contact: ContactProps
 }
 
 export interface BannerProps {
@@ -41,12 +42,21 @@ interface Paragraph {
   content: string
 }
 
+export interface ContactProps {
+  title: string
+}
+
 function Home() {
   const [isFetching, setIsFetching] = useState<boolean>(false)
   const [error, setError] = useState<string | null>(null)
   const [homeData, setHomeData] = useState<HomeData | null>(null)
 
-  const populate: string[] = ['banner', 'mainSkills', 'myHistory.paragraphs']
+  const populate: string[] = [
+    'banner',
+    'mainSkills',
+    'myHistory.paragraphs',
+    'contact',
+  ]
 
   const query = qs.stringify(
     {
@@ -105,7 +115,7 @@ function Home() {
         paragraphs={homeData.myHistory.paragraphs}
       />
       <SkillsShow />
-      <Contacts />
+      <Contacts title={homeData.contact.title} />
     </>
   )
 }

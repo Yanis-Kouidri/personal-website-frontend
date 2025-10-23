@@ -1,13 +1,14 @@
 import Card from './Card'
 import contacts from '../../data/home/contacts'
 import { ContactWrapper, Title, ContactListWrapper } from './Contacts.style'
+import type { ContactProps } from '../../pages/home'
 
-function Contacts() {
+function Contacts({ title }: ContactProps) {
   const contactCardSize = 50
 
   return (
     <ContactWrapper>
-      <Title>Contactez moi</Title>
+      <Title>{title}</Title>
       <ContactListWrapper>
         {contacts.map((contact) => (
           <Card
