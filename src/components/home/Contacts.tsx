@@ -1,28 +1,14 @@
-import styled from 'styled-components'
 import Card from './Card'
 import contacts from '../../data/home/contacts'
+import { ContactWrapper, Title, ContactListWrapper } from './Contacts.style'
+import type { ContactProps } from '../../pages/home'
 
-const ContactWrapper = styled.div`
-  background-color: #dadada;
-`
-
-const Title = styled.h2`
-  text-align: center;
-  font-size: 34px;
-  padding: 50px 0px 20px 0px;
-`
-
-const ContactListWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-`
-
-function Contacts() {
+function Contacts({ title }: ContactProps) {
   const contactCardSize = 50
 
   return (
     <ContactWrapper>
-      <Title>Contactez moi</Title>
+      <Title>{title}</Title>
       <ContactListWrapper>
         {contacts.map((contact) => (
           <Card

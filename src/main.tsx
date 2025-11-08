@@ -14,6 +14,7 @@ import GlobalStyle from './utils/style/GlobalStyle'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import styled from 'styled-components'
 import { UserProvider } from './context/UserProvider'
+import { FooterContentProvider } from './context/FooterContentProvider'
 
 const Container = styled.div`
   display: flex;
@@ -35,25 +36,27 @@ const root = ReactDOM.createRoot(container)
 root.render(
   <React.StrictMode>
     <UserProvider>
-      <Router basename={basename}>
-        <GlobalStyle />
-        <Container>
-          <Content>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/docs" element={<Docs />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/pgp" element={<PublicPgpKey />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/sign-up" element={<Signup />} />
-              <Route path="*" element={<ErrorPage />} />
-            </Routes>
-          </Content>
-          <Footer />
-        </Container>
-      </Router>
+      <FooterContentProvider>
+        <Router basename={basename}>
+          <GlobalStyle />
+          <Container>
+            <Content>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/docs" element={<Docs />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/pgp" element={<PublicPgpKey />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/sign-up" element={<Signup />} />
+                <Route path="*" element={<ErrorPage />} />
+              </Routes>
+            </Content>
+            <Footer />
+          </Container>
+        </Router>
+      </FooterContentProvider>
     </UserProvider>
   </React.StrictMode>,
 )

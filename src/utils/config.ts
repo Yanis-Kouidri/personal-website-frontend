@@ -1,6 +1,7 @@
 const config = {
   backendUrl: import.meta.env.VITE_BACKEND_URL,
   docsRoute: import.meta.env.VITE_DOCS_ROUTE,
+  strapiUrl: import.meta.env.VITE_STRAPI_URL,
 }
 
 type ConfigKey = keyof typeof config

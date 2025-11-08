@@ -1,6 +1,7 @@
 interface ImportMetaEnv {
   readonly VITE_BASENAME?: string
   readonly VITE_BACKEND_URL?: string
+  readonly VITE_STRAPI_URL?: string
   readonly VITE_DOCS_ROUTE?: string
 }
 

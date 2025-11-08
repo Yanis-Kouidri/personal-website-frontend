@@ -11,6 +11,7 @@ type HttpMethod =
   | 'HEAD'
 
 type HandleApiRequestProps<TypeData = unknown, TypeResponse = unknown> = {
+  baseUrl?: string | undefined
   apiEndPoint: string
   method: HttpMethod
   data?: TypeData
@@ -22,6 +23,7 @@ type HandleApiRequestProps<TypeData = unknown, TypeResponse = unknown> = {
 }
 
 export function handleApiRequest<TypeData, TypeResponse>({
+  baseUrl = config.backendUrl,
   apiEndPoint,
   method,
   data = {} as TypeData,
@@ -47,7 +49,7 @@ export function handleApiRequest<TypeData, TypeResponse>({
     return
   }
 
-  const url = config.backendUrl + apiEndPoint
+  const url = baseUrl + apiEndPoint
 
   setIsFetching(true)
   axios<TypeResponse>({
