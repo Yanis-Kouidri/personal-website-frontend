@@ -21,3 +21,9 @@ Check deps upgrade:
     npx npm-check-updates
 
 ## 📦 Production
+
+## Security check
+
+[SSL Labs report](https://www.ssllabs.com/ssltest/analyze.html?d=www.kouidri.fr)
+
+[HTTP observatory Report](https://developer.mozilla.org/en-US/observatory/analyze?host=www.kouidri.fr)
