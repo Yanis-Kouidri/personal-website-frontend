@@ -64,8 +64,9 @@ function Login() {
         setErrorMessage('')
         setSuccessMessage(data.message)
         setUser(data.username)
-        // NOSONAR
-        void navigate('/')
+        void (async () => {
+          await navigate('/')
+        })()
       },
       onError: (errMsg) => {
         setSuccessMessage('')
