@@ -13,7 +13,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the app with Nginx
-FROM nginxinc/nginx-unprivileged:1.29.2-alpine3.22-slim
+FROM nginxinc/nginx-unprivileged:1.29.3-alpine3.22-slim
 
 USER root
 
