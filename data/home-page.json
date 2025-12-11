@@ -11,12 +11,12 @@
       "Sign-Up"
     ]
   },
-  "profil": {
-    "nom": "Yanis Kouidri",
-    "titre": "Ingénieur en informatique et réseaux.",
-    "localisation": "Toulouse, France."
+  "banner": {
+    "title": "Yanis Kouidri",
+    "shortDescription": "Ingénieur en informatique et réseaux.",
+    "location": "Toulouse, France."
   },
-  "sections_principales": [
+  "mainSkills": [
     {
       "titre": "Informatique",
       "contenu": "Programmation, administration système, sécurité informatique, développement web, développement mobile, développement logiciel, cryptographie, mes compétences en informatique sont variées et me permettent de concevoir et créer des projets de A à Z dans ces nombreux domaines."
@@ -26,9 +26,9 @@
       "contenu": "Réseaux locaux (LAN), réseaux étendus (WAN), réseaux sans fil, réseaux mobiles, protocoles de routage, protocoles de transport (TCP), protocoles de niveau application (HTTP, DNS, SMTP), toutes ces compétences me permettent de comprendre comment un si grand ensemble de machines, différentes et communiquant de manière différente, peuvent communiquer entre elles à travers Internet."
     }
   ],
-  "mon_parcours": {
-    "titre": "Mon parcours",
-    "paragraphes": [
+  "myHistory": {
+    "title": "Mon parcours",
+    "paragraphs": [
       "Je m'appelle Yanis Kouidri et j'ai 22 ans. Au collège puis au lycée, je commence à m'intéresser à l'informatique. J'apprends les bases de Linux en travaillant sur un serveur Minecraft que j'administre.",
       "Après avoir obtenu le baccalauréat, je m'oriente vers un DUT Réseaux et Télécommunications pour poursuivre mon apprentissage dans l'informatique. C'est à ce moment-là que j'apprends à programmer, à administrer un réseau, à créer des serveurs et à comprendre comment fonctionne Internet.",
       "À la fin de mon DUT, je poursuis mes études à l'ENSEEIHT, une grande école d'ingénieurs à Toulouse, dans la filière Sciences du Numérique. J'effectue mes 3 années à l'ENSEEIHT en alternance avec Thales Alenia Space.",
