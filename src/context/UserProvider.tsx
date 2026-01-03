@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo } from 'react'
-import { UserContext } from './contexts.js'
-import type { User } from './contexts'
-import { handleApiRequest } from '../hooks/useApiRequest.js'
+import { UserContext } from './contexts'
+import type { User, ApiUserObject } from './contexts'
+import { handleApiRequest } from '../hooks/useApiRequest'
 
 type UserProviderProps = {
   children: React.ReactNode
@@ -15,8 +15,8 @@ export const UserProvider = ({ children }: UserProviderProps) => {
       apiEndPoint: '/api/auth/me',
       method: 'GET',
       credentials: true,
-      onSuccess: (data: { message: User }) => {
-        setUser(data.message)
+      onSuccess: (data: { user: ApiUserObject }) => {
+        setUser(data.user.username)
       },
       onError: () => {
         setUser(null)

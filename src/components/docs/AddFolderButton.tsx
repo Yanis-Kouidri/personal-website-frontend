@@ -23,7 +23,7 @@ function AddFolderButton({
     folderName = folderName.trim()
 
     handleApiRequest({
-      apiEndPoint: `/api/docs/newFolder`,
+      apiEndPoint: `/api/docs/folder`,
       method: 'POST',
       data: { folderName, folderPath },
       credentials: true,

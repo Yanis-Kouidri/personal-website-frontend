@@ -15,7 +15,9 @@ import { handleApiRequest } from '../../hooks/useApiRequest'
 
 type SuccessLoginData = {
   message: string
-  username: string
+  user: {
+    username: string
+  }
 }
 
 function Login() {
@@ -63,7 +65,7 @@ function Login() {
       onSuccess: (data: SuccessLoginData) => {
         setErrorMessage('')
         setSuccessMessage(data.message)
-        setUser(data.username)
+        setUser(data.user.username)
         void (async () => {
           await navigate('/')
         })()
