@@ -1,13 +1,13 @@
 import route from '../../assets/decorations/route.webp'
 import stairs from '../../assets/decorations/stairs.webp'
+import type { MyHistoryProps } from '../../pages/home'
 import {
   MyHistoryWrapper,
-  StyledTitle,
   StyledParagraph,
-  StyledStairs,
   StyledRoute,
+  StyledStairs,
+  StyledTitle,
 } from './MyHistory.style'
-import type { MyHistoryProps } from '../../pages/home'
 
 function MyHistory({ title, paragraphs }: MyHistoryProps) {
   /*const title = 'Mon parcours'

@@ -1,6 +1,6 @@
+import { Trash2 } from 'lucide-react'
 import { useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
-import { Trash2 } from 'lucide-react'
 import { DeleteButton } from '../../utils/style/CommonStyles'
 
 import type { FileDocsButton } from './RecursiveList'
@@ -15,7 +15,7 @@ function DeleteFileButton({
 
   const handleClick = () => {
     const confirmed = globalThis.confirm(
-      'Are you sure you want to delete this file?\n' + filePath,
+      `Are you sure you want to delete this file?\n${filePath}`,
     )
     if (!confirmed) return
     handleApiRequest({

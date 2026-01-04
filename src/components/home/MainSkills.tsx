@@ -1,18 +1,18 @@
+import dots from '../../assets/decorations/dots.webp'
+import stars from '../../assets/decorations/stars.webp'
+import waves from '../../assets/decorations/waves.webp'
+import type { MainSkillsProps } from '../../pages/home'
 import {
-  MainSkillsWrapper,
+  DivTitle,
   ITDiv,
+  MainSkillsWrapper,
   NetworkDiv,
   NetworkTextPart,
-  DivTitle,
   StyledDecoration,
   StyledDotsIT,
   StyledDotsNetwork,
   StyledStarsIT,
 } from './MainSkills.style'
-import dots from '../../assets/decorations/dots.webp'
-import stars from '../../assets/decorations/stars.webp'
-import waves from '../../assets/decorations/waves.webp'
-import type { MainSkillsProps } from '../../pages/home'
 
 function MainSkills({
   itTitle,

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import colors from '../../utils/style/colors'
 import { useFooterContent } from '../../context/FooterContentProvider'
+import colors from '../../utils/style/colors'
 
 const FooterWrapper = styled.footer`
   background-color: ${colors.secondary};

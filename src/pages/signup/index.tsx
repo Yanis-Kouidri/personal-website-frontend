@@ -1,14 +1,15 @@
-import React, { useState } from 'react'
+import type React from 'react'
+import { useState } from 'react'
+import { handleApiRequest } from '../../hooks/useApiRequest'
 import {
   BasicH2Title,
   BasicWrapper,
+  StyledErrorMessage,
   StyledForm,
   StyledInput,
   StyledSubmitButton,
-  StyledErrorMessage,
   StyledSuccessMessage,
 } from '../../utils/style/CommonStyles'
-import { handleApiRequest } from '../../hooks/useApiRequest'
 
 type SignUpSuccessData = {
   message: string

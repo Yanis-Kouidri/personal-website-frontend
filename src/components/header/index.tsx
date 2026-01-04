@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import colors from '../../utils/style/colors'
 import { useUser } from '../../context/contexts'
 import { handleApiRequest } from '../../hooks/useApiRequest'
+import colors from '../../utils/style/colors'
 
 const StyledLink = styled(Link)`
   padding: 15px;

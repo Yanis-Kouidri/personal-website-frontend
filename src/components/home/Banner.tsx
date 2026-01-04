@@ -1,11 +1,11 @@
+import yanis from '../../assets/pictures/photo_accueil_yanis.webp'
+import type { BannerProps } from '../../pages/home'
 import {
   BannerWrapper,
   PresentationPicture,
-  StyledTitle,
   StyledTextPart,
+  StyledTitle,
 } from './Banner.styles'
-import type { BannerProps } from '../../pages/home'
-import yanis from '../../assets/pictures/photo_accueil_yanis.webp'
 
 function Banner({ title, shortDescription, location }: BannerProps) {
   //const shortDescription: string =

@@ -1,7 +1,7 @@
-import Card from './Card'
 import contacts from '../../data/home/contacts'
-import { ContactWrapper, Title, ContactListWrapper } from './Contacts.style'
 import type { ContactProps } from '../../pages/home'
+import Card from './Card'
+import { ContactListWrapper, ContactWrapper, Title } from './Contacts.style'
 
 function Contacts({ title }: ContactProps) {
   const contactCardSize = 50

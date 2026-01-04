@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const SkillCardStyled = styled.div`
   padding: 0px 35px 10px 30px;

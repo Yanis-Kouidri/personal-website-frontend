@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import {
   Loader,
   StyledErrorMessage,
   StyledSuccessMessage,
 } from '../../utils/style/CommonStyles'
-import RecursiveList from './RecursiveList'
-import styled from 'styled-components'
-
 import type { FolderContent } from './RecursiveList'
+import RecursiveList from './RecursiveList'
 
 const ListContainer = styled.ul`
   padding: 4px 8px 8px 16px;
@@ -23,26 +22,40 @@ function DocsList() {
   const [successMessage, setSuccessMessage] = useState('')
   const [isFetching, setIsFetching] = useState(false)
 
-  const fetchDocs = () => {
+  // 1. On utilise useCallback pour stabiliser la fonction
+  // 2. On ajoute un signal d'annulation (AbortController)
+  const fetchDocs = useCallback((signal?: AbortSignal) => {
+    setIsFetching(true)
+
     handleApiRequest({
       apiEndPoint: '/api/docs',
       method: 'GET',
       credentials: false,
-      setIsFetching,
+      // On passe le signal à ton hook si handleApiRequest le supporte
+      // Sinon, on gère la garde ici
       onSuccess: (data: FolderContent) => {
+        if (signal?.aborted) return // On ignore si le composant est démonté
         setErrorMessage('')
         setListOfDocs(data)
+        setIsFetching(false)
       },
       onError: (errMsg) => {
+        if (signal?.aborted) return
         setSuccessMessage('')
         setErrorMessage(errMsg)
+        setIsFetching(false)
       },
     })
-  }
+  }, [])
 
   useEffect(() => {
-    fetchDocs()
-  }, [])
+    const controller = new AbortController()
+
+    fetchDocs(controller.signal)
+
+    // Nettoyage : si le composant est démonté, on annule tout
+    return () => controller.abort()
+  }, [fetchDocs])
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>

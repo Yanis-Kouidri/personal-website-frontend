@@ -1,15 +1,7 @@
 {
   "header": {
-    "navigation": [
-      "Accueil",
-      "Projets",
-      "Documentations",
-      "À propos"
-    ],
-    "actions": [
-      "Login",
-      "Sign-Up"
-    ]
+    "navigation": ["Accueil", "Projets", "Documentations", "À propos"],
+    "actions": ["Login", "Sign-Up"]
   },
   "banner": {
     "title": "Yanis Kouidri",
@@ -46,12 +38,7 @@
       "Ada",
       "JavaScript"
     ],
-    "systeme_et_web": [
-      "React",
-      "HTML",
-      "CSS",
-      "Git"
-    ],
+    "systeme_et_web": ["React", "HTML", "CSS", "Git"],
     "reseau": []
   },
   "contact": {

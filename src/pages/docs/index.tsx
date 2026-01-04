@@ -1,5 +1,5 @@
-import { BasicH2Title, BasicWrapper } from '../../utils/style/CommonStyles'
 import DocsList from '../../components/docs/DocsList'
+import { BasicH2Title, BasicWrapper } from '../../utils/style/CommonStyles'
 
 function Docs() {
   return (

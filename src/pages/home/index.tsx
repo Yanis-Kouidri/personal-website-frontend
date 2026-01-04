@@ -1,12 +1,12 @@
-import BannerProps from '../../components/home/Banner'
+import qs from 'qs'
+import { useEffect, useState } from 'react'
+import Banner from '../../components/home/Banner'
+import Contacts from '../../components/home/Contacts'
 import MainSkills from '../../components/home/MainSkills'
 import MyHistory from '../../components/home/MyHistory'
 import SkillsShow from '../../components/home/SkillsShow'
-import Contacts from '../../components/home/Contacts'
-import config from '../../utils/config'
-import { useState, useEffect } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
-import * as qs from 'qs'
+import config from '../../utils/config'
 
 interface ApiResponse {
   data: HomeData
@@ -83,7 +83,7 @@ function Home() {
         setError(errorMessage)
       },
     })
-  }, [])
+  }, [apiEndPoint])
 
   if (isFetching) {
     return <div>Loading...</div>
@@ -99,7 +99,7 @@ function Home() {
 
   return (
     <>
-      <BannerProps
+      <Banner
         title={homeData.banner.title}
         shortDescription={homeData.banner.shortDescription}
         location={homeData.banner.location}

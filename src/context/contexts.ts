@@ -4,12 +4,12 @@ export type User = string | null
 
 export type ApiUserObject = {
   id: {
-    buffer: Record<string, number>;
-  };
-  username: string;
-  iat: number;
-  exp: number;
-};
+    buffer: Record<string, number>
+  }
+  username: string
+  iat: number
+  exp: number
+}
 
 export type UserContextType = {
   user: User

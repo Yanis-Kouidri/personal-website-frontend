@@ -1,13 +1,13 @@
 import { useState } from 'react'
-import Card from './Card'
 import skills from '../../data/home/skills'
+import Card from './Card'
 import {
+  SkillSection,
+  SkillsList,
+  SkillsPart,
+  SkillsSetList,
   SkillsShowWrapper,
   StyledTitle,
-  SkillsSetList,
-  SkillSection,
-  SkillsPart,
-  SkillsList,
 } from './SkillsShow.style'
 
 function SkillsShow() {
