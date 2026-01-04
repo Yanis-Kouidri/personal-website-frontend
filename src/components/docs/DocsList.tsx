@@ -22,8 +22,6 @@ function DocsList() {
   const [successMessage, setSuccessMessage] = useState('')
   const [isFetching, setIsFetching] = useState(false)
 
-  // 1. On utilise useCallback pour stabiliser la fonction
-  // 2. On ajoute un signal d'annulation (AbortController)
   const fetchDocs = useCallback((signal?: AbortSignal) => {
     setIsFetching(true)
 
@@ -31,10 +29,8 @@ function DocsList() {
       apiEndPoint: '/api/docs',
       method: 'GET',
       credentials: false,
-      // On passe le signal à ton hook si handleApiRequest le supporte
-      // Sinon, on gère la garde ici
       onSuccess: (data: FolderContent) => {
-        if (signal?.aborted) return // On ignore si le composant est démonté
+        if (signal?.aborted) return
         setErrorMessage('')
         setListOfDocs(data)
         setIsFetching(false)
@@ -50,10 +46,7 @@ function DocsList() {
 
   useEffect(() => {
     const controller = new AbortController()
-
     fetchDocs(controller.signal)
-
-    // Nettoyage : si le composant est démonté, on annule tout
     return () => controller.abort()
   }, [fetchDocs])
 
