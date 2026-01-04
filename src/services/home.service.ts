@@ -1,33 +1,33 @@
-import qs from 'qs';
-import config from '../utils/config';
+import qs from 'qs'
+import config from '../utils/config'
 
 /**
  * Types and Interfaces
  */
 export interface Paragraph {
-  id: number;
-  content: string;
+  id: number
+  content: string
 }
 
 export interface HomeData {
   banner: {
-    title: string;
-    shortDescription: string;
-    location: string;
-  };
+    title: string
+    shortDescription: string
+    location: string
+  }
   mainSkills: {
-    itTitle: string;
-    itDescription: string;
-    networkTitle: string;
-    networkDescription: string;
-  };
+    itTitle: string
+    itDescription: string
+    networkTitle: string
+    networkDescription: string
+  }
   myHistory: {
-    title: string;
-    paragraphs: Paragraph[];
-  };
+    title: string
+    paragraphs: Paragraph[]
+  }
   contact: {
-    title: string;
-  };
+    title: string
+  }
 }
 
 /**
@@ -39,23 +39,23 @@ const HOME_PAGE_POPULATE = [
   'mainSkills',
   'myHistory.paragraphs',
   'contact',
-];
+]
 
 const query = qs.stringify(
   { populate: HOME_PAGE_POPULATE },
-  { encodeValuesOnly: true, addQueryPrefix: true }
-);
+  { encodeValuesOnly: true, addQueryPrefix: true },
+)
 
-export const HOME_API_ENDPOINT = `${config.strapiUrl}/api/home-page-content${query}`;
+export const HOME_API_ENDPOINT = `${config.strapiUrl}/api/home-page-content${query}`
 
 /**
  * Fetches Home data from Strapi
  */
 export async function fetchHomeData(): Promise<HomeData> {
-  const response = await fetch(HOME_API_ENDPOINT);
+  const response = await fetch(HOME_API_ENDPOINT)
   if (!response.ok) {
-    throw new Error(`Failed to fetch home data: ${response.statusText}`);
+    throw new Error(`Failed to fetch home data: ${response.statusText}`)
   }
-  const json = await response.json();
-  return json.data;
+  const json = await response.json()
+  return json.data
 }
