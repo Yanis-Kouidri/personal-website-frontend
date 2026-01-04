@@ -1,5 +1,5 @@
 import yanis from '../../assets/pictures/photo_accueil_yanis.webp'
-import type { BannerProps } from '../../pages/home'
+import type { HomeData } from '../../services/home.service'
 import {
   BannerWrapper,
   PresentationPicture,
@@ -7,7 +7,7 @@ import {
   StyledTitle,
 } from './Banner.styles'
 
-function Banner({ title, shortDescription, location }: BannerProps) {
+function Banner({ title, shortDescription, location }: HomeData['banner']) {
   //const shortDescription: string =
   //  "Ingénieur en informatique et réseaux à l'ENSEEIHT."
   //const location: string = '🌆 Toulouse, France.'

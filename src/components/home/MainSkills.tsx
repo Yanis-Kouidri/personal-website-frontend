@@ -1,7 +1,7 @@
 import dots from '../../assets/decorations/dots.webp'
 import stars from '../../assets/decorations/stars.webp'
 import waves from '../../assets/decorations/waves.webp'
-import type { MainSkillsProps } from '../../pages/home'
+import type { HomeData } from '../../services/home.service'
 import {
   DivTitle,
   ITDiv,
@@ -19,7 +19,7 @@ function MainSkills({
   itDescription,
   networkTitle,
   networkDescription,
-}: MainSkillsProps) {
+}: HomeData['mainSkills']) {
   /*const itTitle = 'Informatique'
   const itTextPart =
     'Programmation, administration système, sécurité informatique, développement web, développement mobile, développement logiciel, cryptographie, mes compétences en informatique sont variées et me permettent de concevoir et créer des projets de A à Z dans ces nombreux domaines.'

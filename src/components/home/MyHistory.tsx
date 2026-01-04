@@ -1,6 +1,6 @@
 import route from '../../assets/decorations/route.webp'
 import stairs from '../../assets/decorations/stairs.webp'
-import type { MyHistoryProps } from '../../pages/home'
+import type { HomeData } from '../../services/home.service'
 import {
   MyHistoryWrapper,
   StyledParagraph,
@@ -9,7 +9,7 @@ import {
   StyledTitle,
 } from './MyHistory.style'
 
-function MyHistory({ title, paragraphs }: MyHistoryProps) {
+function MyHistory({ title, paragraphs }: HomeData['myHistory']) {
   /*const title = 'Mon parcours'
 
   const runningYears = new Date().getFullYear()
