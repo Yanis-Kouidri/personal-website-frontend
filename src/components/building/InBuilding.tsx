@@ -1,8 +1,8 @@
+import chantier from '../../assets/illustrations/chantier.webp'
 import {
   InBuildingImg,
   InBuildingWrapper,
 } from '../../utils/style/CommonStyles'
-import chantier from '../../assets/illustrations/chantier.webp'
 
 function InBuilding() {
   return (

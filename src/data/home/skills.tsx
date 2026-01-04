@@ -1,36 +1,34 @@
-import c from '../../assets/skills/programming/C.webp'
-import java from '../../assets/skills/programming/java.webp'
-import python from '../../assets/skills/programming/python.webp'
-import php from '../../assets/skills/programming/php.webp'
-import ocaml from '../../assets/skills/programming/ocaml.webp'
-import ada from '../../assets/skills/programming/ada.svg'
-import javascript from '../../assets/skills/programming/javascript.webp'
-import react from '../../assets/skills/programming/react.webp'
-import html from '../../assets/skills/programming/html.webp'
-import css from '../../assets/skills/programming/css.webp'
-import git from '../../assets/skills/programming/git.webp'
-
-import docker from '../../assets/skills/system/docker.webp'
-import kubernetes from '../../assets/skills/system/kubernetes.webp'
-import ansible from '../../assets/skills/system/ansible.webp'
-import terraform from '../../assets/skills/system/terraform.webp'
-import antora from '../../assets/skills/system/antora.webp'
-import jenkins from '../../assets/skills/system/jenkins.webp'
-import argoWorkflow from '../../assets/skills/system/argo_workflow.webp'
-import luigi from '../../assets/skills/system/luigi.webp'
-import linux from '../../assets/skills/system/linux.webp'
-
-import switching from '../../assets/skills/networking/switch.webp'
-import router from '../../assets/skills/networking/router.webp'
-import bgp from '../../assets/skills/networking/bgp.webp'
-import ospf from '../../assets/skills/networking/ospf.webp'
-import wireshark from '../../assets/skills/networking/wireshark.webp'
-import wireguard from '../../assets/skills/networking/wireguard.webp'
-import x25 from '../../assets/skills/networking/x25.webp'
 import atm from '../../assets/skills/networking/atm.webp'
+import bgp from '../../assets/skills/networking/bgp.webp'
 import frameRelay from '../../assets/skills/networking/framerelay.webp'
 import fibreOptic from '../../assets/skills/networking/optical_fiber.webp'
+import ospf from '../../assets/skills/networking/ospf.webp'
+import router from '../../assets/skills/networking/router.webp'
+import switching from '../../assets/skills/networking/switch.webp'
 import tcp from '../../assets/skills/networking/tcp.webp'
+import wireguard from '../../assets/skills/networking/wireguard.webp'
+import wireshark from '../../assets/skills/networking/wireshark.webp'
+import x25 from '../../assets/skills/networking/x25.webp'
+import ada from '../../assets/skills/programming/ada.svg'
+import c from '../../assets/skills/programming/C.webp'
+import css from '../../assets/skills/programming/css.webp'
+import git from '../../assets/skills/programming/git.webp'
+import html from '../../assets/skills/programming/html.webp'
+import java from '../../assets/skills/programming/java.webp'
+import javascript from '../../assets/skills/programming/javascript.webp'
+import ocaml from '../../assets/skills/programming/ocaml.webp'
+import php from '../../assets/skills/programming/php.webp'
+import python from '../../assets/skills/programming/python.webp'
+import react from '../../assets/skills/programming/react.webp'
+import ansible from '../../assets/skills/system/ansible.webp'
+import antora from '../../assets/skills/system/antora.webp'
+import argoWorkflow from '../../assets/skills/system/argo_workflow.webp'
+import docker from '../../assets/skills/system/docker.webp'
+import jenkins from '../../assets/skills/system/jenkins.webp'
+import kubernetes from '../../assets/skills/system/kubernetes.webp'
+import linux from '../../assets/skills/system/linux.webp'
+import luigi from '../../assets/skills/system/luigi.webp'
+import terraform from '../../assets/skills/system/terraform.webp'
 
 interface Skill {
   name: string
@@ -39,7 +37,7 @@ interface Skill {
 }
 
 const skills: Record<string, Array<Skill>> = {
-  Programmation: [
+  programmation: [
     {
       link: 'https://en.wikipedia.org/wiki/C_(programming_language)',
       logo: c,
@@ -96,7 +94,7 @@ const skills: Record<string, Array<Skill>> = {
       name: 'Git',
     },
   ],
-  Système: [
+  systeme: [
     {
       link: 'https://www.docker.com/',
       logo: docker,
@@ -143,7 +141,7 @@ const skills: Record<string, Array<Skill>> = {
       name: 'Linux',
     },
   ],
-  Réseau: [
+  reseau: [
     {
       link: 'https://en.wikipedia.org/wiki/Network_switch',
       logo: switching,

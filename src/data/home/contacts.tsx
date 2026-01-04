@@ -1,8 +1,8 @@
-import linkedin from '../../assets/contacts/linkedin.svg'
-import github from '../../assets/contacts/github.svg'
 import cv from '../../assets/contacts/cv.svg'
 import email from '../../assets/contacts/email.svg'
+import github from '../../assets/contacts/github.svg'
 import key from '../../assets/contacts/key.svg'
+import linkedin from '../../assets/contacts/linkedin.svg'
 
 const contacts = [
   {

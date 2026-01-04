@@ -1,13 +1,13 @@
-import { useState, type Dispatch, type SetStateAction } from 'react'
+import { File, FolderClosed, FolderOpen } from 'lucide-react'
+import { type Dispatch, type SetStateAction, useState } from 'react'
+import styled from 'styled-components'
+import { useUser } from '../../context/contexts'
 import config from '../../utils/config'
 import AddFileButton from './AddFileButton'
 import AddFolderButton from './AddFolderButton'
 import DeleteFileButton from './DeleteFileButton'
 import DeleteFolderButton from './DeleteFolderButton'
 import RenameButton from './RenameButton'
-import { useUser } from '../../context/contexts'
-import styled from 'styled-components'
-import { FolderClosed, FolderOpen, File } from 'lucide-react'
 
 const List = styled.ul`
   list-style: none;
@@ -224,7 +224,7 @@ function RecursiveList({
               </ListItem>
             )
           default:
-            console.error('Unknown item type: ' + item.type)
+            console.error(`Unknown item type: ${item.type}`)
             return null
         }
       })}

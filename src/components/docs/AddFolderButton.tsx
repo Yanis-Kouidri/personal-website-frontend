@@ -1,6 +1,6 @@
+import { FolderPlus } from 'lucide-react'
 import { useState } from 'react'
 import { handleApiRequest } from '../../hooks/useApiRequest'
-import { FolderPlus } from 'lucide-react'
 import { IconActionButton } from '../../utils/style/CommonStyles'
 
 import type { FolderDocsButton } from './RecursiveList'
@@ -23,7 +23,7 @@ function AddFolderButton({
     folderName = folderName.trim()
 
     handleApiRequest({
-      apiEndPoint: `/api/docs/newFolder`,
+      apiEndPoint: `/api/docs/folder`,
       method: 'POST',
       data: { folderName, folderPath },
       credentials: true,

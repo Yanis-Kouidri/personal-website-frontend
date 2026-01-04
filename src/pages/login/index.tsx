@@ -1,21 +1,24 @@
+import type React from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useUser } from '../../context/contexts'
+import { handleApiRequest } from '../../hooks/useApiRequest'
 import {
   BasicH2Title,
   BasicWrapper,
+  Loader,
+  StyledErrorMessage,
   StyledForm,
   StyledInput,
   StyledSubmitButton,
   StyledSuccessMessage,
-  StyledErrorMessage,
-  Loader,
 } from '../../utils/style/CommonStyles'
-import React, { useState } from 'react'
-import { useUser } from '../../context/contexts'
-import { handleApiRequest } from '../../hooks/useApiRequest'
 
 type SuccessLoginData = {
   message: string
-  username: string
+  user: {
+    username: string
+  }
 }
 
 function Login() {
@@ -63,9 +66,10 @@ function Login() {
       onSuccess: (data: SuccessLoginData) => {
         setErrorMessage('')
         setSuccessMessage(data.message)
-        setUser(data.username)
-        // NOSONAR
-        void navigate('/')
+        setUser(data.user.username)
+        void (async () => {
+          await navigate('/')
+        })()
       },
       onError: (errMsg) => {
         setSuccessMessage('')

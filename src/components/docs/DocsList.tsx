@@ -1,14 +1,13 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+import styled from 'styled-components'
 import { handleApiRequest } from '../../hooks/useApiRequest'
 import {
   Loader,
   StyledErrorMessage,
   StyledSuccessMessage,
 } from '../../utils/style/CommonStyles'
-import RecursiveList from './RecursiveList'
-import styled from 'styled-components'
-
 import type { FolderContent } from './RecursiveList'
+import RecursiveList from './RecursiveList'
 
 const ListContainer = styled.ul`
   padding: 4px 8px 8px 16px;
@@ -23,26 +22,33 @@ function DocsList() {
   const [successMessage, setSuccessMessage] = useState('')
   const [isFetching, setIsFetching] = useState(false)
 
-  const fetchDocs = () => {
+  const fetchDocs = useCallback((signal?: AbortSignal) => {
+    setIsFetching(true)
+
     handleApiRequest({
       apiEndPoint: '/api/docs',
       method: 'GET',
       credentials: false,
-      setIsFetching,
       onSuccess: (data: FolderContent) => {
+        if (signal?.aborted) return
         setErrorMessage('')
         setListOfDocs(data)
+        setIsFetching(false)
       },
       onError: (errMsg) => {
+        if (signal?.aborted) return
         setSuccessMessage('')
         setErrorMessage(errMsg)
+        setIsFetching(false)
       },
     })
-  }
+  }, [])
 
   useEffect(() => {
-    fetchDocs()
-  }, [])
+    const controller = new AbortController()
+    fetchDocs(controller.signal)
+    return () => controller.abort()
+  }, [fetchDocs])
 
   useEffect(() => {
     let timeout: ReturnType<typeof setTimeout>

@@ -1,5 +1,5 @@
 # Stage 1: Build the React app
-FROM node:24.11.1-alpine3.22 AS builder
+FROM node:24.12.0-alpine3.22 AS builder
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ COPY . .
 RUN npm run build
 
 # Stage 2: Serve the app with Nginx
-FROM nginxinc/nginx-unprivileged:1.29.2-alpine3.22-slim
+FROM nginxinc/nginx-unprivileged:1.29.3-alpine3.22-slim
 
 USER root
 
