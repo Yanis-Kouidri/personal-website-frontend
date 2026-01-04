@@ -1,6 +1,6 @@
-# Portfolio Frontend
+# Personal wesite Frontend
 
-Frontend for the personal portfolio, built with Vite and React.
+Frontend for my [personal website](https://www.kouidri.fr), built with Vite and React.
 
 ## 🚀 Development
 
