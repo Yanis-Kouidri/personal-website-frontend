@@ -33,6 +33,7 @@
     "@vitejs/plugin-react-swc": "^4.2.2",
     "@vitest/ui": "^4.0.16",
     "globals": "^17.0.0",
+    "jsdom": "^27.4.0",
     "retire": "^5.4.0",
     "typescript": "^5.9.3",
     "vite": "^7.3.0",
