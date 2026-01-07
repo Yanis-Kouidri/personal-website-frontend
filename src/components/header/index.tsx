@@ -72,7 +72,7 @@ function Header() {
   const handleLogout = () => {
     handleApiRequest({
       apiEndPoint: '/api/auth/logout',
-      method: 'GET',
+      method: 'POST',
       credentials: true,
       onError: (errorMessage) => {
         console.error('Logout error:', errorMessage)
