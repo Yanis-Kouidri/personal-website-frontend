@@ -1,7 +1,7 @@
 import { FilePlus } from 'lucide-react'
 import type React from 'react'
 import { useRef, useState } from 'react'
-import { handleApiRequest } from '../../hooks/useApiRequest'
+import { handleApiRequest } from '../../hooks/apiRequest'
 import { IconActionButton } from '../../utils/style/CommonStyles'
 
 import type { FolderDocsButton } from './RecursiveList'

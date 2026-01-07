@@ -1,6 +1,6 @@
 import type React from 'react'
 import { useEffect, useMemo, useState } from 'react'
-import { handleApiRequest } from '../hooks/useApiRequest'
+import { handleApiRequest } from '../hooks/apiRequest'
 import type { ApiUserObject, User } from './contexts'
 import { UserContext } from './contexts'
 

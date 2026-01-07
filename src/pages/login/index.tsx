@@ -2,7 +2,7 @@ import type React from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '../../context/contexts'
-import { handleApiRequest } from '../../hooks/useApiRequest'
+import { handleApiRequest } from '../../hooks/apiRequest'
 import {
   BasicH2Title,
   BasicWrapper,

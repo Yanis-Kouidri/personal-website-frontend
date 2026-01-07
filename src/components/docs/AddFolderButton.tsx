@@ -1,6 +1,6 @@
 import { FolderPlus } from 'lucide-react'
 import { useState } from 'react'
-import { handleApiRequest } from '../../hooks/useApiRequest'
+import { handleApiRequest } from '../../hooks/apiRequest'
 import { IconActionButton } from '../../utils/style/CommonStyles'
 
 import type { FolderDocsButton } from './RecursiveList'

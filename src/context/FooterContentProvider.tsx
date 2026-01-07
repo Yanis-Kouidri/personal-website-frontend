@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { createContext, use, useEffect, useState } from 'react'
-import { handleApiRequest } from '../hooks/useApiRequest' // Ton hook
+import { handleApiRequest } from '../hooks/apiRequest' // Ton hook
 import config from '../utils/config'
 
 interface ApiResponse {

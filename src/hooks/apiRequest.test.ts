@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { handleApiRequest } from './useApiRequest'
+import { handleApiRequest } from './apiRequest'
 
 // Mock axios globally for this test suite
 vi.mock('axios')
