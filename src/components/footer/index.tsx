@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { useFooterContent } from '../../context/FooterContentProvider'
+import { useUIContent } from '../../context/UIContentProvider'
 import colors from '../../utils/style/colors'
 
 const FooterWrapper = styled.footer`
@@ -18,7 +18,7 @@ const StyledParagraph = styled.p`
 function Footer() {
   const currentYear = new Date().getFullYear()
 
-  const { footerData, loading, error } = useFooterContent()
+  const { footerData, loading, error } = useUIContent()
 
   if (loading) {
     return <StyledParagraph>Loading...</StyledParagraph>

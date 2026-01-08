@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 import { createContext, use, useEffect, useState } from 'react'
-import { handleApiRequest } from '../hooks/apiRequest' // Ton hook
+import { handleApiRequest } from '../hooks/apiRequest'
 import config from '../utils/config'
 
 interface ApiResponse {
@@ -12,17 +12,17 @@ interface FooterData {
   acknowledgments: string
 }
 
-interface FooterContentContextType {
+interface UIContentContextType {
   footerData: FooterData | null
   loading: boolean
   error: string | null
 }
 
-const FooterContentContext = createContext<
-  FooterContentContextType | undefined
->(undefined)
+const UIContentContext = createContext<UIContentContextType | undefined>(
+  undefined,
+)
 
-export function FooterContentProvider({ children }: { children: ReactNode }) {
+export function UIContentProvider({ children }: { children: ReactNode }) {
   const [footerData, setFooterData] = useState<FooterData | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
@@ -47,14 +47,14 @@ export function FooterContentProvider({ children }: { children: ReactNode }) {
   }, [])
 
   return (
-    <FooterContentContext value={{ footerData, loading, error }}>
+    <UIContentContext value={{ footerData, loading, error }}>
       {children}
-    </FooterContentContext>
+    </UIContentContext>
   )
 }
 
-export function useFooterContent() {
-  const context = use(FooterContentContext)
+export function useUIContent() {
+  const context = use(UIContentContext)
   if (context === undefined) {
     throw new Error(
       'useFooterContent must be used within FooterContentProvider',
