@@ -12,7 +12,6 @@ const ErrorContainer = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* On occupe tout l'espace disponible dans MainContent sans dépasser */
   min-height: 100%;
   width: 100%;
   background-color: ${colors.backgroundColor};
@@ -23,10 +22,11 @@ const ErrorContainer = styled.section`
 `
 
 const ErrorCode = styled.h1`
-  font-size: clamp(5rem, 15vw, 8rem); /* Taille ajustée pour mieux s'intégrer */
+  font-size: clamp(5rem, 15vw, 8rem);
   font-weight: 900;
   margin: 0;
   background: linear-gradient(135deg, ${colors.primary}, ${colors.third});
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   line-height: 1;
