@@ -49,7 +49,7 @@ export function UIContentProvider({ children }: { children: ReactNode }) {
       credentials: false,
       setIsFetching: setLoading,
       onSuccess: (response: ApiResponse) => {
-        console.log(response.data)
+        //console.log(response.data)
         const fetchedFooterData: FooterData = response.data.footer
         const fetchedHeaderData: HeaderData = response.data.header
         //console.log(fetchedHeaderData)
