@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useUser } from '../../context/contexts'
+import { useUIContent } from '../../context/UIContentProvider'
 import { handleApiRequest } from '../../hooks/apiRequest'
+import { StyledParagraph } from '../../utils/style/CommonStyles'
 import colors from '../../utils/style/colors'
 
 const StyledLink = styled(Link)`
@@ -68,6 +70,8 @@ const Button = styled(Link)`
 `
 
 function Header() {
+  const { headerData, loading, error } = useUIContent()
+  //console.log(headerData)
   const { user, setUser } = useUser()
   const handleLogout = () => {
     handleApiRequest({
@@ -84,13 +88,28 @@ function Header() {
     })
   }
 
+  if (loading) {
+    return <StyledParagraph>Loading...</StyledParagraph>
+  }
+
+  if (error) {
+    return <StyledParagraph>Error: {error}</StyledParagraph>
+  }
+
+  const home = headerData?.home || ''
+  const project = headerData?.projects || ''
+  const documentations = headerData?.documentations || ''
+  const about = headerData?.about || ''
+  const login = headerData?.login || ''
+  const signup = headerData?.signup || ''
+
   return (
     <StyledNav>
       <CenterLinks>
-        <StyledLink to="/">Accueil</StyledLink>
-        <StyledLink to="/projects">Projets</StyledLink>
-        <StyledLink to="/docs">Documentations</StyledLink>
-        <StyledLink to="/about">À propos</StyledLink>
+        <StyledLink to="/">{home}</StyledLink>
+        <StyledLink to="/projects">{project}</StyledLink>
+        <StyledLink to="/docs">{documentations}</StyledLink>
+        <StyledLink to="/about">{about}</StyledLink>
       </CenterLinks>
       <RightButtons>
         {user ? (
@@ -103,8 +122,8 @@ function Header() {
           </>
         ) : (
           <>
-            <Button to="/login">Login</Button>
-            <Button to="/sign-up">Sign-Up</Button>
+            <Button to="/login">{login}</Button>
+            <Button to="/sign-up">{signup}</Button>
           </>
         )}
       </RightButtons>
