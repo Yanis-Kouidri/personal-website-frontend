@@ -7,7 +7,7 @@ import Footer from './components/footer'
 import Header from './components/header'
 import PublicPgpKey from './components/pgp/PublicPgpKey'
 /* Providers */
-import { FooterContentProvider } from './context/FooterContentProvider'
+import { UIContentProvider } from './context/UIContentProvider'
 import { UserProvider } from './context/UserProvider'
 /* Pages */
 import About from './pages/about'
@@ -31,7 +31,7 @@ const MainContent = styled.main`
 export default function App() {
   return (
     <UserProvider>
-      <FooterContentProvider>
+      <UIContentProvider>
         <GlobalStyle />
         <AppContainer>
           <Header />
@@ -49,7 +49,7 @@ export default function App() {
           </MainContent>
           <Footer />
         </AppContainer>
-      </FooterContentProvider>
+      </UIContentProvider>
     </UserProvider>
   )
 }

@@ -1,6 +1,6 @@
 import { Trash2 } from 'lucide-react'
 import { useState } from 'react'
-import { handleApiRequest } from '../../hooks/useApiRequest'
+import { handleApiRequest } from '../../hooks/apiRequest'
 import { DeleteButton } from '../../utils/style/CommonStyles'
 
 import type { FileDocsButton } from './RecursiveList'

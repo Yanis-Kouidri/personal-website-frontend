@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react'
 import styled from 'styled-components'
-import { handleApiRequest } from '../../hooks/useApiRequest'
+import { handleApiRequest } from '../../hooks/apiRequest'
 import {
   Loader,
   StyledErrorMessage,

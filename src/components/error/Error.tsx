@@ -1,8 +1,21 @@
-function ErrorPage() {
+import {
+  Description,
+  ErrorCode,
+  ErrorContainer,
+  StyledLink,
+  Title,
+} from './Error.style'
+
+const ErrorPage: React.FC = () => {
   return (
-    <div>
-      <h1>Cette page n'existe pas</h1>
-    </div>
+    <ErrorContainer>
+      <ErrorCode>404</ErrorCode>
+      <Title>Page introuvable</Title>
+      <Description>
+        Désolé, la page que vous recherchez n'existe pas ou a été déplacée.
+      </Description>
+      <StyledLink to="/">Retour à l'accueil</StyledLink>
+    </ErrorContainer>
   )
 }
 

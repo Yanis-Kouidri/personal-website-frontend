@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 import { useUser } from '../../context/contexts'
-import { handleApiRequest } from '../../hooks/useApiRequest'
+import { handleApiRequest } from '../../hooks/apiRequest'
 import colors from '../../utils/style/colors'
 
 const StyledLink = styled(Link)`
@@ -72,7 +72,7 @@ function Header() {
   const handleLogout = () => {
     handleApiRequest({
       apiEndPoint: '/api/auth/logout',
-      method: 'GET',
+      method: 'POST',
       credentials: true,
       onError: (errorMessage) => {
         console.error('Logout error:', errorMessage)
