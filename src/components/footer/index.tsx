@@ -1,14 +1,6 @@
-import styled from 'styled-components'
 import { useUIContent } from '../../context/UIContentProvider'
 import { StyledParagraph } from '../../utils/style/CommonStyles'
-import colors from '../../utils/style/colors'
-
-const FooterWrapper = styled.footer`
-  background-color: ${colors.secondary};
-  margin: 0;
-  padding: 0;
-  height: 150px;
-`
+import { FooterWrapper } from './index.style'
 
 function Footer() {
   const currentYear = new Date().getFullYear()
