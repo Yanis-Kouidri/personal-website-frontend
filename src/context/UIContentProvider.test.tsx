@@ -20,6 +20,7 @@ const TestConsumer = () => {
 
   return (
     <div>
+      {/* Use semantic tags that match the ARIA roles expected in tests */}
       <header>{headerData?.home}</header>
       <footer>{footerData?.description}</footer>
     </div>
@@ -51,7 +52,6 @@ describe('UIContentProvider', () => {
   })
 
   it('provides fetched content to children on success', async () => {
-    // Fixed: Use optional chaining for onSuccess and setIsFetching
     mockedHandleApiRequest.mockImplementation(
       ({ onSuccess, setIsFetching }) => {
         setIsFetching?.(false)
@@ -76,7 +76,6 @@ describe('UIContentProvider', () => {
   it('displays error message when API request fails', async () => {
     const errorMessage = 'Failed to fetch content'
 
-    // Fixed: Use optional chaining for onError and setIsFetching
     mockedHandleApiRequest.mockImplementation(({ onError, setIsFetching }) => {
       setIsFetching?.(false)
       onError?.(errorMessage)
@@ -94,10 +93,11 @@ describe('UIContentProvider', () => {
   })
 
   it('throws an error when useUIContent is used outside of its provider', () => {
+    // Silence console.error for expected thrown errors during testing
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 
     expect(() => render(<TestConsumer />)).toThrow(
-      'useFooterContent must be used within FooterContentProvider',
+      'useUIContent must be used within a UIContentProvider',
     )
 
     consoleSpy.mockRestore()

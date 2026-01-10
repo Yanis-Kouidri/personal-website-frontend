@@ -3,13 +3,6 @@ import { createContext, use, useEffect, useState } from 'react'
 import { handleApiRequest } from '../hooks/apiRequest'
 import config from '../utils/config'
 
-interface ApiResponse {
-  data: {
-    footer: FooterData
-    header: HeaderData
-  }
-}
-
 interface FooterData {
   description: string
   acknowledgments: string
@@ -24,6 +17,13 @@ interface HeaderData {
   signup: string
 }
 
+interface ApiResponse {
+  data: {
+    footer: FooterData
+    header: HeaderData
+  }
+}
+
 interface UIContentContextType {
   footerData: FooterData | null
   headerData: HeaderData | null
@@ -31,7 +31,7 @@ interface UIContentContextType {
   error: string | null
 }
 
-const UIContentContext = createContext<UIContentContextType | undefined>(
+export const UIContentContext = createContext<UIContentContextType | undefined>(
   undefined,
 )
 
@@ -42,6 +42,8 @@ export function UIContentProvider({ children }: { children: ReactNode }) {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
+    let isIgnore = false
+
     handleApiRequest({
       baseUrl: config.strapiUrl,
       apiEndPoint: '/api/global?populate=*',
@@ -49,18 +51,22 @@ export function UIContentProvider({ children }: { children: ReactNode }) {
       credentials: false,
       setIsFetching: setLoading,
       onSuccess: (response: ApiResponse) => {
-        //console.log(response.data)
-        const fetchedFooterData: FooterData = response.data.footer
-        const fetchedHeaderData: HeaderData = response.data.header
-        //console.log(fetchedHeaderData)
-        setFooterData(fetchedFooterData)
-        setHeaderData(fetchedHeaderData)
-        setError(null)
+        if (!isIgnore) {
+          setFooterData(response.data.footer)
+          setHeaderData(response.data.header)
+          setError(null)
+        }
       },
       onError: (errorMessage: string) => {
-        setError(errorMessage)
+        if (!isIgnore) {
+          setError(errorMessage)
+        }
       },
     })
+
+    return () => {
+      isIgnore = true
+    }
   }, [])
 
   return (
@@ -70,12 +76,14 @@ export function UIContentProvider({ children }: { children: ReactNode }) {
   )
 }
 
+/**
+ * Custom hook to consume UI Content with React 19 'use' pattern
+ * Ensures the context is used within its provider and handles TS nullability
+ */
 export function useUIContent() {
   const context = use(UIContentContext)
-  if (context === undefined) {
-    throw new Error(
-      'useFooterContent must be used within FooterContentProvider',
-    )
+  if (!context) {
+    throw new Error('useUIContent must be used within a UIContentProvider')
   }
   return context
 }

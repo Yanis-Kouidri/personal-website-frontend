@@ -12,19 +12,19 @@ import {
 
 function Header() {
   const { headerData, loading, error } = useUIContent()
-  //console.log(headerData)
+
   const { user, setUser } = useUser()
+
   const handleLogout = () => {
     handleApiRequest({
       apiEndPoint: '/api/auth/logout',
       method: 'POST',
       credentials: true,
+      onSuccess: () => {
+        setUser(null)
+      },
       onError: (errorMessage) => {
         console.error('Logout error:', errorMessage)
-      },
-      onSuccess: (successMessage) => {
-        console.log('Logout success:', successMessage)
-        setUser(null) // Logout the user
       },
     })
   }
@@ -37,34 +37,27 @@ function Header() {
     return <StyledParagraph>Error: {error}</StyledParagraph>
   }
 
-  const home = headerData?.home || ''
-  const project = headerData?.projects || ''
-  const documentations = headerData?.documentations || ''
-  const about = headerData?.about || ''
-  const login = headerData?.login || ''
-  const signup = headerData?.signup || ''
-
+  // Grace au hook useUIContent, TypeScript sait que headerData n'est plus "undefined"
   return (
     <StyledNav>
       <CenterLinks>
-        <StyledLink to="/">{home}</StyledLink>
-        <StyledLink to="/projects">{project}</StyledLink>
-        <StyledLink to="/docs">{documentations}</StyledLink>
-        <StyledLink to="/about">{about}</StyledLink>
+        <StyledLink to="/">{headerData?.home || ''}</StyledLink>
+        <StyledLink to="/projects">{headerData?.projects || ''}</StyledLink>
+        <StyledLink to="/docs">{headerData?.documentations || ''}</StyledLink>
+        <StyledLink to="/about">{headerData?.about || ''}</StyledLink>
       </CenterLinks>
       <RightButtons>
         {user ? (
           <>
             <p>Bonjour {user}</p>
             <button type="button" onClick={handleLogout}>
-              {' '}
-              Deconnexion{' '}
+              Deconnexion
             </button>
           </>
         ) : (
           <>
-            <Button to="/login">{login}</Button>
-            <Button to="/sign-up">{signup}</Button>
+            <Button to="/login">{headerData?.login || ''}</Button>
+            <Button to="/sign-up">{headerData?.signup || ''}</Button>
           </>
         )}
       </RightButtons>
