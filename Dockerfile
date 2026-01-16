@@ -8,7 +8,9 @@ COPY package-lock.json ./
 
 RUN npm ci
 
-COPY . .
+COPY tsconfig.json vite.config.js .env.production index.html ./
+COPY src ./src
+COPY public ./public
 
 RUN npm run build
 
