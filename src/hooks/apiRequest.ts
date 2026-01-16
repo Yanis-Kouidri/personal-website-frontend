@@ -11,7 +11,7 @@ type HttpMethod =
   | 'HEAD'
 
 type HandleApiRequestProps<TypeData = unknown, TypeResponse = unknown> = {
-  baseUrl?: string | undefined
+  baseUrl?: string
   apiEndPoint: string
   method: HttpMethod
   data?: TypeData
