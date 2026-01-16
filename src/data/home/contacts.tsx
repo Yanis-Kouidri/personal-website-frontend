@@ -34,7 +34,6 @@ const contacts = [
     link: '/pgp',
     logo: key,
     name: 'PGP Key',
-    isExternal: false,
   },
 ]
 
