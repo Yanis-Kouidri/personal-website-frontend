@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react'
-import { createContext, use, useEffect, useState } from 'react'
+import { createContext, use, useEffect, useMemo, useState } from 'react'
 import { handleApiRequest } from '../hooks/apiRequest'
 import config from '../utils/config'
 
@@ -73,11 +73,17 @@ export function UIContentProvider({
     }
   }, [])
 
-  return (
-    <UIContentContext value={{ footerData, headerData, loading, error }}>
-      {children}
-    </UIContentContext>
+  const contextValue = useMemo(
+    () => ({
+      footerData,
+      headerData,
+      loading,
+      error,
+    }),
+    [footerData, headerData, loading, error],
   )
+
+  return <UIContentContext value={contextValue}>{children}</UIContentContext>
 }
 
 /**
