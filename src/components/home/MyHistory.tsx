@@ -9,7 +9,7 @@ import {
   StyledTitle,
 } from './MyHistory.style'
 
-function MyHistory({ title, paragraphs }: HomeData['myHistory']) {
+function MyHistory({ title, paragraphs }: Readonly<HomeData['myHistory']>) {
   /*const title = 'Mon parcours'
 
   const runningYears = new Date().getFullYear()

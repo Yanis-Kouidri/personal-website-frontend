@@ -35,7 +35,11 @@ export const UIContentContext = createContext<UIContentContextType | undefined>(
   undefined,
 )
 
-export function UIContentProvider({ children }: { children: ReactNode }) {
+export function UIContentProvider({
+  children,
+}: {
+  children: Readonly<ReactNode>
+}) {
   const [footerData, setFooterData] = useState<FooterData | null>(null)
   const [headerData, setHeaderData] = useState<HeaderData | null>(null)
   const [loading, setLoading] = useState<boolean>(true)

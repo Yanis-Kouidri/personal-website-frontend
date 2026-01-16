@@ -7,7 +7,11 @@ import {
   StyledTitle,
 } from './Banner.styles'
 
-function Banner({ title, shortDescription, location }: HomeData['banner']) {
+function Banner({
+  title,
+  shortDescription,
+  location,
+}: Readonly<HomeData['banner']>) {
   //const shortDescription: string =
   //  "Ingénieur en informatique et réseaux à l'ENSEEIHT."
   //const location: string = '🌆 Toulouse, France.'
