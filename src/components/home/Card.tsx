@@ -13,7 +13,7 @@ interface CardProps {
   size: number
 }
 
-function Card({ name, logo, link, size }: CardProps) {
+function Card({ name, logo, link, size }: Readonly<CardProps>) {
   return (
     <ExternalLinkStyled href={link} target="_blank" rel="noopener noreferrer">
       <SkillCardStyled>
