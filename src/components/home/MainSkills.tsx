@@ -19,7 +19,7 @@ function MainSkills({
   itDescription,
   networkTitle,
   networkDescription,
-}: HomeData['mainSkills']) {
+}: Readonly<HomeData['mainSkills']>) {
   /*const itTitle = 'Informatique'
   const itTextPart =
     'Programmation, administration système, sécurité informatique, développement web, développement mobile, développement logiciel, cryptographie, mes compétences en informatique sont variées et me permettent de concevoir et créer des projets de A à Z dans ces nombreux domaines.'

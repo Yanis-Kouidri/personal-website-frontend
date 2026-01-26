@@ -1,5 +1,5 @@
 # Stage 1: Build the React app
-FROM node:24.12.0-alpine3.22 AS builder
+FROM node:24.13.0-alpine3.22 AS builder
 
 WORKDIR /app
 
@@ -8,7 +8,9 @@ COPY package-lock.json ./
 
 RUN npm ci
 
-COPY . .
+COPY tsconfig.json vite.config.js .env.production index.html ./
+COPY src ./src
+COPY public ./public
 
 RUN npm run build
 

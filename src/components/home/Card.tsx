@@ -1,6 +1,5 @@
 import {
   ExternalLinkStyled,
-  LinkStyled,
   LogoContainer,
   LogoStyled,
   NameStyled,
@@ -12,11 +11,10 @@ interface CardProps {
   logo: string
   link: string
   size: number
-  isExternal?: boolean
 }
 
-function Card({ name, logo, link, size, isExternal = false }: CardProps) {
-  return isExternal ? (
+function Card({ name, logo, link, size }: Readonly<CardProps>) {
+  return (
     <ExternalLinkStyled href={link} target="_blank" rel="noopener noreferrer">
       <SkillCardStyled>
         <LogoContainer>
@@ -25,15 +23,6 @@ function Card({ name, logo, link, size, isExternal = false }: CardProps) {
         <NameStyled>{name}</NameStyled>
       </SkillCardStyled>
     </ExternalLinkStyled>
-  ) : (
-    <LinkStyled to={link}>
-      <SkillCardStyled>
-        <LogoContainer>
-          <LogoStyled src={logo} alt="" size={size} />
-        </LogoContainer>
-        <NameStyled>{name}</NameStyled>
-      </SkillCardStyled>
-    </LinkStyled>
   )
 }
 

@@ -16,18 +16,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: SonarQube Scan
-        uses: SonarSource/sonarqube-scan-action@v7
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-      # If you wish to fail your job when the Quality Gate is red, uncomment the
-      # following lines. This would typically be used to fail a deployment.
-      # - uses: SonarSource/sonarqube-quality-gate-action@v1
-      #   timeout-minutes: 5
-      #   env:
-      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
@@ -48,6 +36,18 @@ jobs:
         run: npm run test:cov
         env:
           NODE_ENV: test
+
+      - name: SonarQube Scan
+        uses: SonarSource/sonarqube-scan-action@v7
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+      # If you wish to fail your job when the Quality Gate is red, uncomment the
+      # following lines. This would typically be used to fail a deployment.
+      # - uses: SonarSource/sonarqube-quality-gate-action@v1
+      #   timeout-minutes: 5
+      #   env:
+      #     SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
 
       - name: Linter
         run: npm run lint
@@ -107,7 +107,7 @@ jobs:
         with:
           context: .
           platforms: linux/amd64,linux/arm64
-          push: true
+          push: ${{ github.event_name == 'push' }}
           tags: |
             ${{ needs.prepare.outputs.image }}:latest
             ${{ needs.prepare.outputs.image }}:${{ needs.prepare.outputs.version }}
@@ -115,9 +115,14 @@ jobs:
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
-      - name: Verify published tags
+      - name: Verify build status
         run: |
-          echo "Image pushed:"
-          echo "${{ needs.prepare.outputs.image }}:latest"
-          echo "${{ needs.prepare.outputs.image }}:${{ needs.prepare.outputs.version }}"
-          echo "${{ needs.prepare.outputs.image }}:sha-${{ github.sha }}"
+          if [ "${{ github.event_name }}" == "push" ]; then
+            echo "✅ Image built and pushed on GHCR."
+            echo "Image pushed:"
+            echo "${{ needs.prepare.outputs.image }}:latest"
+            echo "${{ needs.prepare.outputs.image }}:${{ needs.prepare.outputs.version }}"
+            echo "${{ needs.prepare.outputs.image }}:sha-${{ github.sha }}"
+          else
+            echo "🧪 Image built but not pushed (tests PR)"
+          fi

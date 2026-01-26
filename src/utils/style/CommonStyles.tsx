@@ -108,3 +108,9 @@ export const DeleteButton = styled(IconActionButton)`
     color: #ff0000;
   }
 `
+
+export const StyledParagraph = styled.p`
+  color: white;
+  text-align: center;
+  padding: 10px;
+`
