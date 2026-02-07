@@ -11,6 +11,12 @@ updates:
         patterns:
           - "vitest*"
           - "@vitest/*"
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
 
   - package-ecosystem: 'docker'
     directory: '/' # Location of package manifests (Dockerfile)
