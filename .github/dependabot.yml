@@ -11,7 +11,7 @@ updates:
         patterns:
           - "vitest*"
           - "@vitest/*"
-      react:
+      react-core:
         patterns:
           - "react"
           - "react-dom"
