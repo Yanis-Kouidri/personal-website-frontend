@@ -1,12 +1,12 @@
 # Stage 1: Build the React app
-FROM node:24.13.1-alpine3.22 AS builder
+FROM docker.io/library/node:24.13.1-alpine3.22 AS builder
 
 WORKDIR /app
 
 COPY package.json ./
 COPY package-lock.json ./
 
-RUN npm ci
+RUN npm ci --ignore-scripts
 
 COPY tsconfig.json vite.config.js .env.production index.html ./
 COPY src ./src
@@ -15,7 +15,7 @@ COPY public ./public
 RUN npm run build
 
 # Stage 2: Serve the app with Nginx
-FROM nginxinc/nginx-unprivileged:1.29.3-alpine3.22-slim
+FROM docker.io/nginxinc/nginx-unprivileged:1.29.3-alpine3.22-slim
 
 USER root
 
