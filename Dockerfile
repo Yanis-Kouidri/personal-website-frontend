@@ -1,5 +1,5 @@
 # Stage 1: Build the React app
-FROM docker.io/library/node:24.13.1-alpine3.22 AS builder
+FROM docker.io/library/node:25.6.1-alpine3.22 AS builder
 
 WORKDIR /app
 
