@@ -109,14 +109,12 @@ jobs:
           image: ${{needs.prepare.outputs.image}}
           context: .
           platforms: linux/amd64,linux/arm64
-          push: ${{ github.event_name == 'push' }}
           tags: |
             latest
             ${{ needs.prepare.outputs.version }}
             sha-${{ github.sha }}
           containerfiles: |
             ./Dockerfile
-          platforms: linux/amd64,linux/arm64
 
       - name: Push to GHCR
         if: github.event_name == 'push'
