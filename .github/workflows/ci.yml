@@ -103,7 +103,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build podman image
-        id: build_image
+        id: build-image
         uses: redhat-actions/buildah-build@v2
         with:
           image: ${{needs.prepare.outputs.image}}
