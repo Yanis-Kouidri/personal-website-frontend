@@ -3,7 +3,7 @@ updates:
   - package-ecosystem: 'npm'
     directory: '/' # Location of package manifests (package.json)
     schedule:
-      interval: 'daily'
+      interval: 'weekly'
     target-branch: 'dev'
     open-pull-requests-limit: 15
     groups:
@@ -21,13 +21,13 @@ updates:
   - package-ecosystem: 'docker'
     directory: '/' # Location of package manifests (Dockerfile)
     schedule:
-      interval: 'daily'
+      interval: 'weekly'
     target-branch: 'dev'
 
 
   - package-ecosystem: 'github-actions'
     directory: '/'
     schedule:
-      interval: 'daily'
+      interval: 'weekly'
     target-branch: 'dev'
 
