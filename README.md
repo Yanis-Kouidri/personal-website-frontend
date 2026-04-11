@@ -4,10 +4,6 @@ Frontend for my [personal website](https://www.kouidri.fr), built with Vite and 
 
 ## 🚀 Development
 
-Switch to the development branch:
-
-    git switch dev
-
 Install dependencies:
 
     npm install
