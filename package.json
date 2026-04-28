@@ -51,7 +51,7 @@
     "lint-staged": "^16.4.0",
     "retire": "^5.4.2",
     "typescript": "^6.0.2",
-    "vite": "^8.0.8",
+    "vite": "^8.0.10",
     "vitest": "^4.1.3"
   }
 }
