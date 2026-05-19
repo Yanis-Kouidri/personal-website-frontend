@@ -48,7 +48,7 @@
     "globals": "^17.6.0",
     "husky": "^9.1.7",
     "jsdom": "^29.1.1",
-    "lint-staged": "^17.0.4",
+    "lint-staged": "^17.0.5",
     "retire": "^5.4.2",
     "typescript": "^6.0.3",
     "vite": "^8.0.11",
